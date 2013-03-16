@@ -1,0 +1,50 @@
+{% block aceeditor_widget %}
+    {% spaceless %}
+    <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    <div id="{{ id }}_ace" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}></div>
+    <script src="{{ asset(app.request.scheme ~ '://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var textarea = document.getElementById('{{ id }}'),
+            editorElm = document.getElementById('{{ id }}_ace'),
+            editor = ace.edit(editorElm),
+            width = {{ width }},
+            height = {{ height }};
+
+        textarea.style.visibility = 'hidden';
+        textarea.style.width = width + 'px';
+        textarea.style.height = height + 'px';
+
+        editorElm.style.fontSize='{{ font_size }}px';
+        editorElm.style.width = width + 'px';
+        editorElm.style.height = height + 'px';
+        editorElm.style.marginTop = -height + 'px';
+
+        editor.setTheme("{{ theme }}");
+        editor.getSession().setMode("{{ mode }}");
+        editor.getSession().setValue(textarea.value);
+
+        {% if read_only is not null %}
+        editor.setReadOnly({{ read_only ? 'true' : 'false' }});
+        {% endif %}
+        {% if show_print_margin is not null %}
+        editor.setShowPrintMargin({{ show_print_margin ? 'true' : 'false' }});
+        {% endif %}
+        {% if highlight_active_line is not null %}
+        editor.setHighlightActiveLine({{ highlight_active_line ? 'true' : 'false' }});
+        {% endif %}
+        {% if tab_size is not null %}
+        editor.getSession().setTabSize({{ tab_size }});
+        {% endif %}
+        {% if use_soft_tabs is not null %}
+        editor.getSession().setUseSoftTabs({{ use_soft_tabs ? 'true' : 'false' }});
+        {% endif %}
+        {% if use_wrap_mode is not null %}
+        editor.getSession().setUseWrapMode({{ use_wrap_mode ? 'true' : 'false' }});
+        {% endif %}
+
+        editor.getSession().on('change', function(){
+            textarea.value = editor.getSession().getValue();
+        });
+    </script>
+    {% endspaceless %}
+{% endblock %}
