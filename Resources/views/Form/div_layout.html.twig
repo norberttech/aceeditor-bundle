@@ -4,6 +4,7 @@
     <div id="{{ id }}_ace" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}></div>
     <script src="{{ asset(app.request.scheme ~ '://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js') }}" type="text/javascript" charset="utf-8"></script>
     <script>
+    (function () {
         var textarea = document.getElementById('{{ id }}'),
             editorElm = document.getElementById('{{ id }}_ace'),
             editor = ace.edit(editorElm),
@@ -45,6 +46,7 @@
         editor.getSession().on('change', function(){
             textarea.value = editor.getSession().getValue();
         });
+    }());
     </script>
     {% endspaceless %}
 {% endblock %}
