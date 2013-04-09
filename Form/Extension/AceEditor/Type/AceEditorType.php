@@ -45,6 +45,7 @@ class AceEditorType extends AbstractType
         };
 
         $resolver->setDefaults(array(
+            'required' => false,
             'wrapper_attr' => array(),
             'width' => 200,
             'height' => 200,
@@ -114,6 +115,6 @@ class AceEditorType extends AbstractType
      */
     public function getName()
     {
-        return 'aceeditor';
+        return 'ace_editor';
     }
 }

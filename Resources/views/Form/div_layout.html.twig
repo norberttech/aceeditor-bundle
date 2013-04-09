@@ -1,9 +1,9 @@
-{% block aceeditor_widget %}
+{% block ace_editor_widget %}
     {% spaceless %}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
     <div id="{{ id }}_ace" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}></div>
-    <script src="{{ asset(app.request.scheme ~ '://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js') }}" type="text/javascript" charset="utf-8"></script>
-    <script>
+    {{ include_ace_editor() }}
+    <script type="text/javascript">
     (function () {
         var textarea = document.getElementById('{{ id }}'),
             editorElm = document.getElementById('{{ id }}_ace'),

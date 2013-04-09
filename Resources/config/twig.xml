@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Twig Extensions -->
+        <service id="norzechowicz_ace_editor.twig.form_extension" class="Norzechowicz\AceEditorBundle\Twig\Extension\AceEditorExtension">
+            <tag name="twig.extension" />
+            <argument>%norzechowicz_ace_editor.options.autoinclude%</argument>
+            <argument>%norzechowicz_ace_editor.options.base_path%</argument>
+            <argument>%norzechowicz_ace_editor.options.mode%</argument>
+        </service>
+    </services>
+</container>

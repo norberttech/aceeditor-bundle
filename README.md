@@ -40,13 +40,13 @@ $ php composer.phar update
 ```php
 /* @var $builder \Symfony\Component\Form\FormBuilderInterface */
 
-$builder->add('description', 'aceeditor', array(
+$builder->add('description', 'ace_editor', array(
     'wrapper_attr' => array(), // aceeditor wrapper html attributes.
     'width' => 200,
     'height' => 200,
     'font_size' => 12,
-    'mode' => 'ace/mode/html',
-    'theme' => 'ace/theme/monokai',
+    'mode' => 'ace/mode/html', // every single default mode must have ace/mode/* prefix
+    'theme' => 'ace/theme/monokai', // every single default theme must have ace/theme/* prefix
     'tab_size' => null,
     'read_only' => null,
     'use_soft_tabs' => null,
@@ -58,3 +58,26 @@ $builder->add('description', 'aceeditor', array(
 
 Above code will create textarea element that will be replaced with ace editor instance.
 Textarea value is updated on every single change in ace editor.
+
+# Configuration #
+
+> This section is optional, you dont need to configure anything and your ace_editor form type will still work perfectly fine
+
+There are also few options that alows you to manipulate including ace editor javascript sdk. 
+
+```
+# app/config/config.yml
+
+norzechowicz_ace_editor:
+    base_path: "bundles/norzechowiczaceeditor/ace"
+    autoinclude: true
+    debug: false # sources not minified with uglify.js
+    noconflict: true # uses ace.require instead of require
+```
+
+You can also include ace editor directly from github, all you need to do is setting ``base_path`` option 
+
+```
+norzechowicz_ace_editor:
+    base_path: "http://rawgithub.com/ajaxorg/ace-builds/master"
+```

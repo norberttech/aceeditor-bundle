@@ -9,8 +9,8 @@
     </parameters>
 
     <services>
-        <service id="norzechowicz_ace_editor.form.type.aceeditor" class="%norzechowicz_ace_editor.form.type.aceeditor.class%" scope="request">
-            <tag name="form.type" alias="aceeditor" />
+        <service id="norzechowicz_ace_editor.form.type.ace_editor" class="%norzechowicz_ace_editor.form.type.aceeditor.class%" scope="request">
+            <tag name="form.type" alias="ace_editor" />
         </service>
     </services>
 </container>
