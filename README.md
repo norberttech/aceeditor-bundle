@@ -3,6 +3,17 @@
 Bundle provides a [ace editor](http://ace.ajax.org) integration into Symfony2 Form component. It automatically register ``aceeditor``
 form type.
 
+# Important #
+
+Check your composer.json file and if you have "1.0.*@dev" dependency of this bundle change it into "0.1.*".
+
+```
+   - "norzechowicz/aceeditor-bundle": "1.0.*@dev",
+   + "norzechowicz/aceeditor-bundle": "0.1.*",
+```
+
+Do it before calling composer.phar update to be sure that your code will not be broken.
+
 # Installation #
 
 Add bundle into your ``composer.json`` file.
@@ -10,7 +21,7 @@ Add bundle into your ``composer.json`` file.
 ```
 {
     "require": {
-        "norzechowicz/aceeditor-bundle": "1.0.*@dev",
+        "norzechowicz/aceeditor-bundle": "0.1.*",
     }
 }
 ```
