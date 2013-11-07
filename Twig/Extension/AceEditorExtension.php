@@ -84,7 +84,7 @@ class AceEditorExtension extends \Twig_Extension
                 ->getExtension('assets')
                 ->getAssetUrl($this->basePath . '/' . $this->mode);
 
-            echo sprintf('<script type="text/javascript" src="%s" type="text/javascript" charset="utf-8"></script>', $jsPath);
+            echo sprintf('<script src="%s" charset="utf-8"></script>', $jsPath);
             $this->ckeditorIncluded = true;
         }
     }
