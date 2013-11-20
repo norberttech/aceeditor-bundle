@@ -8,17 +8,19 @@
         var textarea = document.getElementById('{{ id }}'),
             editorElm = document.getElementById('{{ id }}_ace'),
             editor = ace.edit(editorElm),
-            width = {{ width }},
-            height = {{ height }};
+            width = {{ width.value }},
+            widthUnit = '{{ width.unit }}',
+            height = {{ height.value }},
+            heightUnit = '{{ height.unit }}';
 
         textarea.style.visibility = 'hidden';
-        textarea.style.width = width + 'px';
-        textarea.style.height = height + 'px';
+        textarea.style.width = width + widthUnit;
+        textarea.style.height = height + heightUnit;
 
         editorElm.style.fontSize='{{ font_size }}px';
-        editorElm.style.width = width + 'px';
-        editorElm.style.height = height + 'px';
-        editorElm.style.marginTop = -height + 'px';
+        editorElm.style.width = width + widthUnit;
+        editorElm.style.height = height + heightUnit;
+        editorElm.style.marginTop = -(height) + heightUnit;
 
         editor.setTheme("{{ theme }}");
         editor.getSession().setMode("{{ mode }}");
