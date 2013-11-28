@@ -24,6 +24,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class AceEditorType extends AbstractType
 {
+    private $defaultUnit = 'px';
+    private $units = array('%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px');
+
     /**
      * Add the image_path option
      *
@@ -44,6 +47,21 @@ class AceEditorType extends AbstractType
             return $aceAttr;
         };
 
+        $defaultUnit = $this->defaultUnit;
+        $allowedUnits = $this->units;
+        $unitNormalizer = function(Options $options, $value) use ($defaultUnit, $allowedUnits) {
+            if(is_array($value)) {
+                return $value;
+            }
+            if(preg_match('/([0-9\.]+)\s*(' . join('|', $allowedUnits) . ')/', $value, $matchedValue)) {
+                $value = $matchedValue[1];
+                $unit = $matchedValue[2];
+            } else {
+                $unit = $defaultUnit;
+            }
+            return array('value' => $value, 'unit' => $unit);
+        };
+
         $resolver->setDefaults(array(
             'required' => false,
             'wrapper_attr' => array(),
@@ -61,8 +79,8 @@ class AceEditorType extends AbstractType
         ));
 
         $resolver->setAllowedTypes(array(
-            'width' => 'integer',
-            'height' => 'integer',
+            'width' => 'array',
+            'height' => 'array',
             'mode' => 'string',
             'font_size' => 'integer',
             'tab_size' => array('integer', 'null'),
@@ -75,6 +93,8 @@ class AceEditorType extends AbstractType
 
         $resolver->setNormalizers(array(
             'wrapper_attr' => $wrapperAttrNormalizer,
+            'width'        => $unitNormalizer,
+            'height'       => $unitNormalizer,
         ));
     }
 
