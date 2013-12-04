@@ -92,3 +92,6 @@ You can also include ace editor directly from github, all you need to do is sett
 norzechowicz_ace_editor:
     base_path: "http://rawgithub.com/ajaxorg/ace-builds/master"
 ```
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/norzechowicz/aceeditor-bundle/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
