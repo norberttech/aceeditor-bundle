@@ -1,0 +1,65 @@
+{% block ace_editor_widget %}
+    {% spaceless %}
+    <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    <div id="{{ id }}_ace" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}></div>
+    {{ include_ace_editor() }}
+    {% if show_status_bar is not null %}
+    <div id="{{ id }}_ace_status_bar">{{ status_bar_message }}</div>
+{% endif %}
+    <script type="text/javascript">
+    (function () {
+        var textarea = document.getElementById('{{ id }}'),
+            editorElm = document.getElementById('{{ id }}_ace'),
+            editor = ace.edit(editorElm),
+            width = {{ width.value }},
+            widthUnit = '{{ width.unit }}',
+            height = {{ height.value }},
+            heightUnit = '{{ height.unit }}';
+
+        textarea.style.visibility = 'hidden';
+        textarea.style.width = width + widthUnit;
+        textarea.style.height = height + heightUnit;
+
+        editorElm.style.fontSize='{{ font_size }}px';
+        editorElm.style.width = width + widthUnit;
+        editorElm.style.height = height + heightUnit;
+        editorElm.style.marginTop = -(height) + heightUnit;
+
+        editor.setTheme("{{ theme }}");
+        editor.getSession().setMode("{{ mode }}");
+        editor.getSession().setValue(textarea.value);
+
+        {% if read_only is not null %}
+        editor.setReadOnly({{ read_only ? 'true' : 'false' }});
+        {% endif %}
+        {% if show_print_margin is not null %}
+        editor.setShowPrintMargin({{ show_print_margin ? 'true' : 'false' }});
+        {% endif %}
+        {% if highlight_active_line is not null %}
+        editor.setHighlightActiveLine({{ highlight_active_line ? 'true' : 'false' }});
+        {% endif %}
+        {% if tab_size is not null %}
+        editor.getSession().setTabSize({{ tab_size }});
+        {% endif %}
+        {% if use_soft_tabs is not null %}
+        editor.getSession().setUseSoftTabs({{ use_soft_tabs ? 'true' : 'false' }});
+        {% endif %}
+        {% if use_wrap_mode is not null %}
+        editor.getSession().setUseWrapMode({{ use_wrap_mode ? 'true' : 'false' }});
+        {% endif %}
+        {% if show_status_bar is not null %}
+        var StatusBar = ace.require("{{ status_bar_ext }}").StatusBar;
+        // create a simple selection status indicator
+        new StatusBar(editor, document.getElementById("{{ id }}_ace_status_bar"));
+        {% endif %}
+        {% if auto_completion is not null %}
+        ace.require("{{ auto_completion_ext }}");
+        {% endif %}
+
+        editor.getSession().on('change', function(){
+            textarea.value = editor.getSession().getValue();
+        });
+    }());
+    </script>
+    {% endspaceless %}
+{% endblock %}
