@@ -32,6 +32,9 @@
         {% if show_print_margin is not null %}
         editor.setShowPrintMargin({{ show_print_margin ? 'true' : 'false' }});
         {% endif %}
+        {% if show_invisibles is not null %}
+        editor.setShowInvisibles({{ show_invisibles ? 'true' : 'false' }});
+        {% endif %}
         {% if highlight_active_line is not null %}
         editor.setHighlightActiveLine({{ highlight_active_line ? 'true' : 'false' }});
         {% endif %}

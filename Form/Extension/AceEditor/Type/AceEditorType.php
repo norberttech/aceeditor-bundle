@@ -75,6 +75,7 @@ class AceEditorType extends AbstractType
             'use_soft_tabs' => null,
             'use_wrap_mode' => null,
             'show_print_margin' => null,
+            'show_invisibles' => null,
             'highlight_active_line' => null
         ));
 
@@ -88,6 +89,7 @@ class AceEditorType extends AbstractType
             'use_soft_tabs' => array('bool', 'null'),
             'use_wrap_mode' => array('bool', 'null'),
             'show_print_margin' => array('bool', 'null'),
+            'show_invisibles' => array('bool', 'null'),
             'highlight_active_line' => array('bool', 'null'),
         ));
 
@@ -117,6 +119,7 @@ class AceEditorType extends AbstractType
                 'use_soft_tabs' => $options['use_soft_tabs'],
                 'use_wrap_mode' => $options['use_wrap_mode'],
                 'show_print_margin' => $options['show_print_margin'],
+                'show_invisibles' => $options['show_invisibles'],
                 'highlight_active_line' => $options['highlight_active_line'],
             )
         );
