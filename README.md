@@ -63,6 +63,7 @@ $builder->add('description', 'ace_editor', array(
     'use_soft_tabs' => null,
     'use_wrap_mode' => null,
     'show_print_margin' => null,
+    'show_invisibles' => null,
     'highlight_active_line' => null
 ));
 ```
