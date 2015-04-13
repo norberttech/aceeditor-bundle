@@ -1,5 +1,5 @@
-define('ace/ext/spellcheck', ['require', 'exports', 'module' , 'ace/lib/event', 'ace/editor', 'ace/config'], function(require, exports, module) {
-
+define("ace/ext/spellcheck",["require","exports","module","ace/lib/event","ace/editor","ace/config"], function(require, exports, module) {
+"use strict";
 var event = require("../lib/event");
 
 exports.contextMenuHandler = function(e){
@@ -17,9 +17,10 @@ exports.contextMenuHandler = function(e){
     var PLACEHOLDER = "\x01\x01";
     var value = w + " " + PLACEHOLDER;
     text.value = value;
-    text.setSelectionRange(w.length + 1, w.length + 1);
+    text.setSelectionRange(w.length, w.length + 1);
     text.setSelectionRange(0, 0);
-    
+    text.setSelectionRange(0, w.length);
+
     var afterKeydown = false;
     event.addListener(text, "keydown", function onKeydown() {
         event.removeListener(text, "keydown", onKeydown);
@@ -44,7 +45,7 @@ exports.contextMenuHandler = function(e){
                 return "";
             }
         }
-        
+
         return newVal;
     });
 };
@@ -57,11 +58,14 @@ require("../config").defineOptions(Editor.prototype, "editor", {
             if (!val)
                 this.removeListener("nativecontextmenu", exports.contextMenuHandler);
             else
-                this.on("nativecontextmenu", exports.contextMenuHandler);            
+                this.on("nativecontextmenu", exports.contextMenuHandler);
         },
         value: true
     }
 });
 
 });
-
+                (function() {
+                    window.require(["ace/ext/spellcheck"], function() {});
+                })();
+            
