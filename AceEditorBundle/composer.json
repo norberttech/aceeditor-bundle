@@ -1,0 +1,27 @@
+{
+    "name": "norzechowicz/aceeditor-bundle",
+    "type": "symfony-bundle",
+    "description": "Bundle that integrate excellent JavaScript ace editor into Symfony2 Form.",
+    "keywords": ["ace", "editor", "symfony", "form", "bundle", "javascript"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Norbert Orzechowicz",
+            "email": "norbert@orzechowicz.pl"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "twig/twig": "~1.2",
+        "symfony/framework-bundle" :  "~2.1"
+    },
+    "autoload": {
+        "psr-0": { "Norzechowicz\\AceEditorBundle\\": "" }
+    },
+    "target-dir" : "Norzechowicz/AceEditorBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
