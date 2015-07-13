@@ -11,6 +11,8 @@
 
 namespace Norzechowicz\AceEditorBundle\Twig\Extension;
 
+use Symfony\Component\Asset\Exception\InvalidArgumentException;
+
 /**
  * @author Norbert Orzechowicz <norbert@fsi.pl>
  */
@@ -64,16 +66,14 @@ class AceEditorExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            'include_ace_editor' => new \Twig_Function_Method($this, 'includeAceEditor', array('is_safe' => array('html'))),
-        );
+        return [
+            'include_ace_editor' => new \Twig_Function_Method($this, 'includeAceEditor', ['is_safe' => ['html']]),
+        ];
     }
 
     public function includeAceEditor()
     {
-        if (!$this->environment->hasExtension('assets')) {
-            return;
-        }
+        $extension = $this->checkExtensionCompatibility();
 
         if (!$this->editorIncluded) {
             $this->editorIncluded = true;
@@ -81,11 +81,36 @@ class AceEditorExtension extends \Twig_Extension
 
         if (!$this->ckeditorIncluded) {
             $jsPath = $this->environment
-                ->getExtension('assets')
+                ->getExtension($extension)
                 ->getAssetUrl($this->basePath . '/' . $this->mode);
 
             echo sprintf('<script src="%s" charset="utf-8"></script>', $jsPath);
             $this->ckeditorIncluded = true;
         }
+    }
+
+    /**
+     * Check that you have a compatible extension
+     *
+     * @return string The compatible extension
+     * @throw InvalidArgumentException When can not found a compatible extension
+     */
+    private function checkExtensionCompatibility()
+    {
+        $extensions = ['assets', 'asset'];
+        $has = false;
+        $extension = '';
+        foreach ($extensions as $ext) {
+            if ($this->environment->hasExtension($ext)) {
+                $has = true;
+                $extension = $ext;
+            }
+        }
+
+        if (!$has && $extension === '') {
+            throw new InvalidArgumentException('Can not found a compatible extension');
+        }
+
+        return $extension;
     }
 }
