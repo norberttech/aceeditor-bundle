@@ -1,27 +1,4 @@
-/* ***** BEGIN LICENSE BLOCK *****
- * Distributed under the BSD license:
- * 
- * Copyright 2011 Irakli Gozalishvili. All rights reserved.
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
- * deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE.
- * ***** END LICENSE BLOCK ***** */
-
-define('ace/theme/chaos', ['require', 'exports', 'module' , 'ace/lib/dom'], function(require, exports, module) {
+define("ace/theme/chaos",["require","exports","module","ace/lib/dom"], function(require, exports, module) {
 
 exports.isDark = true;
 exports.cssClass = "ace-chaos";
@@ -50,11 +27,8 @@ border-left: 1px solid #555;\
 right: 0;\
 background: #1D1D1D;\
 }\
-.ace-chaos .ace_scroller {\
+.ace-chaos {\
 background-color: #161616;\
-}\
-.ace-chaos .ace_text-layer {\
-cursor: text;\
 color: #E6E1DC;\
 }\
 .ace-chaos .ace_cursor {\
