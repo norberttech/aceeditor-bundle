@@ -47,6 +47,17 @@
         {% if use_wrap_mode is not null %}
         editor.getSession().setUseWrapMode({{ use_wrap_mode ? 'true' : 'false' }});
         {% endif %}
+        editor.setOptions({
+            {% if options_enable_basic_autocompletion is not null %}
+                enableBasicAutocompletion: {{ options_enable_basic_autocompletion ? 'true' : 'false' }},
+            {% endif %}
+            {% if options_enable_live_autocompletion is not null %}
+                enableLiveAutocompletion: {{ options_enable_live_autocompletion ? 'true' : 'false' }},
+            {% endif %}
+            {% if options_enable_snippets is not null %}
+                enableSnippets: {{ options_enable_snippets ? 'true' : 'false' }},
+            {% endif %}
+        });
 
         editor.getSession().on('change', function(){
             textarea.value = editor.getSession().getValue();

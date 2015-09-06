@@ -65,8 +65,8 @@ class AceEditorType extends AbstractType
         $resolver->setDefaults(array(
             'required' => false,
             'wrapper_attr' => array(),
-            'width' => 200,
-            'height' => 200,
+            'width' => '100%',
+            'height' => 250,
             'font_size' => 12,
             'mode' => 'ace/mode/html',
             'theme' => 'ace/theme/monokai',
@@ -76,7 +76,10 @@ class AceEditorType extends AbstractType
             'use_wrap_mode' => null,
             'show_print_margin' => null,
             'show_invisibles' => null,
-            'highlight_active_line' => null
+            'highlight_active_line' => null,
+            'options_enable_basic_autocompletion' => true,
+            'options_enable_live_autocompletion' => true,
+            'options_enable_snippets' => false,
         ));
 
         $resolver->setAllowedTypes(array(
@@ -91,6 +94,9 @@ class AceEditorType extends AbstractType
             'show_print_margin' => array('bool', 'null'),
             'show_invisibles' => array('bool', 'null'),
             'highlight_active_line' => array('bool', 'null'),
+            'options_enable_basic_autocompletion' => array('bool', 'null'),
+            'options_enable_live_autocompletion' => array('bool', 'null'),
+            'options_enable_snippets' => array('bool', 'null'),
         ));
 
         $resolver->setNormalizers(array(
@@ -121,6 +127,9 @@ class AceEditorType extends AbstractType
                 'show_print_margin' => $options['show_print_margin'],
                 'show_invisibles' => $options['show_invisibles'],
                 'highlight_active_line' => $options['highlight_active_line'],
+                'options_enable_basic_autocompletion' => $options['options_enable_basic_autocompletion'],
+                'options_enable_live_autocompletion' => $options['options_enable_live_autocompletion'],
+                'options_enable_snippets' => $options['options_enable_snippets'],
             )
         );
     }

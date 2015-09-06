@@ -1,5 +1,5 @@
 {
-    "name": "norzechowicz/aceeditor-bundle",
+    "name": "purjus/aceeditor-bundle",
     "type": "symfony-bundle",
     "description": "Bundle that integrate excellent JavaScript ace editor into Symfony2 Form.",
     "keywords": ["ace", "editor", "symfony", "form", "bundle", "javascript"],

@@ -53,8 +53,8 @@ $ php composer.phar update
 
 $builder->add('description', 'ace_editor', array(
     'wrapper_attr' => array(), // aceeditor wrapper html attributes.
-    'width' => 200,
-    'height' => 200,
+    'width' => '100%',
+    'height' => 250,
     'font_size' => 12,
     'mode' => 'ace/mode/html', // every single default mode must have ace/mode/* prefix
     'theme' => 'ace/theme/monokai', // every single default theme must have ace/theme/* prefix
@@ -64,7 +64,10 @@ $builder->add('description', 'ace_editor', array(
     'use_wrap_mode' => null,
     'show_print_margin' => null,
     'show_invisibles' => null,
-    'highlight_active_line' => null
+    'highlight_active_line' => null,
+    'options_enable_basic_autocompletion' => true,
+    'options_enable_live_autocompletion' => true,
+    'options_enable_snippets' => false
 ));
 ```
 
@@ -83,7 +86,7 @@ There are also few options that alows you to manipulate including ace editor jav
 norzechowicz_ace_editor:
     base_path: "bundles/norzechowiczaceeditor/ace"
     autoinclude: true
-    debug: false # sources not minified with uglify.js
+    debug: false # sources not minified with uglify.js, based on kernel.debug but it can force it
     noconflict: true # uses ace.require instead of require
 ```
 
