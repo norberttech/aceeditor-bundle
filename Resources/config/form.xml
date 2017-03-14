@@ -1,15 +1,10 @@
 <?xml version="1.0" ?>
-
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter key="azzra_ace_editor.form.type.aceeditor.class">Azzra\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType</parameter>
-    </parameters>
-
     <services>
-        <service id="azzra_ace_editor.form.type.ace_editor" class="%azzra_ace_editor.form.type.aceeditor.class%" scope="request">
+        <service id="azzra_ace_editor.form.type.ace_editor" class="Azzra\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType">
             <tag name="form.type" alias="ace_editor" />
         </service>
     </services>

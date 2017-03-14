@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
 /**
- * Auto adds the Twig form template to the list of resources
+ * Auto adds the Twig form template to the list of resources.
  *
  * @author Norbert Orzechowicz <norbert@orzechowicz.pl>
  */
@@ -28,7 +28,7 @@ class TwigFormPass implements CompilerPassInterface
         }
 
         $container->setParameter('twig.form.resources', array_merge(
-            array('AzzraAceEditorBundle:Form:div_layout.html.twig'),
+            ['AzzraAceEditorBundle:Form:div_layout.html.twig'],
             $container->getParameter('twig.form.resources')
         ));
     }
