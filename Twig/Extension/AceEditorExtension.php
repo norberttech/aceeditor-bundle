@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Norzechowicz\AceEditorBundle\Twig\Extension;
+namespace Azzra\AceEditorBundle\Twig\Extension;
 
 /**
  * @author Norbert Orzechowicz <norbert@fsi.pl>

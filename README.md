@@ -8,8 +8,8 @@ form type.
 Check your composer.json file and if you have "1.0.*@dev" dependency of this bundle change it into "0.1.*".
 
 ```
-   - "norzechowicz/aceeditor-bundle": "1.0.*@dev",
-   + "norzechowicz/aceeditor-bundle": "0.1.*",
+   - "azzra/aceeditor-bundle": "1.0.*@dev",
+   + "azzra/aceeditor-bundle": "0.1.*",
 ```
 
 Do it before calling composer.phar update to be sure that your code will not be broken.
@@ -21,7 +21,7 @@ Add bundle into your ``composer.json`` file.
 ```
 {
     "require": {
-        "norzechowicz/aceeditor-bundle": "0.1.*",
+        "azzra/aceeditor-bundle": "0.1.*",
     }
 }
 ```
@@ -34,7 +34,7 @@ Register bundle in AppKernel.php
 public function registerBundles()
 {
     return array(
-        new Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle(),
+        new Azzra\AceEditorBundle\AzzraAceEditorBundle(),
         // ...
     );
 }
@@ -83,8 +83,8 @@ There are also few options that alows you to manipulate including ace editor jav
 ```
 # app/config/config.yml
 
-norzechowicz_ace_editor:
-    base_path: "bundles/norzechowiczaceeditor/ace"
+azzra_ace_editor:
+    base_path: "bundles/azzraaceeditor/ace"
     autoinclude: true
     debug: false # sources not minified with uglify.js, based on kernel.debug but it can force it
     noconflict: true # uses ace.require instead of require
@@ -93,9 +93,9 @@ norzechowicz_ace_editor:
 You can also include ace editor directly from github, all you need to do is setting ``base_path`` option 
 
 ```
-norzechowicz_ace_editor:
+azzra_ace_editor:
     base_path: "http://rawgithub.com/ajaxorg/ace-builds/master"
 ```
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/norzechowicz/aceeditor-bundle/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/azzra/aceeditor-bundle/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
