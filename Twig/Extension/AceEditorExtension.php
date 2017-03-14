@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Norzechowicz\AceEditorBundle\Twig\Extension;
+namespace Azzra\AceEditorBundle\Twig\Extension;
 
 /**
  * @author Norbert Orzechowicz <norbert@fsi.pl>
@@ -17,6 +17,9 @@ namespace Norzechowicz\AceEditorBundle\Twig\Extension;
 class AceEditorExtension extends \Twig_Extension
 {
     /**
+     * Should we include the ace.js?
+     * If false, user should include it it's own way.
+     *
      * @var boolean
      */
     protected $editorIncluded;
@@ -36,9 +39,14 @@ class AceEditorExtension extends \Twig_Extension
      */
     private $environment;
 
+    /**
+     * @param boolean $autoinclude means if the bundle should inclue the JS
+     * @param string $basePath
+     * @param string $mode
+     */
     public function __construct($autoinclude, $basePath, $mode)
     {
-        $this->ckeditorIncluded = $autoinclude;
+        $this->editorIncluded = !$autoinclude;
         $this->basePath = rtrim($basePath, '/');
         $this->mode = ltrim($mode, '/');
     }
@@ -69,23 +77,27 @@ class AceEditorExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * Echoes the <script> tag.
+     *
+     */
     public function includeAceEditor()
     {
-        if (!$this->environment->hasExtension('assets')) {
+        if (!$this->environment->hasExtension('asset') || $this->editorIncluded) {
             return;
         }
 
         if (!$this->editorIncluded) {
+
+            foreach (array('ace', 'ext-language_tools') as $file) {
+                $jsPath = $this->environment
+                    ->getExtension('asset')
+                    ->getAssetUrl($this->basePath . '/' . $this->mode . '/' . $file . '.js');
+
+                echo sprintf('<script src="%s" charset="utf-8" type="text/javascript"></script>', $jsPath);
+            }
             $this->editorIncluded = true;
         }
 
-        if (!$this->ckeditorIncluded) {
-            $jsPath = $this->environment
-                ->getExtension('assets')
-                ->getAssetUrl($this->basePath . '/' . $this->mode);
-
-            echo sprintf('<script src="%s" charset="utf-8"></script>', $jsPath);
-            $this->ckeditorIncluded = true;
-        }
     }
 }
