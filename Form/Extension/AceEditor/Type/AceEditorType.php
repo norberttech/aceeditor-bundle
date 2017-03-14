@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type;
+namespace Azzra\AceEditorBundle\Form\Extension\AceEditor\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
