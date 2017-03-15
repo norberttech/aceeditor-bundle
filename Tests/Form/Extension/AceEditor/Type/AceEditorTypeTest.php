@@ -3,9 +3,8 @@
 namespace Norzechowicz\AceEditorBundle\Tests\Form\Type;
 
 use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
-use PHPUnit\Framework\TestCase;
 
-class AceEditorTypeTest extends TestCase
+class AceEditorTypeTest extends \PHPUnit_Framework_TestCase
 {
     /** @var AceEditorType */
     private $formType;

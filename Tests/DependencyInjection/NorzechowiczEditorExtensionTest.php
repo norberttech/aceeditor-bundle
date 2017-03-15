@@ -3,10 +3,9 @@
 namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
 
 use Norzechowicz\AceEditorBundle\DependencyInjection\NorzechowiczAceEditorExtension;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorzechowiczAceEditorExtensionTest extends TestCase
+class NorzechowiczAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider loadProvider

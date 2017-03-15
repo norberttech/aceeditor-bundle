@@ -3,10 +3,9 @@
 namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
 
 use Norzechowicz\AceEditorBundle\DependencyInjection\Configuration;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 
-class ConfigurationTest extends TestCase
+class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     public function testProcessConfiguration()
     {

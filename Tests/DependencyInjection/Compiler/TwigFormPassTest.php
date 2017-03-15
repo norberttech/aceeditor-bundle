@@ -3,10 +3,9 @@
 namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection\Compiler;
 
 use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class TwigFormPassTest extends TestCase
+class TwigFormPassTest extends \PHPUnit_Framework_TestCase
 {
     public function testProcessHasNotTwigFormResources()
     {
