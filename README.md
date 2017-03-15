@@ -8,6 +8,8 @@ It automatically register `ace_editor` form type.
 
 ## Installation
 
+> This bundle requires at least PHP 5.6
+
 ### Bundle
 
 To use this bundle, require it in [Composer](https://getcomposer.org/):
