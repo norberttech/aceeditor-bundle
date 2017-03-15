@@ -1,7 +1,7 @@
 # Ace Editor Bundle
 
-[![Build Status](https://travis-ci.org/azzra/aceeditor-bundle.svg?branch=master)](https://travis-ci.org/azzra/aceeditor-bundle)
-[![Coverage Status](https://coveralls.io/repos/github/azzra/aceeditor-bundle/badge.svg?branch=master)](https://coveralls.io/github/azzra/aceeditor-bundle?branch=master)
+[![Build Status](https://travis-ci.org/norzechowicz/aceeditor-bundle.svg?branch=master)](https://travis-ci.org/norzechowicz/aceeditor-bundle)
+[![Coverage Status](https://coveralls.io/repos/github/norzechowicz/aceeditor-bundle/badge.svg?branch=master)](https://coveralls.io/github/norzechowicz/aceeditor-bundle?branch=master)
 
 Bundle provides a [Ace editor](http://ace.ajax.org) integration into Symfony Form component.
 It automatically register `ace_editor` form type.
@@ -13,7 +13,7 @@ It automatically register `ace_editor` form type.
 To use this bundle, require it in [Composer](https://getcomposer.org/):
 
 ```sh
-composer require "azzra/aceeditor-bundle"
+composer require "norzechowicz/aceeditor-bundle"
 ```
 
 Register bundle in AppKernel.php
@@ -24,7 +24,7 @@ Register bundle in AppKernel.php
 public function registerBundles()
 {
     return array(
-        new Azzra\AceEditorBundle\AzzraAceEditorBundle(),
+        new Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle(),
         // ...
     );
 }
@@ -45,7 +45,7 @@ rm v1.2.6.tar.gz
 ## Usage
 
 ```php
-use Azzra\AceEditorBundle\Form\Type\AceEditorType;
+use Norzechowicz\AceEditorBundle\Form\Type\AceEditorType;
 
 /* @var $builder \Symfony\Component\Form\FormBuilderInterface */
 $builder->add('description', AceEditorType::class, array(
@@ -80,7 +80,7 @@ Default configuration:
 ```
 # app/config/config.yml
 
-azzra_ace_editor:
+norzechowicz_ace_editor:
     base_path: "web/ace"
     autoinclude: true
     debug: false # sources not minified, based on kernel.debug but it can force it
@@ -90,6 +90,6 @@ azzra_ace_editor:
 You can also include Ace editor directly from a location that follow the same directory layout than
 `https://github.com/ajaxorg/ace-builds`, all you need to do is setting `base_path` option:
 ```
-azzra_ace_editor:
+norzechowicz_ace_editor:
     base_path: "http://rawgithub.com/ajaxorg/ace-builds/master"
 ```

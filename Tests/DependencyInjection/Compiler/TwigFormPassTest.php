@@ -1,8 +1,8 @@
 <?php
 
-namespace Azzra\AceEditorBundle\Tests\DependencyInjection\Compiler;
+namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection\Compiler;
 
-use Azzra\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -29,7 +29,7 @@ class TwigFormPassTest extends TestCase
         $compiler->process($container);
 
         $this->assertSame(
-            ['AzzraAceEditorBundle:Form:div_layout.html.twig', 'foo'],
+            ['NorzechowiczAceEditorBundle:Form:div_layout.html.twig', 'foo'],
             $container->getParameter('twig.form.resources'));
     }
 }

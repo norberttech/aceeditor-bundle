@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Azzra\AceEditorBundle\DependencyInjection\Compiler;
+namespace Norzechowicz\AceEditorBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -28,7 +28,7 @@ class TwigFormPass implements CompilerPassInterface
         }
 
         $container->setParameter('twig.form.resources', array_merge(
-            ['AzzraAceEditorBundle:Form:div_layout.html.twig'],
+            ['NorzechowiczAceEditorBundle:Form:div_layout.html.twig'],
             $container->getParameter('twig.form.resources')
         ));
     }

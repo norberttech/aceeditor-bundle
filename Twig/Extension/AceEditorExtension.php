@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Azzra\AceEditorBundle\Twig\Extension;
+namespace Norzechowicz\AceEditorBundle\Twig\Extension;
 
 use Symfony\Bridge\Twig\Extension\AssetExtension;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Azzra\AceEditorBundle\Tests\DependencyInjection;
+namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
 
-use Azzra\AceEditorBundle\DependencyInjection\AzzraAceEditorExtension;
+use Norzechowicz\AceEditorBundle\DependencyInjection\NorzechowiczAceEditorExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class AzzraAceEditorExtensionTest extends TestCase
+class NorzechowiczAceEditorExtensionTest extends TestCase
 {
     /**
      * @dataProvider loadProvider
@@ -17,7 +17,7 @@ class AzzraAceEditorExtensionTest extends TestCase
      */
     public function testLoad(array $parameters, $kernelDebug, array $expected)
     {
-        $extension = new AzzraAceEditorExtension();
+        $extension = new NorzechowiczAceEditorExtension();
         $container = new ContainerBuilder();
 
         $container->setParameter('kernel.debug', $kernelDebug);
@@ -25,9 +25,9 @@ class AzzraAceEditorExtensionTest extends TestCase
         $extension->load([$parameters], $container);
 
         $result = [
-            'autoinclude' => $container->getParameter('azzra_ace_editor.options.autoinclude'),
-            'base_path' => $container->getParameter('azzra_ace_editor.options.base_path'),
-            'mode' => $container->getParameter('azzra_ace_editor.options.mode'),
+            'autoinclude' => $container->getParameter('norzechowicz_ace_editor.options.autoinclude'),
+            'base_path' => $container->getParameter('norzechowicz_ace_editor.options.base_path'),
+            'mode' => $container->getParameter('norzechowicz_ace_editor.options.mode'),
         ];
 
         $this->assertSame($expected, $result);

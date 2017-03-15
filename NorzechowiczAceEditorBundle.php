@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Azzra\AceEditorBundle;
+namespace Norzechowicz\AceEditorBundle;
 
-use Azzra\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class AzzraAceEditorBundle.
+ * Class NorzechowiczAceEditorBundle.
  *
  * @author Norbert Orzechowicz <norbert@orzechowicz.pl>
  */
-class AzzraAceEditorBundle extends Bundle
+class NorzechowiczAceEditorBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {

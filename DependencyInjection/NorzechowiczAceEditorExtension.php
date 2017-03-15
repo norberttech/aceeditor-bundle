@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Azzra\AceEditorBundle\DependencyInjection;
+namespace Norzechowicz\AceEditorBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * @author Norbert Orzechowicz <norbert@fsi.pl>
  */
-class AzzraAceEditorExtension extends Extension
+class NorzechowiczAceEditorExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -49,8 +49,8 @@ class AzzraAceEditorExtension extends Extension
 
         $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
 
-        $container->setParameter('azzra_ace_editor.options.autoinclude', $config['autoinclude']);
-        $container->setParameter('azzra_ace_editor.options.base_path', $config['base_path']);
-        $container->setParameter('azzra_ace_editor.options.mode', $mode);
+        $container->setParameter('norzechowicz_ace_editor.options.autoinclude', $config['autoinclude']);
+        $container->setParameter('norzechowicz_ace_editor.options.base_path', $config['base_path']);
+        $container->setParameter('norzechowicz_ace_editor.options.mode', $mode);
     }
 }

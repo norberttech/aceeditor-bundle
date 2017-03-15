@@ -1,8 +1,8 @@
 <?php
 
-namespace Azzra\AceEditorBundle\Tests\Form\Type;
+namespace Norzechowicz\AceEditorBundle\Tests\Form\Type;
 
-use Azzra\AceEditorBundle\Form\Type\AceEditorType;
+use Norzechowicz\AceEditorBundle\Form\Type\AceEditorType;
 use PHPUnit\Framework\TestCase;
 
 class AceEditorTypeTest extends TestCase

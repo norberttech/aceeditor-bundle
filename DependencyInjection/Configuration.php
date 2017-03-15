@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Azzra\AceEditorBundle\DependencyInjection;
+namespace Norzechowicz\AceEditorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -22,7 +22,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('azzra_ace_editor');
+        $rootNode = $treeBuilder->root('norzechowicz_ace_editor');
 
         $rootNode
             ->children()

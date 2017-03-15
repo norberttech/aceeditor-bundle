@@ -1,8 +1,8 @@
 <?php
 
-namespace Azzra\AceEditorBundle\Tests\Twig\Extension;
+namespace Norzechowicz\AceEditorBundle\Tests\Twig\Extension;
 
-use Azzra\AceEditorBundle\Twig\Extension\AceEditorExtension;
+use Norzechowicz\AceEditorBundle\Twig\Extension\AceEditorExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\Extension\AssetExtension;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Azzra\AceEditorBundle\Tests\DependencyInjection;
+namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
 
-use Azzra\AceEditorBundle\DependencyInjection\Configuration;
+use Norzechowicz\AceEditorBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 
