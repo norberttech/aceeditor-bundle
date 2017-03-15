@@ -32,10 +32,10 @@ public function registerBundles()
 
 ### Ace editor
 
-Unles you do some configuration, this bundle expect Ace editor files to be in `web/ace`:
+Unles you do some configuration, this bundle expect Ace editor files to be in `web/vendor/ace`:
 
 ```sh
-cd web
+cd your_project_root/web
 mdkir vendor && cd vendor
 wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
 tar -xvf v1.2.6.tar.gz
@@ -82,7 +82,7 @@ Default configuration:
 # app/config/config.yml
 
 norzechowicz_ace_editor:
-    base_path: "vendor/ace"
+    base_path: "vendor/ace" # notice! this is starting from "your_project_root/web"!
     autoinclude: true
     debug: false # sources not minified, based on kernel.debug but it can force it
     noconflict: true # uses ace.require instead of require
