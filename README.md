@@ -36,6 +36,7 @@ Unles you do some configuration, this bundle expect Ace editor files to be in `w
 
 ```sh
 cd web
+mdkir vendor && cd vendor
 wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
 tar -xvf v1.2.6.tar.gz
 mv ace-builds-1.2.6 ace
@@ -81,7 +82,7 @@ Default configuration:
 # app/config/config.yml
 
 norzechowicz_ace_editor:
-    base_path: "web/ace"
+    base_path: "vendor/ace"
     autoinclude: true
     debug: false # sources not minified, based on kernel.debug but it can force it
     noconflict: true # uses ace.require instead of require
