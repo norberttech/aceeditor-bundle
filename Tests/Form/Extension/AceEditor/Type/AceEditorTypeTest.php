@@ -2,7 +2,7 @@
 
 namespace Norzechowicz\AceEditorBundle\Tests\Form\Type;
 
-use Norzechowicz\AceEditorBundle\Form\Type\AceEditorType;
+use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 use PHPUnit\Framework\TestCase;
 
 class AceEditorTypeTest extends TestCase
