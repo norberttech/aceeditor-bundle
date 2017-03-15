@@ -11,40 +11,50 @@
 
 namespace Norzechowicz\AceEditorBundle\Twig\Extension;
 
+use Symfony\Bridge\Twig\Extension\AssetExtension;
+
 /**
  * @author Norbert Orzechowicz <norbert@fsi.pl>
  */
 class AceEditorExtension extends \Twig_Extension
 {
     /**
-     * @var boolean
+     * Should we include the ace.js?
+     * If false, user should include it it's own way.
+     *
+     * @var bool
      */
-    protected $editorIncluded;
+    private $editorIncluded;
 
     /**
      * @var string
      */
-    protected $basePath;
+    private $basePath;
 
     /**
      * @var string
      */
-    protected $mode;
+    private $mode;
 
     /**
      * @var \Twig_Environment
      */
     private $environment;
 
+    /**
+     * @param bool   $autoinclude means if the bundle should inclue the JS
+     * @param string $basePath
+     * @param string $mode
+     */
     public function __construct($autoinclude, $basePath, $mode)
     {
-        $this->ckeditorIncluded = $autoinclude;
+        $this->editorIncluded = !$autoinclude;
         $this->basePath = rtrim($basePath, '/');
         $this->mode = ltrim($mode, '/');
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function initRuntime(\Twig_Environment $environment)
     {
@@ -64,28 +74,35 @@ class AceEditorExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            'include_ace_editor' => new \Twig_Function_Method($this, 'includeAceEditor', array('is_safe' => array('html'))),
-        );
+        return [
+            'include_ace_editor' => new \Twig_SimpleFunction('include_ace_editor', [$this, 'includeAceEditor'], ['is_safe' => ['html']]),
+        ];
     }
 
+    /**
+     * Echoes the <script> tag.
+     *
+     * @throws \LogicException if asset extension is not available and Ace editor must be included
+     */
     public function includeAceEditor()
     {
-        if (!$this->environment->hasExtension('assets')) {
+        if ($this->editorIncluded) {
             return;
         }
 
-        if (!$this->editorIncluded) {
-            $this->editorIncluded = true;
+        if (!$this->environment->hasExtension('asset')) {
+            throw new \LogicException('"asset" extension is mandatory if you don\'t include Ace editor by yourself.');
         }
 
-        if (!$this->ckeditorIncluded) {
-            $jsPath = $this->environment
-                ->getExtension('assets')
-                ->getAssetUrl($this->basePath . '/' . $this->mode);
+        if (!$this->editorIncluded) {
+            foreach (['ace', 'ext-language_tools'] as $file) {
+                /** @var AssetExtension $extension */
+                $extension = $this->environment->getExtension('asset');
+                $jsPath = $extension->getAssetUrl($this->basePath.'/'.$this->mode.'/'.$file.'.js');
 
-            echo sprintf('<script src="%s" charset="utf-8"></script>', $jsPath);
-            $this->ckeditorIncluded = true;
+                printf('<script src="%s" charset="utf-8" type="text/javascript"></script>', $jsPath);
+            }
+            $this->editorIncluded = true;
         }
     }
 }

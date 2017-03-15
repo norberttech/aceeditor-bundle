@@ -19,9 +19,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritDoc}
-     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
@@ -30,7 +27,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->booleanNode('autoinclude')->defaultTrue()->end()
-                ->scalarNode('base_path')->defaultValue('bundles/norzechowiczaceeditor/ace')->end()
+                ->scalarNode('base_path')->defaultValue('vendor/ace')->end()
                 ->booleanNode('debug')->defaultFalse()->end()
                 ->booleanNode('noconflict')->defaultTrue()->end()
             ->end()

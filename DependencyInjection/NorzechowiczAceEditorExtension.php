@@ -21,9 +21,6 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class NorzechowiczAceEditorExtension extends Extension
 {
-    /**
-     * {@inheritDoc}
-     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
@@ -36,11 +33,23 @@ class NorzechowiczAceEditorExtension extends Extension
         $loader->load('twig.xml');
     }
 
-    private function registerAceEditorParameters($config, ContainerBuilder $container)
+    /**
+     * Register parameters for the DI.
+     *
+     * @param array            $config
+     * @param ContainerBuilder $container
+     */
+    private function registerAceEditorParameters(array $config, ContainerBuilder $container)
     {
-        $mode = 'src' . (($config['debug']) ? '' : '-min') . (($config['noconflict']) ? '-noconflict' : '') . '/ace.js';
+        // use debug from the kernel.debug, but we can force it via "debug"
+        $debug = $container->getParameter('kernel.debug');
+        if (!$debug && $config['debug']) {
+            $debug = true;
+        }
 
-        $container->setParameter('norzechowicz_ace_editor.options.autoinclude', !$config['autoinclude']);
+        $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
+
+        $container->setParameter('norzechowicz_ace_editor.options.autoinclude', $config['autoinclude']);
         $container->setParameter('norzechowicz_ace_editor.options.base_path', $config['base_path']);
         $container->setParameter('norzechowicz_ace_editor.options.mode', $mode);
     }

@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class NorzechowiczAceEditorBundle
+ * Class NorzechowiczAceEditorBundle.
  *
  * @author Norbert Orzechowicz <norbert@orzechowicz.pl>
  */
