@@ -62,6 +62,12 @@
         editor.getSession().on('change', function(){
             textarea.value = editor.getSession().getValue();
         });
+
+        if (typeof window.aceEditors === 'undefined') {
+            window.aceEditors = {};
+        }
+
+        window.aceEditors['{{ id }}'] = editor;
     }());
     </script>
     {% endspaceless %}
