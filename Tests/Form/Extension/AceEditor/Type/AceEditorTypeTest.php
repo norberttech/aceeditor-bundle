@@ -4,9 +4,6 @@ namespace Norzechowicz\AceEditorBundle\Tests\Form\Type;
 
 use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 
-/**
- * @author azzra <azzra@users.noreply.github.com>
- */
 class AceEditorTypeTest extends \PHPUnit_Framework_TestCase
 {
     /** @var AceEditorType */

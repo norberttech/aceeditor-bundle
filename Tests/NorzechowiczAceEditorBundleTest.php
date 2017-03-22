@@ -6,9 +6,6 @@ use Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle;
 use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-/**
- * @author azzra <azzra@users.noreply.github.com>
- */
 class NorzechowiczAceEditorBundleTest extends \PHPUnit_Framework_TestCase
 {
     public function testBuild()

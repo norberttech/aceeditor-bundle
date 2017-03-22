@@ -5,9 +5,6 @@ namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
 use Norzechowicz\AceEditorBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
 
-/**
- * @author azzra <azzra@users.noreply.github.com>
- */
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     public function testProcessConfiguration()

@@ -5,9 +5,6 @@ namespace Norzechowicz\AceEditorBundle\Tests\Twig\Extension;
 use Norzechowicz\AceEditorBundle\Twig\Extension\AceEditorExtension;
 use Symfony\Bridge\Twig\Extension\AssetExtension;
 
-/**
- * @author azzra <azzra@users.noreply.github.com>
- */
 class AceEditorExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
