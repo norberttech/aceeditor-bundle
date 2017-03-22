@@ -50,7 +50,7 @@ class AceEditorExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $environment = $this->getTwigEnvironment();
         $extension = $this->getExtension();
-        $environment->method('hasExtension')->with('asset')->willReturn(false);
+        $environment->method('hasExtension')->with(AssetExtension::class)->willReturn(false);
 
         $extension->initRuntime($environment);
         $extension->includeAceEditor();
@@ -60,7 +60,7 @@ class AceEditorExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $environment = $this->getTwigEnvironment();
         $extension = $this->getExtension();
-        $environment->method('hasExtension')->with('asset')->willReturn(true);
+        $environment->method('hasExtension')->with(AssetExtension::class)->willReturn(true);
 
         $asset = $this->getMockBuilder(AssetExtension::class)
             ->disableOriginalConstructor()
@@ -70,7 +70,7 @@ class AceEditorExtensionTest extends \PHPUnit_Framework_TestCase
                 return $file;
             });
 
-        $environment->method('getExtension')->with('asset')->willReturn($asset);
+        $environment->method('getExtension')->with(AssetExtension::class)->willReturn($asset);
         $extension->initRuntime($environment);
 
         ob_start();

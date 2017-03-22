@@ -16,7 +16,7 @@ use Symfony\Bridge\Twig\Extension\AssetExtension;
 /**
  * @author Norbert Orzechowicz <norbert@fsi.pl>
  */
-class AceEditorExtension extends \Twig_Extension
+class AceEditorExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
 {
     /**
      * Should we include the ace.js?
@@ -90,14 +90,14 @@ class AceEditorExtension extends \Twig_Extension
             return;
         }
 
-        if (!$this->environment->hasExtension('asset')) {
+        if (!$this->environment->hasExtension(AssetExtension::class)) {
             throw new \LogicException('"asset" extension is mandatory if you don\'t include Ace editor by yourself.');
         }
 
         if (!$this->editorIncluded) {
             foreach (['ace', 'ext-language_tools'] as $file) {
                 /** @var AssetExtension $extension */
-                $extension = $this->environment->getExtension('asset');
+                $extension = $this->environment->getExtension(AssetExtension::class);
                 $jsPath = $extension->getAssetUrl($this->basePath.'/'.$this->mode.'/'.$file.'.js');
 
                 printf('<script src="%s" charset="utf-8" type="text/javascript"></script>', $jsPath);
