@@ -18,8 +18,6 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class AceEditorType.
- *
  * @author Norbert Orzechowicz <norbert@orzechowicz.pl>
  */
 final class AceEditorType extends AbstractType

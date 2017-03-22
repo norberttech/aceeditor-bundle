@@ -5,6 +5,9 @@ namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
 use Norzechowicz\AceEditorBundle\DependencyInjection\NorzechowiczAceEditorExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * @author azzra <azzra@users.noreply.github.com>
+ */
 class NorzechowiczAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
