@@ -12,16 +12,12 @@ This bundle is supporting following Symfony versions:
 * [Symfony ^2.8](https://github.com/norzechowicz/aceeditor-bundle/tree/2.8)
 * [Symfony ^3.0](https://github.com/norzechowicz/aceeditor-bundle/tree/3.0)
 
-## Installation
+### Composer
 
-> This bundle requires at least PHP 5.6
-
-### Bundle
-
-To use this bundle, require it in [Composer](https://getcomposer.org/):
+To use this bundle with `Symfony ^2.8`, require it in [Composer](https://getcomposer.org/):
 
 ```sh
-composer require "norzechowicz/aceeditor-bundle"
+composer require "norzechowicz/aceeditor-bundle" ^2.8
 ```
 
 Register bundle in AppKernel.php
