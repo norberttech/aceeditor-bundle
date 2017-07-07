@@ -1,6 +1,6 @@
 # Ace Editor Bundle
 
-[![Build Status](https://travis-ci.org/norzechowicz/aceeditor-bundle.svg?branch=master)](https://travis-ci.org/norzechowicz/aceeditor-bundle)
+[![Build Status](https://travis-ci.org/norzechowicz/aceeditor-bundle.svg?branch=3.0)](https://travis-ci.org/norzechowicz/aceeditor-bundle)
 
 Bundle provides a [Ace editor](http://ace.ajax.org) integration into Symfony Form component.
 It automatically register `ace_editor` form type.
