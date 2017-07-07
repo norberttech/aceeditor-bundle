@@ -9,9 +9,8 @@ It automatically register `ace_editor` form type.
 
 This bundle is supporting following Symfony versions:
 
-* [Symfony ^2.8](/aceeditor-bundle/tree/2.8)
-* [Symfony ^3.0](/aceeditor-bundle/tree/3.0)
-
+* [Symfony ^2.8](https://github.com/norzechowicz/aceeditor-bundle/tree/2.8)
+* [Symfony ^3.0](https://github.com/norzechowicz/aceeditor-bundle/tree/3.0)
 
 ## Installation
 
