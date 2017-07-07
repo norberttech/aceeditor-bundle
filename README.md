@@ -5,6 +5,14 @@
 Bundle provides a [Ace editor](http://ace.ajax.org) integration into Symfony Form component.
 It automatically register `ace_editor` form type.
 
+# Symfony
+
+This bundle is supporting following Symfony versions:
+
+* [Symfony ^2.8](/aceeditor-bundle/tree/2.8)
+* [Symfony ^3.0](/aceeditor-bundle/tree/3.0)
+
+
 ## Installation
 
 > This bundle requires at least PHP 5.6
