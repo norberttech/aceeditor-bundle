@@ -1,11 +1,11 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
+namespace Sukovanej\AceEditorBundle\Tests\DependencyInjection;
 
-use Norzechowicz\AceEditorBundle\DependencyInjection\NorzechowiczAceEditorExtension;
+use Sukovanej\AceEditorBundle\DependencyInjection\SukovanejAceEditorExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorzechowiczAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
+class SukovanejAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider loadProvider
@@ -16,7 +16,7 @@ class NorzechowiczAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
      */
     public function testLoad(array $parameters, $kernelDebug, array $expected)
     {
-        $extension = new NorzechowiczAceEditorExtension();
+        $extension = new SukovanejAceEditorExtension();
         $container = new ContainerBuilder();
 
         $container->setParameter('kernel.debug', $kernelDebug);
@@ -24,9 +24,9 @@ class NorzechowiczAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
         $extension->load([$parameters], $container);
 
         $result = [
-            'autoinclude' => $container->getParameter('norzechowicz_ace_editor.options.autoinclude'),
-            'base_path' => $container->getParameter('norzechowicz_ace_editor.options.base_path'),
-            'mode' => $container->getParameter('norzechowicz_ace_editor.options.mode'),
+            'autoinclude' => $container->getParameter('sukovanej_ace_editor.options.autoinclude'),
+            'base_path' => $container->getParameter('sukovanej_ace_editor.options.base_path'),
+            'mode' => $container->getParameter('sukovanej_ace_editor.options.mode'),
         ];
 
         $this->assertSame($expected, $result);

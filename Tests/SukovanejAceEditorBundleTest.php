@@ -1,17 +1,17 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Tests;
+namespace Sukovanej\AceEditorBundle\Tests;
 
-use Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle;
-use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use Sukovanej\AceEditorBundle\SukovanejAceEditorBundle;
+use Sukovanej\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorzechowiczAceEditorBundleTest extends \PHPUnit_Framework_TestCase
+class SukovanejAceEditorBundleTest extends \PHPUnit_Framework_TestCase
 {
     public function testBuild()
     {
         $container = new ContainerBuilder();
-        $bundle = new NorzechowiczAceEditorBundle();
+        $bundle = new SukovanejAceEditorBundle();
         $bundle->build($container);
 
         $this->assertNotEmpty(array_filter(

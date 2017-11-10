@@ -1,8 +1,8 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Tests\Form\Type;
+namespace Sukovanej\AceEditorBundle\Tests\Form\Type;
 
-use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
+use Sukovanej\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AceEditorTypeTest extends \PHPUnit_Framework_TestCase

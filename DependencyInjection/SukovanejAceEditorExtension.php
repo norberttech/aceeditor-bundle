@@ -1,13 +1,13 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\DependencyInjection;
+namespace Sukovanej\AceEditorBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-class NorzechowiczAceEditorExtension extends Extension
+class SukovanejAceEditorExtension extends Extension
 {
     /**
      * @param array $configs
@@ -41,8 +41,8 @@ class NorzechowiczAceEditorExtension extends Extension
 
         $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
 
-        $container->setParameter('norzechowicz_ace_editor.options.autoinclude', $config['autoinclude']);
-        $container->setParameter('norzechowicz_ace_editor.options.base_path', $config['base_path']);
-        $container->setParameter('norzechowicz_ace_editor.options.mode', $mode);
+        $container->setParameter('sukovanej_ace_editor.options.autoinclude', $config['autoinclude']);
+        $container->setParameter('sukovanej_ace_editor.options.base_path', $config['base_path']);
+        $container->setParameter('sukovanej_ace_editor.options.mode', $mode);
     }
 }

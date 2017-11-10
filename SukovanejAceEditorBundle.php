@@ -1,12 +1,12 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle;
+namespace Sukovanej\AceEditorBundle;
 
-use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use Sukovanej\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class NorzechowiczAceEditorBundle extends Bundle
+class SukovanejAceEditorBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
+namespace Sukovanej\AceEditorBundle\Tests\DependencyInjection;
 
-use Norzechowicz\AceEditorBundle\DependencyInjection\Configuration;
+use Sukovanej\AceEditorBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase

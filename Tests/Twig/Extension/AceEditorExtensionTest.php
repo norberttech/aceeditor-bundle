@@ -1,8 +1,8 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Tests\Twig\Extension;
+namespace Sukovanej\AceEditorBundle\Tests\Twig\Extension;
 
-use Norzechowicz\AceEditorBundle\Twig\Extension\AceEditorExtension;
+use Sukovanej\AceEditorBundle\Twig\Extension\AceEditorExtension;
 use Symfony\Bridge\Twig\Extension\AssetExtension;
 
 class AceEditorExtensionTest extends \PHPUnit_Framework_TestCase

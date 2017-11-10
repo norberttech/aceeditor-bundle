@@ -1,6 +1,6 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type;
+namespace Sukovanej\AceEditorBundle\Form\Extension\AceEditor\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -66,6 +66,7 @@ final class AceEditorType extends AbstractType
             'options_enable_basic_autocompletion' => true,
             'options_enable_live_autocompletion' => true,
             'options_enable_snippets' => false,
+            'keyboard_handler' => null,
         ]);
 
         $optionAllowedTypes = [
@@ -83,6 +84,7 @@ final class AceEditorType extends AbstractType
             'options_enable_basic_autocompletion' => ['bool', 'null'],
             'options_enable_live_autocompletion' => ['bool', 'null'],
             'options_enable_snippets' => ['bool', 'null'],
+            'keyboard_handler' => ['null', 'string'],
         ];
         foreach ($optionAllowedTypes as $option => $allowedTypes) {
             $resolver->setAllowedTypes($option, $allowedTypes);
@@ -124,6 +126,7 @@ final class AceEditorType extends AbstractType
                 'options_enable_basic_autocompletion' => $options['options_enable_basic_autocompletion'],
                 'options_enable_live_autocompletion' => $options['options_enable_live_autocompletion'],
                 'options_enable_snippets' => $options['options_enable_snippets'],
+                'keyboard_handler' => $options['keyboard_handler'],
             ]
         );
     }
