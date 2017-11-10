@@ -41,8 +41,8 @@ class SukovanejAceEditorExtension extends Extension
 
         $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
 
-        $container->setParameter('norzechowicz_ace_editor.options.autoinclude', $config['autoinclude']);
-        $container->setParameter('norzechowicz_ace_editor.options.base_path', $config['base_path']);
-        $container->setParameter('norzechowicz_ace_editor.options.mode', $mode);
+        $container->setParameter('sukovanej_ace_editor.options.autoinclude', $config['autoinclude']);
+        $container->setParameter('sukovanej_ace_editor.options.base_path', $config['base_path']);
+        $container->setParameter('sukovanej_ace_editor.options.mode', $mode);
     }
 }

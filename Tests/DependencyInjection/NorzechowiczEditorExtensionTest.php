@@ -24,9 +24,9 @@ class SukovanejAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
         $extension->load([$parameters], $container);
 
         $result = [
-            'autoinclude' => $container->getParameter('norzechowicz_ace_editor.options.autoinclude'),
-            'base_path' => $container->getParameter('norzechowicz_ace_editor.options.base_path'),
-            'mode' => $container->getParameter('norzechowicz_ace_editor.options.mode'),
+            'autoinclude' => $container->getParameter('sukovanej_ace_editor.options.autoinclude'),
+            'base_path' => $container->getParameter('sukovanej_ace_editor.options.base_path'),
+            'mode' => $container->getParameter('sukovanej_ace_editor.options.mode'),
         ];
 
         $this->assertSame($expected, $result);

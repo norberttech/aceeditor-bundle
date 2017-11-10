@@ -1,6 +1,6 @@
 # Ace Editor Bundle
 
-[![Build Status](https://travis-ci.org/norzechowicz/aceeditor-bundle.svg?branch=master)](https://travis-ci.org/norzechowicz/aceeditor-bundle)
+[![Build Status](https://travis-ci.org/sukovanej/aceeditor-bundle.svg?branch=master)](https://travis-ci.org/sukovanej/aceeditor-bundle)
 
 Bundle provides a [Ace editor](http://ace.ajax.org) integration into Symfony Form component.
 It automatically register `ace_editor` form type.
@@ -9,8 +9,8 @@ It automatically register `ace_editor` form type.
 
 This bundle is supporting following Symfony versions:
 
-* [Symfony ^2.8](https://github.com/norzechowicz/aceeditor-bundle/tree/2.8)
-* [Symfony ^3.0](https://github.com/norzechowicz/aceeditor-bundle/tree/3.0)
+* [Symfony ^2.8](https://github.com/sukovanej/aceeditor-bundle/tree/2.8)
+* [Symfony ^3.0](https://github.com/sukovanej/aceeditor-bundle/tree/3.0)
 
 
 ## Composer
@@ -18,7 +18,7 @@ This bundle is supporting following Symfony versions:
 To use this bundle with `Symfony ^3.0`, require it in [Composer](https://getcomposer.org/):
 
 ```sh
-composer require "norzechowicz/aceeditor-bundle" ^3.0
+composer require "sukovanej/aceeditor-bundle" ^3.0
 ```
 
 Register bundle in AppKernel.php
@@ -87,7 +87,7 @@ Default configuration:
 ```
 # app/config/config.yml
 
-norzechowicz_ace_editor:
+sukovanej_ace_editor:
     base_path: "vendor/ace" # notice! this is starting from "your_project_root/web"!
     autoinclude: true
     debug: false # sources not minified, based on kernel.debug but it can force it
@@ -97,6 +97,6 @@ norzechowicz_ace_editor:
 You can also include Ace editor directly from a location that follow the same directory layout than
 `https://github.com/ajaxorg/ace-builds`, all you need to do is setting `base_path` option:
 ```
-norzechowicz_ace_editor:
+sukovanej_ace_editor:
     base_path: "http://rawgithub.com/ajaxorg/ace-builds/master"
 ```
