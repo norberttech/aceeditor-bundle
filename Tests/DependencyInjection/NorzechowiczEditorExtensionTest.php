@@ -1,11 +1,11 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
+namespace Sukovanej\AceEditorBundle\Tests\DependencyInjection;
 
-use Norzechowicz\AceEditorBundle\DependencyInjection\NorzechowiczAceEditorExtension;
+use Sukovanej\AceEditorBundle\DependencyInjection\SukovanejAceEditorExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorzechowiczAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
+class SukovanejAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider loadProvider
@@ -16,7 +16,7 @@ class NorzechowiczAceEditorExtensionTest extends \PHPUnit_Framework_TestCase
      */
     public function testLoad(array $parameters, $kernelDebug, array $expected)
     {
-        $extension = new NorzechowiczAceEditorExtension();
+        $extension = new SukovanejAceEditorExtension();
         $container = new ContainerBuilder();
 
         $container->setParameter('kernel.debug', $kernelDebug);

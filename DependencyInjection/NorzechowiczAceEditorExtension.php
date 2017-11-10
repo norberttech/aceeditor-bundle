@@ -1,13 +1,13 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\DependencyInjection;
+namespace Sukovanej\AceEditorBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-class NorzechowiczAceEditorExtension extends Extension
+class SukovanejAceEditorExtension extends Extension
 {
     /**
      * @param array $configs

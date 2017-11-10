@@ -29,7 +29,7 @@ Register bundle in AppKernel.php
 public function registerBundles()
 {
     return array(
-        new Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle(),
+        new Sukovanej\AceEditorBundle\SukovanejAceEditorBundle(),
         // ...
     );
 }
@@ -51,7 +51,7 @@ rm v1.2.6.tar.gz
 ## Usage
 
 ```php
-use Norzechowicz\AceEditorBundle\Form\Type\AceEditorType;
+use Sukovanej\AceEditorBundle\Form\Type\AceEditorType;
 
 /* @var $builder \Symfony\Component\Form\FormBuilderInterface */
 $builder->add('description', AceEditorType::class, array(

@@ -1,6 +1,6 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Twig\Extension;
+namespace Sukovanej\AceEditorBundle\Twig\Extension;
 
 use Symfony\Bridge\Twig\Extension\AssetExtension;
 

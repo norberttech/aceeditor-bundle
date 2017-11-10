@@ -1,6 +1,6 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type;
+namespace Sukovanej\AceEditorBundle\Form\Extension\AceEditor\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;

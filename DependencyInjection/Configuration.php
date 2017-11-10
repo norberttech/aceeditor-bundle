@@ -1,6 +1,6 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\DependencyInjection;
+namespace Sukovanej\AceEditorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
