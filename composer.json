@@ -19,5 +19,9 @@
     },
     "autoload": {
         "psr-4": { "sukovanej\\AceEditorBundle\\": "" }
+    },
+    "repositories": {
+        "type": "vcs",
+        "url": "https://github.com/sukovanej/aceeditor-bundle"
     }
 }
