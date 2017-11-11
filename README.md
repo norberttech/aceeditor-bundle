@@ -71,6 +71,7 @@ $builder->add('description', AceEditorType::class, array(
     'options_enable_basic_autocompletion' => true,
     'options_enable_live_autocompletion' => true,
     'options_enable_snippets' => false
+    'keyboard_handler' => null
 ));
 ```
 

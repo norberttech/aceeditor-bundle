@@ -23,6 +23,9 @@
         editorElm.style.marginTop = -(height) + heightUnit;
 
         editor.setTheme("{{ theme }}");
+        {% if keyboard_handler is not null %}
+        editor.setKeyboardHandler("{{ keyboard_handler }}");
+        {% endif %}
         editor.getSession().setMode("{{ mode }}");
         editor.getSession().setValue(textarea.value);
 
