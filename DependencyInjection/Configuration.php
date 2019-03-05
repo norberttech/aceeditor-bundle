@@ -9,8 +9,8 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('norzechowicz_ace_editor');
+        $treeBuilder = new TreeBuilder('norzechowicz_ace_editor');
+        $rootNode = method_exists(TreeBuilder::class, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('norzechowicz_ace_editor');
 
         $rootNode
             ->children()
