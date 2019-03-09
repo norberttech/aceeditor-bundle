@@ -11,14 +11,15 @@ This bundle is supporting following Symfony versions:
 
 * [Symfony ^2.8](https://github.com/norzechowicz/aceeditor-bundle/tree/2.8)
 * [Symfony ^3.0](https://github.com/norzechowicz/aceeditor-bundle/tree/3.0)
+* [Symfony ^4.0](https://github.com/norzechowicz/aceeditor-bundle/tree/4.0)
 
 
 ## Composer
 
-To use this bundle with `Symfony ^3.0`, require it in [Composer](https://getcomposer.org/):
+To use this bundle with `Symfony ^4.0`, require it in [Composer](https://getcomposer.org/):
 
 ```sh
-composer require "norzechowicz/aceeditor-bundle" ^3.0
+composer require "norzechowicz/aceeditor-bundle" ^4.0
 ```
 
 Register bundle in AppKernel.php
