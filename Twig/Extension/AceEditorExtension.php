@@ -3,8 +3,12 @@
 namespace Norzechowicz\AceEditorBundle\Twig\Extension;
 
 use Symfony\Bridge\Twig\Extension\AssetExtension;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\InitRuntimeInterface;
+use Twig\Environment;
+use Twig\TwigFunction;
 
-class AceEditorExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
+class AceEditorExtension extends AbstractExtension
 {
     /**
      * Should we include the ace.js?
@@ -25,11 +29,6 @@ class AceEditorExtension extends \Twig_Extension implements \Twig_Extension_Init
     private $mode;
 
     /**
-     * @var \Twig_Environment
-     */
-    private $environment;
-
-    /**
      * @param bool   $autoinclude means if the bundle should inclue the JS
      * @param string $basePath
      * @param string $mode
@@ -39,14 +38,6 @@ class AceEditorExtension extends \Twig_Extension implements \Twig_Extension_Init
         $this->editorIncluded = !$autoinclude;
         $this->basePath = rtrim($basePath, '/');
         $this->mode = ltrim($mode, '/');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function initRuntime(\Twig_Environment $environment)
-    {
-        $this->environment = $environment;
     }
 
     /**
@@ -63,7 +54,7 @@ class AceEditorExtension extends \Twig_Extension implements \Twig_Extension_Init
     public function getFunctions()
     {
         return [
-            'include_ace_editor' => new \Twig_SimpleFunction('include_ace_editor', [$this, 'includeAceEditor'], ['is_safe' => ['html']]),
+            new TwigFunction('include_ace_editor', [$this, 'includeAceEditor'], ['is_safe' => ['html'], 'needs_environment' => true]),
         ];
     }
 
@@ -72,20 +63,20 @@ class AceEditorExtension extends \Twig_Extension implements \Twig_Extension_Init
      *
      * @throws \LogicException if asset extension is not available and Ace editor must be included
      */
-    public function includeAceEditor()
+    public function includeAceEditor(Environment $environment)
     {
         if ($this->editorIncluded) {
             return;
         }
 
-        if (!$this->environment->hasExtension(AssetExtension::class)) {
+        if (!$environment->hasExtension(AssetExtension::class)) {
             throw new \LogicException('"asset" extension is mandatory if you don\'t include Ace editor by yourself.');
         }
 
         if (!$this->editorIncluded) {
             foreach (['ace', 'ext-language_tools'] as $file) {
                 /** @var AssetExtension $extension */
-                $extension = $this->environment->getExtension(AssetExtension::class);
+                $extension = $environment->getExtension(AssetExtension::class);
                 $jsPath = $extension->getAssetUrl($this->basePath.'/'.$this->mode.'/'.$file.'.js');
 
                 printf('<script src="%s" charset="utf-8" type="text/javascript"></script>', $jsPath);
