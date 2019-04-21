@@ -20,11 +20,11 @@ class AceEditorExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \Twig_Environment
+     * @return \Twig\Environment
      */
     private function getTwigEnvironment()
     {
-        return $this->getMockBuilder(\Twig_Environment::class)
+        return $this->getMockBuilder(\Twig\Environment::class)
             ->disableOriginalConstructor()
             ->getMock();
     }
