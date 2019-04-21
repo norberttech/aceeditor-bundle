@@ -54,7 +54,7 @@ class AceEditorExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('include_ace_editor', [$this, 'includeAceEditor'], ['is_safe' => ['html'], 'needs_environment' => true]),
+            'include_ace_editor' => new TwigFunction('include_ace_editor', [$this, 'includeAceEditor'], ['is_safe' => ['html'], 'needs_environment' => true]),
         ];
     }
 
