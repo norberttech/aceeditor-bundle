@@ -1,18 +1,22 @@
 language: php
 
-php:
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
+cache:
+  directories:
+    - $HOME/.composer/cache
 
-env:
-  matrix:
-    - PREFER_LOWEST="--prefer-lowest"
-    - PREFER_LOWEST=""
+matrix:
+  include:
+    - php: 5.6
+      env: DEPENDENCIES='low'
+    - php: 7.0
+    - php: 7.1
+    - php: 7.2
+    - php: 7.3
 
-before_script:
-  - composer update --prefer-source $PREFER_LOWEST
+install:
+  - export COMPOSER_ROOT_VERSION=dev-master
+  - if [ "$DEPENDENCIES" != "low" ]; then composer update; fi;
+  - if [ "$DEPENDENCIES" == "low" ]; then composer update --prefer-lowest; fi;
 
 script:
   - vendor/bin/phpunit
