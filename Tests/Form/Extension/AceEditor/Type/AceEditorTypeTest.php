@@ -3,9 +3,10 @@
 namespace Norzechowicz\AceEditorBundle\Tests\Form\Type;
 
 use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class AceEditorTypeTest extends \PHPUnit_Framework_TestCase
+class AceEditorTypeTest extends TestCase
 {
     /** @var AceEditorType */
     private $formType;
