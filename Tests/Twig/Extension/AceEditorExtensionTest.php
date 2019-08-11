@@ -3,9 +3,10 @@
 namespace Norzechowicz\AceEditorBundle\Tests\Twig\Extension;
 
 use Norzechowicz\AceEditorBundle\Twig\Extension\AceEditorExtension;
+use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\Extension\AssetExtension;
 
-class AceEditorExtensionTest extends \PHPUnit_Framework_TestCase
+class AceEditorExtensionTest extends TestCase
 {
     /**
      * @param bool   $autoinclude
