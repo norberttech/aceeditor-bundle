@@ -42,7 +42,7 @@ Unles you do some configuration, this bundle expect Ace editor files to be in `w
 
 ```sh
 cd your_project_root/web
-mdkir vendor && cd vendor
+mkdir vendor && cd vendor
 wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
 tar -xvf v1.2.6.tar.gz
 mv ace-builds-1.2.6 ace
