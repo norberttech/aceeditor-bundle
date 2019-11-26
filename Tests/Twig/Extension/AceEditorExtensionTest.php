@@ -21,11 +21,11 @@ class AceEditorExtensionTest extends TestCase
     }
 
     /**
-     * @return \Twig_Environment
+     * @return \Twig\Environment
      */
     private function getTwigEnvironment()
     {
-        return $this->getMockBuilder(\Twig_Environment::class)
+        return $this->getMockBuilder(\Twig\Environment::class)
             ->disableOriginalConstructor()
             ->getMock();
     }
@@ -53,8 +53,7 @@ class AceEditorExtensionTest extends TestCase
         $extension = $this->getExtension();
         $environment->method('hasExtension')->with(AssetExtension::class)->willReturn(false);
 
-        $extension->initRuntime($environment);
-        $extension->includeAceEditor();
+        $extension->includeAceEditor($environment);
     }
 
     public function testIncludeAceEditorTwig()
@@ -72,10 +71,9 @@ class AceEditorExtensionTest extends TestCase
             });
 
         $environment->method('getExtension')->with(AssetExtension::class)->willReturn($asset);
-        $extension->initRuntime($environment);
 
         ob_start();
-        $extension->includeAceEditor();
+        $extension->includeAceEditor($environment);
         $text = ob_get_clean();
         $this->assertSame(
             '<script src="//ace.js" charset="utf-8" type="text/javascript"></script><script src="//ext-language_tools.js" charset="utf-8" type="text/javascript"></script>',
@@ -83,7 +81,7 @@ class AceEditorExtensionTest extends TestCase
         );
 
         ob_start();
-        $extension->includeAceEditor();
+        $extension->includeAceEditor($environment);
         $text = ob_get_clean();
         $this->assertSame('', $text);
     }
