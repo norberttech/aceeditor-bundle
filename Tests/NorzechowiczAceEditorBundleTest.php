@@ -4,9 +4,10 @@ namespace Norzechowicz\AceEditorBundle\Tests;
 
 use Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle;
 use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorzechowiczAceEditorBundleTest extends \PHPUnit_Framework_TestCase
+class NorzechowiczAceEditorBundleTest extends TestCase
 {
     public function testBuild()
     {

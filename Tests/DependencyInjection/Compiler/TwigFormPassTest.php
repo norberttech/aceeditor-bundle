@@ -3,9 +3,12 @@
 namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection\Compiler;
 
 use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-class TwigFormPassTest extends \PHPUnit_Framework_TestCase
+class TwigFormPassTest extends TestCase
 {
     public function testProcessHasNotTwigFormResources()
     {
@@ -24,11 +27,14 @@ class TwigFormPassTest extends \PHPUnit_Framework_TestCase
         $container = new ContainerBuilder();
         $container->setParameter('twig.form.resources', ['foo']);
 
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config'));
+        $loader->load('form.xml');
+
         $compiler = new TwigFormPass();
         $compiler->process($container);
 
         $this->assertSame(
-            ['NorzechowiczAceEditorBundle:Form:div_layout.html.twig', 'foo'],
+            ['@NorzechowiczAceEditor/Form/div_layout.html.twig', 'foo'],
             $container->getParameter('twig.form.resources'));
     }
 }
