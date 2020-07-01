@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -12,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 final class AceEditorType extends AbstractType
 {
     public static $DEFAULT_UNIT = 'px';
+
     public static $UNITS = ['%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px'];
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
 
 use Norzechowicz\AceEditorBundle\DependencyInjection\NorzechowiczAceEditorExtension;

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Norzechowicz\AceEditorBundle\Twig\Extension;
 
 use Symfony\Bridge\Twig\Extension\AssetExtension;
-use Twig\Extension\AbstractExtension;
 use Twig\Environment;
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class AceEditorExtension extends AbstractExtension

@@ -18,6 +18,7 @@
         "sort-packages": true
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
         "phpunit/phpunit": "^9.2"
     },
     "autoload": {
@@ -34,8 +35,16 @@
         }
     },
     "scripts" : {
+        "build": [
+            "@static:analyze",
+            "@test"
+        ],
         "test": [
             "phpunit"
-        ]
+        ],
+        "static:analyze": [
+            "php-cs-fixer fix --dry-run"
+        ],
+        "cs:php:fix": "php-cs-fixer fix"
     }
 }

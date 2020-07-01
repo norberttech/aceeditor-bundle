@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Norzechowicz\AceEditorBundle;
 
 use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;

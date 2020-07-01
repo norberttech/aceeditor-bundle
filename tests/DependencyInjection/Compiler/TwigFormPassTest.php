@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection\Compiler;
 
 use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
@@ -35,6 +37,7 @@ class TwigFormPassTest extends TestCase
 
         $this->assertSame(
             ['@NorzechowiczAceEditor/Form/div_layout.html.twig', 'foo'],
-            $container->getParameter('twig.form.resources'));
+            $container->getParameter('twig.form.resources')
+        );
     }
 }

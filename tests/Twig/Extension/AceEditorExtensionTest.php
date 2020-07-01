@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Norzechowicz\AceEditorBundle\Tests\Twig\Extension;
 
 use Norzechowicz\AceEditorBundle\Twig\Extension\AceEditorExtension;

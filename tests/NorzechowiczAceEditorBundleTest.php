@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Norzechowicz\AceEditorBundle\Tests;
 
-use Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle;
 use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 

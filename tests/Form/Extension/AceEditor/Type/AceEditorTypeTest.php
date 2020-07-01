@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Norzechowicz\AceEditorBundle\Tests\Form\Extension\AceEditor\Type;
 
 use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
