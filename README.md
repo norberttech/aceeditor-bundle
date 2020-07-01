@@ -9,9 +9,10 @@ It automatically register `ace_editor` form type.
 
 This bundle is supporting following Symfony versions:
 
-* [Symfony ^2.8](https://github.com/norberttech/aceeditor-bundle/tree/2.8)
-* [Symfony ^3.0](https://github.com/norberttech/aceeditor-bundle/tree/3.0)
-* [Symfony ^4.0](https://github.com/norberttech/aceeditor-bundle/tree/4.0)
+* [Symfony ^2.8, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/2.8)
+* [Symfony ^3.0, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/3.0)
+* [Symfony ^4.0, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/4.0)
+* [Symfony ^5.0, PHP >= 7.3](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
 
 
 ## Composer

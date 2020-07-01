@@ -9,32 +9,7 @@
 >
     <testsuites>
         <testsuite name="Ace Bundle Test Suite">
-            <directory suffix="Test.php">Tests</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory>.</directory>
-            <exclude>
-                <directory>Resources</directory>
-                <directory>Tests</directory>
-                <directory>vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
-    <logging>
-        <log
-                type="coverage-text"
-                target="php://stdout"
-                showUncoveredFiles="true"
-                showOnlySummary="true"
-        />
-        <log
-                type="coverage-clover"
-                target="build/logs/clover.xml"
-                showUncoveredFiles="true"
-                showOnlySummary="true"
-        />
-    </logging>
-</phpunit> 
+</phpunit>

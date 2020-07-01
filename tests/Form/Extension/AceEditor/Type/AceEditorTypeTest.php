@@ -1,6 +1,6 @@
 <?php
 
-namespace Norzechowicz\AceEditorBundle\Tests\Form\Type;
+namespace Norzechowicz\AceEditorBundle\Tests\Form\Extension\AceEditor\Type;
 
 use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 use PHPUnit\Framework\TestCase;
@@ -11,7 +11,7 @@ class AceEditorTypeTest extends TestCase
     /** @var AceEditorType */
     private $formType;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->formType = new AceEditorType();
     }

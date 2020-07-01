@@ -3,8 +3,13 @@
 namespace Norzechowicz\AceEditorBundle\Tests\Twig\Extension;
 
 use Norzechowicz\AceEditorBundle\Twig\Extension\AceEditorExtension;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\Extension\AssetExtension;
+use Symfony\Component\Asset\Packages;
+use Symfony\Component\Asset\PathPackage;
+use Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy;
+use Twig\Environment;
 
 class AceEditorExtensionTest extends TestCase
 {
@@ -21,11 +26,11 @@ class AceEditorExtensionTest extends TestCase
     }
 
     /**
-     * @return \Twig\Environment
+     * @return Environment
      */
-    private function getTwigEnvironment()
+    private function getTwigEnvironment() : MockObject
     {
-        return $this->getMockBuilder(\Twig\Environment::class)
+        return $this->getMockBuilder(Environment::class)
             ->disableOriginalConstructor()
             ->getMock();
     }
@@ -43,12 +48,11 @@ class AceEditorExtensionTest extends TestCase
         $this->assertSame(['include_ace_editor'], array_keys($functions));
     }
 
-    /**
-     * @expectedException \LogicException
-     * @expectedExceptionMessage "asset" extension is mandatory if you don't include Ace editor by yourself.
-     */
     public function testIncludeAceEditorTwigNoExtensionAsset()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage('"asset" extension is mandatory if you don\'t include Ace editor by yourself');
+
         $environment = $this->getTwigEnvironment();
         $extension = $this->getExtension();
         $environment->method('hasExtension')->with(AssetExtension::class)->willReturn(false);
@@ -62,13 +66,7 @@ class AceEditorExtensionTest extends TestCase
         $extension = $this->getExtension();
         $environment->method('hasExtension')->with(AssetExtension::class)->willReturn(true);
 
-        $asset = $this->getMockBuilder(AssetExtension::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $asset->method('getAssetUrl')
-            ->willReturnCallback(function ($file) {
-                return $file;
-            });
+        $asset = new AssetExtension(new Packages(new PathPackage('/', new EmptyVersionStrategy())));
 
         $environment->method('getExtension')->with(AssetExtension::class)->willReturn($asset);
 

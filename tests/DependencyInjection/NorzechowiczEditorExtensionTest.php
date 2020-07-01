@@ -6,7 +6,7 @@ use Norzechowicz\AceEditorBundle\DependencyInjection\NorzechowiczAceEditorExtens
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorzechowiczAceEditorExtensionTest extends TestCase
+class NorzechowiczEditorExtensionTest extends TestCase
 {
     /**
      * @dataProvider loadProvider

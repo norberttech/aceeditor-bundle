@@ -20,7 +20,7 @@ class NorzechowiczAceEditorExtension extends Extension
 
         $this->registerAceEditorParameters($config, $container);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('form.xml');
         $loader->load('twig.xml');
     }
