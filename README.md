@@ -53,7 +53,7 @@ rm v1.2.6.tar.gz
 ## Usage
 
 ```php
-use Norzechowicz\AceEditorBundle\Form\Type\AceEditorType;
+use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 
 /* @var $builder \Symfony\Component\Form\FormBuilderInterface */
 $builder->add('description', AceEditorType::class, array(
