@@ -1,5 +1,5 @@
 {% block ace_editor_widget %}
-    {% spaceless %}
+    {% apply spaceless %}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
     <div id="{{ id }}_ace" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}></div>
     {{ include_ace_editor() }}
@@ -73,5 +73,5 @@
         window.aceEditors['{{ id }}'] = editor;
     }());
     </script>
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}
