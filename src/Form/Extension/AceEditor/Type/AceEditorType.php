@@ -41,7 +41,7 @@ final class AceEditorType extends AbstractType
             if (is_array($value)) {
                 return $value;
             }
-            if (preg_match('/([0-9\.]+)\s*('.implode('|', $allowedUnits).')/', $value, $matchedValue)) {
+            if (is_string($value) && preg_match('/([0-9\.]+)\s*('.implode('|', $allowedUnits).')/', $value, $matchedValue)) {
                 $value = $matchedValue[1];
                 $unit = $matchedValue[2];
             } else {
