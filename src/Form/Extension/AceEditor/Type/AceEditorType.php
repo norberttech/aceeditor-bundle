@@ -55,7 +55,7 @@ final class AceEditorType extends AbstractType
             'required' => false,
             'wrapper_attr' => [],
             'width' => '100%',
-            'height' => 250,
+            'height' => '250',
             'font_size' => 12,
             'mode' => 'ace/mode/html',
             'theme' => 'ace/theme/monokai',
