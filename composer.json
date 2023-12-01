@@ -6,20 +6,20 @@
     "license": "MIT",
     "require": {
         "php": ">=7.3",
-        "twig/twig": "^1.34|^2.0|^3.0",
-        "symfony/framework-bundle": "^3.0|^4.0|^5.0",
-        "symfony/form": "^3.0|^4.0|^5.0",
+        "twig/twig": "1.44.7",
+        "symfony/framework-bundle": "3.4.47",
+        "symfony/form": "3.4.47",
         "symfony/twig-bridge": "^3.0|^4.0|^5.0",
-        "symfony/asset": "^3.0|^4.0|^5.0",
-        "symfony/expression-language": "^3.0|^4.0|^5.0"
+        "symfony/asset": "3.4.47",
+        "symfony/expression-language": "3.4.47"
     },
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "phpunit/phpunit": "^9.2"
+        "friendsofphp/php-cs-fixer": "^2.19.3",
+        "phpunit/phpunit": "^9.6.14"
     },
     "autoload": {
         "psr-4": { "Norzechowicz\\AceEditorBundle\\": "src/" }
