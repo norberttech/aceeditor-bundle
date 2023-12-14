@@ -15,7 +15,7 @@ class NorzechowiczAceEditorExtension extends Extension
      * @param array $configs
      * @param ContainerBuilder $container
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -33,7 +33,7 @@ class NorzechowiczAceEditorExtension extends Extension
      * @param array            $config
      * @param ContainerBuilder $container
      */
-    private function registerAceEditorParameters(array $config, ContainerBuilder $container)
+    private function registerAceEditorParameters(array $config, ContainerBuilder $container): void
     {
         // use debug from the kernel.debug, but we can force it via "debug"
         $debug = $container->getParameter('kernel.debug');

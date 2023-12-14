@@ -14,29 +14,16 @@ class AceEditorExtension extends AbstractExtension
     /**
      * Should we include the ace.js?
      * If false, user should include it it's own way.
-     *
-     * @var bool
      */
-    private $editorIncluded;
+    private bool $editorIncluded;
 
-    /**
-     * @var string
-     */
-    private $basePath;
+    private string $basePath;
 
-    /**
-     * @var string
-     */
-    private $mode;
+    private string $mode;
 
-    /**
-     * @param bool   $autoinclude means if the bundle should inclue the JS
-     * @param string $basePath
-     * @param string $mode
-     */
-    public function __construct($autoinclude, $basePath, $mode)
+    public function __construct(bool $autoInclude, string $basePath, string $mode)
     {
-        $this->editorIncluded = !$autoinclude;
+        $this->editorIncluded = !$autoInclude;
         $this->basePath = rtrim($basePath, '/');
         $this->mode = ltrim($mode, '/');
     }
@@ -44,7 +31,7 @@ class AceEditorExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return 'ace_editor';
     }
@@ -52,10 +39,17 @@ class AceEditorExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            'include_ace_editor' => new TwigFunction('include_ace_editor', [$this, 'includeAceEditor'], ['is_safe' => ['html'], 'needs_environment' => true]),
+            'include_ace_editor' => new TwigFunction(
+                'include_ace_editor',
+                [$this, 'includeAceEditor'],
+                [
+                    'is_safe' => ['html'],
+                    'needs_environment' => true
+                ]
+            ),
         ];
     }
 
@@ -64,7 +58,7 @@ class AceEditorExtension extends AbstractExtension
      *
      * @throws \LogicException if asset extension is not available and Ace editor must be included
      */
-    public function includeAceEditor(Environment $environment)
+    public function includeAceEditor(Environment $environment): void
     {
         if ($this->editorIncluded) {
             return;

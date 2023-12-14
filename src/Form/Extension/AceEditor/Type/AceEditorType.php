@@ -13,14 +13,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class AceEditorType extends AbstractType
 {
-    public static $DEFAULT_UNIT = 'px';
+    private const DEFAULT_UNIT = 'px';
 
-    public static $UNITS = ['%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px'];
+    private const UNITS = ['%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px'];
 
     /**
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         // Remove id from ace editor wrapper attributes. Id must be generated.
         $wrapperAttrNormalizer = function (Options $options, $aceAttr) {
@@ -35,17 +35,15 @@ final class AceEditorType extends AbstractType
             return $aceAttr;
         };
 
-        $defaultUnit = static::$DEFAULT_UNIT;
-        $allowedUnits = static::$UNITS;
-        $unitNormalizer = function (Options $options, $value) use ($defaultUnit, $allowedUnits) {
+        $unitNormalizer = function (Options $options, $value): array {
             if (is_array($value)) {
                 return $value;
             }
-            if (preg_match('/([0-9\.]+)\s*('.implode('|', $allowedUnits).')/', $value, $matchedValue)) {
+            if (preg_match('/([0-9\.]+)\s*('.implode('|', self::UNITS).')/', $value, $matchedValue)) {
                 $value = $matchedValue[1];
                 $unit = $matchedValue[2];
             } else {
-                $unit = $defaultUnit;
+                $unit = self::DEFAULT_UNIT;
             }
 
             return ['value' => $value, 'unit' => $unit];
@@ -108,7 +106,7 @@ final class AceEditorType extends AbstractType
      * @param FormInterface $form
      * @param array $options
      */
-    public function buildView(FormView $view, FormInterface $form, array $options)
+    public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         $view->vars = array_merge(
             $view->vars,
@@ -137,7 +135,7 @@ final class AceEditorType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function getParent(): string
     {
         return TextAreaType::class;
     }
