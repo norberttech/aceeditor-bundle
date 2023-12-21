@@ -9,40 +9,38 @@ It automatically register `ace_editor` form type.
 
 This bundle is supporting following Symfony versions:
 
-* [Symfony ^2.8, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/2.8)
-* [Symfony ^3.0, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/3.0)
-* [Symfony ^4.0, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/4.0)
-* [Symfony ^5.0, PHP >= 7.3](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
+* [Symfony ^5.4, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
+* [Symfony ^6.0, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
 
 
 ## Composer
 
-To use this bundle with `Symfony ^4.0`, require it in [Composer](https://getcomposer.org/):
+To use this bundle with Symfony, require it with [Composer](https://getcomposer.org/):
 
 ```sh
-composer require "norberttech/aceeditor-bundle" ^4.0
+composer require "norberttech/aceeditor-bundle" 5.x-dev
 ```
 
-Register bundle in AppKernel.php
+If you're using [symfony/flex](https://symfony.com/doc/current/setup/flex.html) then the
+bundle will be automatically registered for you, otherwise you need to register the
+bundle yourself:
 
 ```php
-// app/AppKernel.php
+// app/config/bundles.php
 
-public function registerBundles()
-{
-    return array(
-        new Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle(),
-        // ...
-    );
+return [
+    // ...
+    Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle::class => ['all' => true],
+    // ...
 }
 ```
 
 ### Ace editor
 
-Unles you do some configuration, this bundle expect Ace editor files to be in `web/vendor/ace`:
+Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`:
 
 ```sh
-cd your_project_root/web
+cd <your_project_root>/public
 mkdir vendor && cd vendor
 wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
 tar -xvf v1.2.6.tar.gz
@@ -90,7 +88,7 @@ Default configuration:
 # app/config/config.yml
 
 norzechowicz_ace_editor:
-    base_path: "vendor/ace" # notice! this is starting from "your_project_root/web"!
+    base_path: "vendor/ace" # notice! this is starting from your project's public web root, typically: `%kernel.project_dir%/public`!
     autoinclude: true
     debug: false # sources not minified, based on kernel.debug but it can force it
     noconflict: true # uses ace.require instead of require
