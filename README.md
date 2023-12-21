@@ -22,8 +22,8 @@ composer require "norberttech/aceeditor-bundle" 5.x-dev
 ```
 
 If you're using [symfony/flex](https://symfony.com/doc/current/setup/flex.html) then the
-bundle will be automatically registered for you, otherwise otherwise you need to register
-the bundle yourself:
+bundle will be automatically registered for you, otherwise you need to register the
+bundle yourself:
 
 ```php
 // app/config/bundles.php
