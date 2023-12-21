@@ -12,12 +12,8 @@ class NorzechowiczEditorExtensionTest extends TestCase
 {
     /**
      * @dataProvider loadProvider
-     *
-     * @param array $parameters
-     * @param bool  $kernelDebug
-     * @param array $expected
      */
-    public function testLoad(array $parameters, $kernelDebug, array $expected)
+    public function testLoad(array $parameters, bool $kernelDebug, array $expected): void
     {
         $extension = new NorzechowiczAceEditorExtension();
         $container = new ContainerBuilder();
@@ -35,7 +31,7 @@ class NorzechowiczEditorExtensionTest extends TestCase
         $this->assertSame($expected, $result);
     }
 
-    public function loadProvider()
+    public function loadProvider(): array
     {
         return [
             [

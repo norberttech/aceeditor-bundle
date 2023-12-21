@@ -10,7 +10,7 @@ use Symfony\Component\Config\Definition\Processor;
 
 class ConfigurationTest extends TestCase
 {
-    public function testProcessConfiguration()
+    public function testProcessConfiguration(): void
     {
         $configuration = new Configuration();
         $processor = new Processor();

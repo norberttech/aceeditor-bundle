@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 class TwigFormPassTest extends TestCase
 {
-    public function testProcessHasNotTwigFormResources()
+    public function testProcessHasNotTwigFormResources(): void
     {
         $container = $this->createMock(ContainerBuilder::class);
         $container->expects($this->once())->method('hasParameter')
@@ -24,7 +24,7 @@ class TwigFormPassTest extends TestCase
         $compiler->process($container);
     }
 
-    public function testProcessHasTwigFormResources()
+    public function testProcessHasTwigFormResources(): void
     {
         $container = new ContainerBuilder();
         $container->setParameter('twig.form.resources', ['foo']);
