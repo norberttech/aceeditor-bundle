@@ -15,7 +15,7 @@ This bundle is supporting following Symfony versions:
 
 ## Composer
 
-To use this bundle with Symfony, require it in [Composer](https://getcomposer.org/):
+To use this bundle with Symfony, require it with [Composer](https://getcomposer.org/):
 
 ```sh
 composer require "norberttech/aceeditor-bundle" 5.x-dev
