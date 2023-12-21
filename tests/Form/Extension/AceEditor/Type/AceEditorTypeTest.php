@@ -18,7 +18,7 @@ class AceEditorTypeTest extends TestCase
         $this->formType = new AceEditorType();
     }
 
-    public function testGetParent()
+    public function testGetParent(): void
     {
         $this->assertSame(TextareaType::class, $this->formType->getParent());
     }
