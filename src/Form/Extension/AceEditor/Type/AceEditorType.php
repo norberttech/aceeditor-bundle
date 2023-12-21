@@ -35,11 +35,11 @@ final class AceEditorType extends AbstractType
             return $aceAttr;
         };
 
-        $unitNormalizer = function (Options $options, $value): array {
+        $unitNormalizer = function (Options $options, array|string|float|int|null $value): array {
             if (is_array($value)) {
                 return $value;
             }
-            if (preg_match('/([0-9\.]+)\s*('.implode('|', self::UNITS).')/', $value, $matchedValue)) {
+            if (preg_match('/([0-9\.]+)\s*('.implode('|', self::UNITS).')/', (string) $value, $matchedValue)) {
                 $value = $matchedValue[1];
                 $unit = $matchedValue[2];
             } else {
