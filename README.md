@@ -37,10 +37,10 @@ return [
 
 ### Ace editor
 
-Unless you do some configuration, this bundle expect Ace editor files to be in `web/vendor/ace`:
+Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`:
 
 ```sh
-cd your_project_root/web
+cd <your_project_root>/public
 mkdir vendor && cd vendor
 wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
 tar -xvf v1.2.6.tar.gz
@@ -88,7 +88,7 @@ Default configuration:
 # app/config/config.yml
 
 norzechowicz_ace_editor:
-    base_path: "vendor/ace" # notice! this is starting from "your_project_root/web"!
+    base_path: "vendor/ace" # notice! this is starting from "<your_project_root>/public"!
     autoinclude: true
     debug: false # sources not minified, based on kernel.debug but it can force it
     noconflict: true # uses ace.require instead of require
