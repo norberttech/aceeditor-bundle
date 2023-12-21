@@ -9,31 +9,27 @@ It automatically register `ace_editor` form type.
 
 This bundle is supporting following Symfony versions:
 
-* [Symfony ^2.8, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/2.8)
-* [Symfony ^3.0, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/3.0)
-* [Symfony ^4.0, PHP >= 5.6](https://github.com/norberttech/aceeditor-bundle/tree/4.0)
-* [Symfony ^5.0, PHP >= 7.3](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
+* [Symfony ^5.4, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
+* [Symfony ^6.0, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
 
 
 ## Composer
 
-To use this bundle with `Symfony ^4.0`, require it in [Composer](https://getcomposer.org/):
+To use this bundle with Symfony, require it in [Composer](https://getcomposer.org/):
 
 ```sh
-composer require "norberttech/aceeditor-bundle" ^4.0
+composer require "norberttech/aceeditor-bundle" 5.x-dev
 ```
 
-Register bundle in AppKernel.php
+If you're using symfony/flex, you can skip the next step, otherwise you need to register the bundle yourself:
 
 ```php
-// app/AppKernel.php
+// app/config/bundles.php
 
-public function registerBundles()
-{
-    return array(
-        new Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle(),
-        // ...
-    );
+return [
+    // ...
+    Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle::class => ['all' => true],
+    // ...
 }
 ```
 
