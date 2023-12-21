@@ -47,7 +47,7 @@ class AceEditorExtension extends AbstractExtension
                 [$this, 'includeAceEditor'],
                 [
                     'is_safe' => ['html'],
-                    'needs_environment' => true
+                    'needs_environment' => true,
                 ]
             ),
         ];

@@ -30,7 +30,7 @@ class AceEditorExtensionTest extends TestCase
     /**
      * @return Environment
      */
-    private function getTwigEnvironment() : MockObject
+    private function getTwigEnvironment(): MockObject
     {
         return $this->getMockBuilder(Environment::class)
             ->disableOriginalConstructor()

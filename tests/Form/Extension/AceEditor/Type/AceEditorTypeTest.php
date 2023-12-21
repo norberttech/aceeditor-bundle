@@ -13,7 +13,7 @@ class AceEditorTypeTest extends TestCase
     /** @var AceEditorType */
     private $formType;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->formType = new AceEditorType();
     }
