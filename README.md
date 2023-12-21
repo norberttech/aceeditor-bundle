@@ -88,7 +88,7 @@ Default configuration:
 # app/config/config.yml
 
 norzechowicz_ace_editor:
-    base_path: "vendor/ace" # notice! this is starting from your project's public web root, typically: `<your_project_root>/public`!
+    base_path: "vendor/ace" # notice! this is starting from your project's public web root, typically: `%kernel.project_dir%/public`!
     autoinclude: true
     debug: false # sources not minified, based on kernel.debug but it can force it
     noconflict: true # uses ace.require instead of require
