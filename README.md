@@ -35,7 +35,7 @@ return [
 
 ### Ace editor
 
-Unles you do some configuration, this bundle expect Ace editor files to be in `web/vendor/ace`:
+Unless you do some configuration, this bundle expect Ace editor files to be in `web/vendor/ace`:
 
 ```sh
 cd your_project_root/web
