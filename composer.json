@@ -7,7 +7,7 @@
     "require": {
         "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
         "twig/twig": "^2.0|^3.0",
-        "symfony/framework-bundle": "^5.4|^6.0",
+        "symfony/framework-bundle": "^5.4|^6.0|^7.0",
         "symfony/form": "^5.4|^6.0",
         "symfony/twig-bridge": "^5.4|^6.0",
         "symfony/asset": "^5.4|^6.0",
