@@ -10,8 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AceEditorTypeTest extends TestCase
 {
-    /** @var AceEditorType */
-    private $formType;
+    private AceEditorType $formType;
 
     public function setUp(): void
     {

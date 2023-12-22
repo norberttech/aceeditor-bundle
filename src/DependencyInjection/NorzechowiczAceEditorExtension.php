@@ -11,10 +11,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class NorzechowiczAceEditorExtension extends Extension
 {
-    /**
-     * @param array $configs
-     * @param ContainerBuilder $container
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
@@ -29,9 +25,6 @@ class NorzechowiczAceEditorExtension extends Extension
 
     /**
      * Register parameters for the DI.
-     *
-     * @param array            $config
-     * @param ContainerBuilder $container
      */
     private function registerAceEditorParameters(array $config, ContainerBuilder $container): void
     {

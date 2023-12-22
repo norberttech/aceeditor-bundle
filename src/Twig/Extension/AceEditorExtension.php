@@ -13,7 +13,7 @@ class AceEditorExtension extends AbstractExtension
 {
     /**
      * Should we include the ace.js?
-     * If false, user should include it it's own way.
+     * If false, user should include it its own way.
      */
     private bool $editorIncluded;
 
@@ -28,9 +28,6 @@ class AceEditorExtension extends AbstractExtension
         $this->mode = ltrim($mode, '/');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'ace_editor';
@@ -65,18 +62,15 @@ class AceEditorExtension extends AbstractExtension
         }
 
         if (!$environment->hasExtension(AssetExtension::class)) {
-            throw new \LogicException('"asset" extension is mandatory if you don\'t include Ace editor by yourself.');
+            throw new \LogicException('"asset" extension is mandatory if you do not include Ace editor by yourself.');
         }
 
-        if (!$this->editorIncluded) {
-            foreach (['ace', 'ext-language_tools'] as $file) {
-                /** @var AssetExtension $extension */
-                $extension = $environment->getExtension(AssetExtension::class);
-                $jsPath = $extension->getAssetUrl($this->basePath.'/'.$this->mode.'/'.$file.'.js');
+        foreach (['ace', 'ext-language_tools'] as $file) {
+            $extension = $environment->getExtension(AssetExtension::class);
+            $jsPath = $extension->getAssetUrl($this->basePath.'/'.$this->mode.'/'.$file.'.js');
 
-                printf('<script src="%s" charset="utf-8" type="text/javascript"></script>', $jsPath);
-            }
-            $this->editorIncluded = true;
+            printf('<script src="%s" charset="utf-8" type="text/javascript"></script>', $jsPath);
         }
+        $this->editorIncluded = true;
     }
 }

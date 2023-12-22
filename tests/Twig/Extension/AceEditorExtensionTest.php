@@ -15,9 +15,9 @@ use Twig\Environment;
 
 class AceEditorExtensionTest extends TestCase
 {
-    private function getExtension(bool $autoinclude = true, string $basePath = '', string $mode = ''): AceEditorExtension
+    private function getExtension(bool $autoInclude = true, string $basePath = '', string $mode = ''): AceEditorExtension
     {
-        return new AceEditorExtension($autoinclude, $basePath, $mode);
+        return new AceEditorExtension($autoInclude, $basePath, $mode);
     }
 
     private function getTwigEnvironment(): MockObject&Environment
