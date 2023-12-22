@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Exception\InvalidArgumentException;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -34,6 +35,10 @@ final class AceEditorType extends AbstractType
 
         $unitNormalizer = function (Options $options, array|string|float|int|null $value): array {
             if (is_array($value)) {
+                if (!array_key_exists('value', $value) || !array_key_exists('unit', $value)) {
+                    throw new InvalidArgumentException('Expected an array with the keys "value" and "unit"');
+                }
+
                 return $value;
             }
             if (preg_match('/([0-9\.]+)\s*('.implode('|', self::UNITS).')/', (string) $value, $matchedValue)) {
@@ -68,8 +73,8 @@ final class AceEditorType extends AbstractType
         ]);
 
         $optionAllowedTypes = [
-            'width' => ['integer', 'string', 'array'],
-            'height' => ['integer', 'string', 'array'],
+            'width' => ['null', 'integer', 'string', 'array'],
+            'height' => ['null', 'integer', 'string', 'array'],
             'mode' => 'string',
             'font_size' => 'integer',
             'tab_size' => ['integer', 'null'],
