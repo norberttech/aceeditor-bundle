@@ -43,7 +43,7 @@ class AceEditorExtensionTest extends TestCase
     public function testIncludeAceEditorTwigNoExtensionAsset(): void
     {
         $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('"asset" extension is mandatory if you don\'t include Ace editor by yourself');
+        $this->expectExceptionMessage('"asset" extension is mandatory if you do not include Ace editor by yourself');
 
         $environment = $this->getTwigEnvironment();
         $extension = $this->getExtension();
