@@ -31,29 +31,30 @@ class NorzechowiczEditorExtensionTest extends TestCase
         $this->assertSame($expected, $result);
     }
 
-    public function loadProvider(): array
+    public function loadProvider(): \Generator
     {
-        return [
-            [
-                ['debug' => true, 'noconflict' => false],
-                true,
-                ['autoinclude' => true, 'base_path' => 'vendor/ace', 'mode' => 'src'],
-            ],
-            [
-                ['debug' => true],
-                false,
-                ['autoinclude' => true, 'base_path' => 'vendor/ace', 'mode' => 'src-noconflict'],
-            ],
-            [
-                ['debug' => false, 'base_path' => 'foo'],
-                true,
-                ['autoinclude' => true, 'base_path' => 'foo', 'mode' => 'src-noconflict'],
-            ],
-            [
-                ['debug' => false, 'autoinclude' => false],
-                false,
-                ['autoinclude' => false, 'base_path' => 'vendor/ace', 'mode' => 'src-min-noconflict'],
-            ],
+        yield [
+            ['debug' => true, 'noconflict' => false],
+            true,
+            ['autoinclude' => true, 'base_path' => 'vendor/ace', 'mode' => 'src'],
+        ];
+
+        yield [
+            ['debug' => true],
+            false,
+            ['autoinclude' => true, 'base_path' => 'vendor/ace', 'mode' => 'src-noconflict'],
+        ];
+
+        yield [
+            ['debug' => false, 'base_path' => 'foo'],
+            true,
+            ['autoinclude' => true, 'base_path' => 'foo', 'mode' => 'src-noconflict'],
+        ];
+
+        yield [
+            ['debug' => false, 'autoinclude' => false],
+            false,
+            ['autoinclude' => false, 'base_path' => 'vendor/ace', 'mode' => 'src-min-noconflict'],
         ];
     }
 }

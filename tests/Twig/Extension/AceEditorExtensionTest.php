@@ -15,9 +15,9 @@ use Twig\Environment;
 
 class AceEditorExtensionTest extends TestCase
 {
-    private function getExtension(bool $autoinclude = true, string $basePath = '', string $mode = ''): AceEditorExtension
+    private function getExtension(bool $autoInclude = true, string $basePath = '', string $mode = ''): AceEditorExtension
     {
-        return new AceEditorExtension($autoinclude, $basePath, $mode);
+        return new AceEditorExtension($autoInclude, $basePath, $mode);
     }
 
     private function getTwigEnvironment(): MockObject&Environment
@@ -43,7 +43,7 @@ class AceEditorExtensionTest extends TestCase
     public function testIncludeAceEditorTwigNoExtensionAsset(): void
     {
         $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('"asset" extension is mandatory if you don\'t include Ace editor by yourself');
+        $this->expectExceptionMessage('"asset" extension is mandatory if you do not include Ace editor by yourself');
 
         $environment = $this->getTwigEnvironment();
         $extension = $this->getExtension();
