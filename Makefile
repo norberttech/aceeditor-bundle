@@ -6,7 +6,7 @@ ifneq ($(PHP_VERSION),)
 DOCKER_BUILD_ARGS += --build-arg PHP_VERSION=$(PHP_VERSION)
 endif
 
-DOCKER_BUILD_IID_FILE = .docker-$(PHP_VERSION).iid
+DOCKER_BUILD_IID_FILE = .docker-php$(PHP_VERSION).iid
 
 .PHONY: shell
 shell:
