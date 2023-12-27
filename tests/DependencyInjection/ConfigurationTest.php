@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
+namespace NorbertTech\SymfonyAceEditorBundle\Tests\DependencyInjection;
 
-use Norzechowicz\AceEditorBundle\DependencyInjection\Configuration;
+use NorbertTech\SymfonyAceEditorBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 

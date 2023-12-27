@@ -4,11 +4,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <!-- Twig Extensions -->
-        <service id="norzechowicz_ace_editor.twig.form_extension" class="Norzechowicz\AceEditorBundle\Twig\Extension\AceEditorExtension">
+        <service id="norberttech_ace_editor.twig.form_extension" class="NorbertTech\SymfonyAceEditorBundle\Twig\Extension\AceEditorExtension">
             <tag name="twig.extension" />
-            <argument>%norzechowicz_ace_editor.options.autoinclude%</argument>
-            <argument>%norzechowicz_ace_editor.options.base_path%</argument>
-            <argument>%norzechowicz_ace_editor.options.mode%</argument>
+            <argument>%norberttech_ace_editor.options.autoinclude%</argument>
+            <argument>%norberttech_ace_editor.options.base_path%</argument>
+            <argument>%norberttech_ace_editor.options.mode%</argument>
         </service>
     </services>
 </container>

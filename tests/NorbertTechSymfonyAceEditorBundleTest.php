@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Norzechowicz\AceEditorBundle\Tests;
+namespace NorbertTech\SymfonyAceEditorBundle\Tests;
 
-use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
-use Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle;
+use NorbertTech\SymfonyAceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use NorbertTech\SymfonyAceEditorBundle\NorbertTechSymfonyAceEditorBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorzechowiczAceEditorBundleTest extends TestCase
+class NorbertTechSymfonyAceEditorBundleTest extends TestCase
 {
     public function testBuild(): void
     {
         $container = new ContainerBuilder();
-        $bundle = new NorzechowiczAceEditorBundle();
+        $bundle = new NorbertTechSymfonyAceEditorBundle();
         $bundle->build($container);
 
         $this->assertNotEmpty(array_filter(

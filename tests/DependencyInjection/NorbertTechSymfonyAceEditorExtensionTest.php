@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection;
+namespace NorbertTech\SymfonyAceEditorBundle\Tests\DependencyInjection;
 
-use Norzechowicz\AceEditorBundle\DependencyInjection\NorzechowiczAceEditorExtension;
+use NorbertTech\SymfonyAceEditorBundle\DependencyInjection\NorbertTechSymfonyAceEditorExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorzechowiczEditorExtensionTest extends TestCase
+class NorbertTechSymfonyAceEditorExtensionTest extends TestCase
 {
     /**
      * @dataProvider loadProvider
      */
     public function testLoad(array $parameters, bool $kernelDebug, array $expected): void
     {
-        $extension = new NorzechowiczAceEditorExtension();
+        $extension = new NorbertTechSymfonyAceEditorExtension();
         $container = new ContainerBuilder();
 
         $container->setParameter('kernel.debug', $kernelDebug);
@@ -23,9 +23,9 @@ class NorzechowiczEditorExtensionTest extends TestCase
         $extension->load([$parameters], $container);
 
         $result = [
-            'autoinclude' => $container->getParameter('norzechowicz_ace_editor.options.autoinclude'),
-            'base_path' => $container->getParameter('norzechowicz_ace_editor.options.base_path'),
-            'mode' => $container->getParameter('norzechowicz_ace_editor.options.mode'),
+            'autoinclude' => $container->getParameter('norberttech_ace_editor.options.autoinclude'),
+            'base_path' => $container->getParameter('norberttech_ace_editor.options.base_path'),
+            'mode' => $container->getParameter('norberttech_ace_editor.options.mode'),
         ];
 
         $this->assertSame($expected, $result);

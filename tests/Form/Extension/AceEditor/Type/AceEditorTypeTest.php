@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Norzechowicz\AceEditorBundle\Tests\Form\Extension\AceEditor\Type;
+namespace NorbertTech\SymfonyAceEditorBundle\Tests\Form\Extension\AceEditor\Type;
 
-use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
+use NorbertTech\SymfonyAceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
