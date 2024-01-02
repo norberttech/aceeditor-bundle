@@ -9,8 +9,10 @@ It automatically register `ace_editor` form type.
 
 This bundle is supporting following Symfony versions:
 
-* [Symfony ^5.4, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
-* [Symfony ^6.0, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
+* Symfony ^5.4 (PHP >= 8.1)
+* Symfony ^6.4 (PHP >= 8.1)
+
+For compatibility with older php and symfony versions, please see older branches & releases.
 
 
 ## Composer
@@ -18,7 +20,7 @@ This bundle is supporting following Symfony versions:
 To use this bundle with Symfony, require it with [Composer](https://getcomposer.org/):
 
 ```sh
-composer require "norberttech/aceeditor-bundle" 5.x-dev
+composer require "norberttech/aceeditor-bundle" ^5.0
 ```
 
 If you're using [symfony/flex](https://symfony.com/doc/current/setup/flex.html) then the
