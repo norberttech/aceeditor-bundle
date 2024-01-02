@@ -1,7 +1,7 @@
 # https://phpstan.org/config-reference
 includes:
-    - vendor-bin/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
-    - vendor-bin/phpstan/vendor/phpstan/phpstan-symfony/rules.neon
+    - tools/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
+    - tools/phpstan/vendor/phpstan/phpstan-symfony/rules.neon
 
 parameters:
     level: 8

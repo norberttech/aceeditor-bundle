@@ -38,7 +38,7 @@
         },
         "bamarni-bin": {
 	    "bin-links": false,
-	    "target-directory": "vendor-bin",
+	    "target-directory": "tools",
 	    "forward-command": true
         }
     },
@@ -60,8 +60,8 @@
         ],
         "cs:check": "@php-cs-fixer fix --dry-run",
         "cs:fix": "@php-cs-fixer fix",
-        "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer",
-        "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan",
-        "psalm": "vendor-bin/psalm/vendor/bin/psalm"
+        "php-cs-fixer": "tools/php-cs-fixer/vendor/bin/php-cs-fixer",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan",
+        "psalm": "tools/psalm/vendor/bin/psalm"
     }
 }
