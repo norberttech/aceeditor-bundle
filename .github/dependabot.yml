@@ -6,3 +6,21 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
+
+  - package-ecosystem: "composer"
+    directory: "/vendor-bin/php-cs-fixer"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 1
+
+  - package-ecosystem: "composer"
+    directory: "/vendor-bin/phpstan"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "composer"
+    directory: "/vendor-bin/psalm"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5

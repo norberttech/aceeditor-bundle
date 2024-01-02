@@ -13,13 +13,16 @@
         "symfony/asset": "^5.4|^6.0",
         "symfony/expression-language": "^5.4|^6.0"
     },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8",
+        "phpunit/phpunit": "^10.5"
+    },
     "config": {
         "optimize-autoloader": true,
-        "sort-packages": true
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.16",
-        "phpunit/phpunit": "^10.5"
+        "sort-packages": true,
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        }
     },
     "autoload": {
         "psr-4": { "AceEditorBundle\\": "src/" }
@@ -32,19 +35,33 @@
     "extra": {
         "branch-alias": {
             "dev-master": "5.0-dev"
+        },
+        "bamarni-bin": {
+	    "bin-links": false,
+	    "target-directory": "vendor-bin",
+	    "forward-command": true
         }
     },
     "scripts" : {
         "build": [
-            "@static:analyze",
+            "@check:lint",
+            "@check:static",
             "@test"
         ],
         "test": [
             "phpunit"
         ],
-        "static:analyze": [
-            "php-cs-fixer fix --dry-run"
+        "check:lint": [
+            "@cs:check"
         ],
-        "cs:php:fix": "php-cs-fixer fix"
+        "check:static": [
+            "@psalm",
+            "@phpstan"
+        ],
+        "cs:check": "@php-cs-fixer fix --dry-run",
+        "cs:fix": "@php-cs-fixer fix",
+        "php-cs-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer",
+        "phpstan": "vendor-bin/phpstan/vendor/bin/phpstan",
+        "psalm": "vendor-bin/psalm/vendor/bin/psalm"
     }
 }
