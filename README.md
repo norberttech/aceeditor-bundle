@@ -30,7 +30,7 @@ bundle yourself:
 
 return [
     // ...
-    NorbertTech\AceEditorBundle\NorbertTechAceEditorBundle::class => ['all' => true],
+    AceEditorBundle\AceEditorBundle::class => ['all' => true],
     // ...
 }
 ```
@@ -51,7 +51,7 @@ rm v1.2.6.tar.gz
 ## Usage
 
 ```php
-use NorbertTech\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
+use AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 
 /** @var $builder \Symfony\Component\Form\FormBuilderInterface */
 $builder->add('description', AceEditorType::class, array(

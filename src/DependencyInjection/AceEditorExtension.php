@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\AceEditorBundle\DependencyInjection;
+namespace AceEditorBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class NorbertTechAceEditorExtension extends Extension
+class AceEditorExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -36,8 +36,8 @@ class NorbertTechAceEditorExtension extends Extension
 
         $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
 
-        $container->setParameter('norberttech_ace_editor.options.autoinclude', $config['autoinclude']);
-        $container->setParameter('norberttech_ace_editor.options.base_path', $config['base_path']);
-        $container->setParameter('norberttech_ace_editor.options.mode', $mode);
+        $container->setParameter('ace_editor.options.autoinclude', $config['autoinclude']);
+        $container->setParameter('ace_editor.options.base_path', $config['base_path']);
+        $container->setParameter('ace_editor.options.mode', $mode);
     }
 }

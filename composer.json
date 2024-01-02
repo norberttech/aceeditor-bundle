@@ -22,11 +22,11 @@
         "phpunit/phpunit": "^9.2"
     },
     "autoload": {
-        "psr-4": { "NorbertTech\\AceEditorBundle\\": "src/" }
+        "psr-4": { "AceEditorBundle\\": "src/" }
     },
     "autoload-dev": {
         "psr-4": {
-            "NorbertTech\\AceEditorBundle\\Tests\\": "tests/"
+            "AceEditorBundle\\Tests\\": "tests/"
         }
     },
     "extra": {

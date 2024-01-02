@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\AceEditorBundle\Twig\Extension;
+namespace AceEditorBundle\Twig\Extension;
 
 use Symfony\Bridge\Twig\Extension\AssetExtension;
 use Twig\Environment;
