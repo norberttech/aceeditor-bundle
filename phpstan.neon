@@ -1,0 +1,13 @@
+# https://phpstan.org/config-reference
+includes:
+    - tools/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
+    - tools/phpstan/vendor/phpstan/phpstan-symfony/rules.neon
+
+parameters:
+    level: 8
+    parallel:
+        processTimeout: 30.0
+        maximumNumberOfProcesses: 4
+    paths:
+        - src
+        - tests

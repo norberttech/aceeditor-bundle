@@ -11,6 +11,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class AceEditorExtensionTest extends TestCase
 {
     /**
+     * @param array<string, bool|float|int|string|null> $parameters
+     * @param array<string, bool|float|int|string|null> $expected
+     *
      * @dataProvider loadProvider
      */
     public function testLoad(array $parameters, bool $kernelDebug, array $expected): void

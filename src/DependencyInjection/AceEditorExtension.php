@@ -25,6 +25,8 @@ class AceEditorExtension extends Extension
 
     /**
      * Register parameters for the DI.
+     *
+     * @param array<string, bool|float|int|string|null> $config
      */
     private function registerAceEditorParameters(array $config, ContainerBuilder $container): void
     {

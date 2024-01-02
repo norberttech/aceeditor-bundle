@@ -12,6 +12,10 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @template T of mixed
+ * @template-extends AbstractType<T>
+ */
 final class AceEditorType extends AbstractType
 {
     private const DEFAULT_UNIT = 'px';
@@ -21,7 +25,7 @@ final class AceEditorType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         // Remove id from ace editor wrapper attributes. Id must be generated.
-        $wrapperAttrNormalizer = function (Options $options, $aceAttr) {
+        $wrapperAttrNormalizer = function (Options $options, mixed $aceAttr): array {
             if (is_array($aceAttr)) {
                 if (array_key_exists('id', $aceAttr)) {
                     unset($aceAttr['id']);

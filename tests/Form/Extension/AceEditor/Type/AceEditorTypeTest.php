@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AceEditorTypeTest extends TestCase
 {
+    /** @var AceEditorType<mixed> */
     private AceEditorType $formType;
 
     public function setUp(): void
