@@ -55,8 +55,8 @@
             "@cs:check"
         ],
         "check:static": [
-            "@psalm",
-            "@phpstan"
+            "@psalm --memory-limit=384M",
+            "@phpstan --memory-limit=128M"
         ],
         "cs:check": "@php-cs-fixer fix --dry-run",
         "cs:fix": "@php-cs-fixer fix",
