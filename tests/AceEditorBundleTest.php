@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AceEditorBundle\Tests;
 
-use AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use AceEditorBundle\AceEditorBundle;
+use AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
