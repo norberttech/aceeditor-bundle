@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\SymfonyAceEditorBundle\Form\Extension\AceEditor\Type;
+namespace NorbertTech\AceEditorBundle\Form\Extension\AceEditor\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Exception\InvalidArgumentException;

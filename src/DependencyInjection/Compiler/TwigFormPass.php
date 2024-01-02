@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\SymfonyAceEditorBundle\DependencyInjection\Compiler;
+namespace NorbertTech\AceEditorBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

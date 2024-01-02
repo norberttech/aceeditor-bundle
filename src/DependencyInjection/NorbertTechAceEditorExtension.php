@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\SymfonyAceEditorBundle\DependencyInjection;
+namespace NorbertTech\AceEditorBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class NorbertTechSymfonyAceEditorExtension extends Extension
+class NorbertTechAceEditorExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

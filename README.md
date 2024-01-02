@@ -30,7 +30,7 @@ bundle yourself:
 
 return [
     // ...
-    NorbertTech\SymfonyAceEditorBundle\NorbertTechSymfonyAceEditorBundle::class => ['all' => true],
+    NorbertTech\AceEditorBundle\NorbertTechAceEditorBundle::class => ['all' => true],
     // ...
 }
 ```
@@ -51,9 +51,9 @@ rm v1.2.6.tar.gz
 ## Usage
 
 ```php
-use NorbertTech\SymfonyAceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
+use NorbertTech\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 
-/* @var $builder \Symfony\Component\Form\FormBuilderInterface */
+/** @var $builder \Symfony\Component\Form\FormBuilderInterface */
 $builder->add('description', AceEditorType::class, array(
     'wrapper_attr' => array(), // aceeditor wrapper html attributes.
     'width' => '100%',
@@ -87,7 +87,7 @@ Default configuration:
 ```
 # app/config/config.yml
 
-norberttech_ace_editor:
+ace_editor:
     base_path: "vendor/ace" # notice! this is starting from your project's public web root, typically: `%kernel.project_dir%/public`!
     autoinclude: true
     debug: false # sources not minified, based on kernel.debug but it can force it
@@ -97,6 +97,6 @@ norberttech_ace_editor:
 You can also include Ace editor directly from a location that follow the same directory layout than
 `https://github.com/ajaxorg/ace-builds`, all you need to do is setting `base_path` option:
 ```
-norberttech_ace_editor:
+ace_editor:
     base_path: "http://rawgithub.com/ajaxorg/ace-builds/master"
 ```

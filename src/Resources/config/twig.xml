@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <!-- Twig Extensions -->
-        <service id="norberttech_ace_editor.twig.form_extension" class="NorbertTech\SymfonyAceEditorBundle\Twig\Extension\AceEditorExtension">
+        <service id="norberttech_ace_editor.twig.form_extension" class="NorbertTech\AceEditorBundle\Twig\Extension\AceEditorExtension">
             <tag name="twig.extension" />
             <argument>%norberttech_ace_editor.options.autoinclude%</argument>
             <argument>%norberttech_ace_editor.options.base_path%</argument>

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\SymfonyAceEditorBundle\Tests\DependencyInjection\Compiler;
+namespace NorbertTech\AceEditorBundle\Tests\DependencyInjection\Compiler;
 
-use NorbertTech\SymfonyAceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use NorbertTech\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

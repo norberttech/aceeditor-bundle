@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\SymfonyAceEditorBundle\Tests\Twig\Extension;
+namespace NorbertTech\AceEditorBundle\Tests\Twig\Extension;
 
-use NorbertTech\SymfonyAceEditorBundle\Twig\Extension\AceEditorExtension;
+use NorbertTech\AceEditorBundle\Twig\Extension\AceEditorExtension;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\Extension\AssetExtension;

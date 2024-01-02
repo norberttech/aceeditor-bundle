@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\SymfonyAceEditorBundle\Tests\DependencyInjection;
+namespace NorbertTech\AceEditorBundle\Tests\DependencyInjection;
 
-use NorbertTech\SymfonyAceEditorBundle\DependencyInjection\NorbertTechSymfonyAceEditorExtension;
+use NorbertTech\AceEditorBundle\DependencyInjection\NorbertTechAceEditorExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class NorbertTechSymfonyAceEditorExtensionTest extends TestCase
+class NorbertTechAceEditorExtensionTest extends TestCase
 {
     /**
      * @dataProvider loadProvider
      */
     public function testLoad(array $parameters, bool $kernelDebug, array $expected): void
     {
-        $extension = new NorbertTechSymfonyAceEditorExtension();
+        $extension = new NorbertTechAceEditorExtension();
         $container = new ContainerBuilder();
 
         $container->setParameter('kernel.debug', $kernelDebug);

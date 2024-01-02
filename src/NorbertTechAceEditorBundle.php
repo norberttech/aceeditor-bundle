@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace NorbertTech\SymfonyAceEditorBundle;
+namespace NorbertTech\AceEditorBundle;
 
-use NorbertTech\SymfonyAceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use NorbertTech\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class NorbertTechSymfonyAceEditorBundle extends Bundle
+class NorbertTechAceEditorBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {

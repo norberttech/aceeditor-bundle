@@ -7,7 +7,7 @@
         <parameter key="norberttech_ace_editor.form.resource">@NorbertTechSymfonyAceEditor/Form/div_layout.html.twig</parameter>
     </parameters>
     <services>
-        <service id="norberttech_ace_editor.form.type.ace_editor" class="NorbertTech\SymfonyAceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType">
+        <service id="norberttech_ace_editor.form.type.ace_editor" class="NorbertTech\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType">
             <tag name="form.type" alias="ace_editor" />
         </service>
     </services>
