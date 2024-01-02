@@ -36,7 +36,7 @@ class TwigFormPassTest extends TestCase
         $compiler->process($container);
 
         $this->assertSame(
-            ['@NorbertTechSymfonyAceEditor/Form/div_layout.html.twig', 'foo'],
+            ['@AceEditor/Form/div_layout.html.twig', 'foo'],
             $container->getParameter('twig.form.resources')
         );
     }
