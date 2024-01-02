@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Norzechowicz\AceEditorBundle\Tests\DependencyInjection\Compiler;
+namespace AceEditorBundle\Tests\DependencyInjection\Compiler;
 
-use Norzechowicz\AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
+use AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -36,7 +36,7 @@ class TwigFormPassTest extends TestCase
         $compiler->process($container);
 
         $this->assertSame(
-            ['@NorzechowiczAceEditor/Form/div_layout.html.twig', 'foo'],
+            ['@NorbertTechSymfonyAceEditor/Form/div_layout.html.twig', 'foo'],
             $container->getParameter('twig.form.resources')
         );
     }
