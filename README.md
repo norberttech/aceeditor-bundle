@@ -2,23 +2,25 @@
 
 ![Tests](https://github.com/norberttech/aceeditor-bundle/workflows/Tests/badge.svg)
 
-Bundle provides a [Ace editor](http://ace.ajax.org) integration into Symfony Form component.
-It automatically register `ace_editor` form type.
+This bundle provides an [Ace editor](http://ace.ajax.org) integration for the Symfony Form component, by
+automatically registering the `ace_editor` form type.
 
-# Symfony
+## Compatibility
 
-This bundle is supporting following Symfony versions:
+Check the table below to check if your PHP and symfony versions are supported.
 
-* [Symfony ^5.4, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
-* [Symfony ^6.0, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
+| PHP version(s)  | Symfony version(s)  | AceEditorBundle version  |
+| --------------- | ------------------- | ------------------------------------------------------------------ |
+| >= 8.1          | ^5.4 \| ^6.4        | [^5.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
 
+For older unsupported versions, check the [releases](https://github.com/norberttech/aceeditor-bundle/releases).
 
 ## Composer
 
-To use this bundle with Symfony, require it with [Composer](https://getcomposer.org/):
+To use this bundle with the latest Symfony version, require it with [Composer](https://getcomposer.org/):
 
 ```sh
-composer require "norberttech/aceeditor-bundle" 5.x-dev
+composer require norberttech/aceeditor-bundle ^5.0
 ```
 
 If you're using [symfony/flex](https://symfony.com/doc/current/setup/flex.html) then the
