@@ -15,9 +15,6 @@ the compatibility matrix below to pick the right version for your application.
 | ??              | ^4.0                | [^4.0](https://github.com/norberttech/aceeditor-bundle/tree/4.x)   |
 | ??              | ^3.0                | [^3.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
 
-* [Symfony ^5.4, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
-* [Symfony ^6.0, PHP >= 8.1](https://github.com/norberttech/aceeditor-bundle/tree/5.x)
-
 
 ## Composer
 
