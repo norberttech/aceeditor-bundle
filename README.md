@@ -14,6 +14,7 @@ the compatibility matrix below to pick the right version for your application.
 | >= 8.1          | ^5.4 \| ^6.4        | [^5.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
 | ^5.6 \| ^7      | ^4.0                | [^4.0](https://github.com/norberttech/aceeditor-bundle/tree/4.0.2) |
 | ^5.6            | ^3.0                | [^3.0](https://github.com/norberttech/aceeditor-bundle/tree/3.0.0) |
+| ^5.6            | ^2.8                | [^3.0](https://github.com/norberttech/aceeditor-bundle/tree/2.8.0) |
 
 
 ## Composer
