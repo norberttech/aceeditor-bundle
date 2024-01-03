@@ -2,8 +2,8 @@
 
 ![Tests](https://github.com/norberttech/aceeditor-bundle/workflows/Tests/badge.svg)
 
-Bundle provides a [Ace editor](http://ace.ajax.org) integration into Symfony Form component.
-It automatically register `ace_editor` form type.
+This bundle provides an [Ace editor](http://ace.ajax.org) integration for the Symfony Form component, by
+automatically registering the `ace_editor` form type.
 
 ## Compatibility
 
