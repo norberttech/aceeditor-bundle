@@ -7,8 +7,7 @@ It automatically register `ace_editor` form type.
 
 ## Compatibility
 
-This bundle provides support for different PHP and symfony version combinations, check
-the compatibility matrix below to pick the right version for your application.
+Check the table below to check if your PHP and symfony versions are supported.
 
 | PHP version(s)  | Symfony version(s)  | AceEditorBundle version  |
 | --------------- | ------------------- | ------------------------------------------------------------------ |
