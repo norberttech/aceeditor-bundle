@@ -101,7 +101,7 @@ You can download any ace editor build version from the [upstream repository](htt
 the corresponding folder.
 
 ```sh
-export ACE_VERSION=1.32.3 # replace with whatever ace version you want
+export ACE_VERSION=1.32.3 # replace with whatever ace version you need
 
 cd <YOUR_PROJECT_ROOT>/public
 mkdir vendor && cd vendor
