@@ -2,7 +2,7 @@
 
 ![Tests](https://github.com/norberttech/aceeditor-bundle/workflows/Tests/badge.svg)
 
-This bundle provides an [Ace editor](http://ace.ajax.org) integration for the Symfony Form component, by
+This bundle provides an [Ace editor](http://ace.ajax.org) integration for the Symfony Form component by
 automatically registering the `ace_editor` form type.
 
 ## Compatibility
@@ -13,11 +13,12 @@ Check the table below to check if your PHP and symfony versions are supported.
 | --------------- | ------------------- | ------------------------------------------------------------------ |
 | >= 8.1          | ^5.4 \| ^6.4        | [^5.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
 
-For older unsupported versions, check the [releases](https://github.com/norberttech/aceeditor-bundle/releases).
+For older unsupported versions check the [releases](https://github.com/norberttech/aceeditor-bundle/releases) page.
 
-## Composer
 
-To use this bundle with the latest Symfony version, require it with [Composer](https://getcomposer.org/):
+## Installation
+
+To use this bundle with the latest Symfony version install it using [Composer](https://getcomposer.org/):
 
 ```sh
 composer require norberttech/aceeditor-bundle ^5.0
@@ -34,21 +35,9 @@ return [
     // ...
     AceEditorBundle\AceEditorBundle::class => ['all' => true],
     // ...
-}
+];
 ```
 
-### Ace editor
-
-Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`:
-
-```sh
-cd <your_project_root>/public
-mkdir vendor && cd vendor
-wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
-tar -xvf v1.2.6.tar.gz
-mv ace-builds-1.2.6 ace
-rm v1.2.6.tar.gz
-```
 
 ## Usage
 
@@ -56,8 +45,8 @@ rm v1.2.6.tar.gz
 use AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 
 /** @var $builder \Symfony\Component\Form\FormBuilderInterface */
-$builder->add('description', AceEditorType::class, array(
-    'wrapper_attr' => array(), // aceeditor wrapper html attributes.
+$builder->add('description', AceEditorType::class, [
+    'wrapper_attr' => [], // aceeditor wrapper html attributes.
     'width' => '100%',
     'height' => 250,
     'font_size' => 12,
@@ -74,15 +63,16 @@ $builder->add('description', AceEditorType::class, array(
     'options_enable_live_autocompletion' => true,
     'options_enable_snippets' => false
     'keyboard_handler' => null
-));
+]);
 ```
 
-Above code will create textarea element that will be replaced with ace editor instance.
-Textarea value is updated on every single change in ace editor.
+The above code will create a textarea element that will be replaced with an ace editor instance.
+The textarea value is updated on every change done in ace editor.
+
 
 ## Configuration
 
-> This section is optional, you dont need to configure anything and the form type will still work perfectly fine
+> This section is optional, you dont need to configure anything and the form type will still work perfectly fine.
 
 Default configuration:
 
@@ -101,4 +91,22 @@ You can also include Ace editor directly from a location that follow the same di
 ```
 ace_editor:
     base_path: "http://rawgithub.com/ajaxorg/ace-builds/master"
+```
+
+
+## Ace editor assets
+
+Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`.
+You can download any ace editor build version from the [upstream repository](https://github.com/ajaxorg/ace/releases) and drop its contents in
+the corresponding folder.
+
+```sh
+ACE_VERSION=1.32.3 # replace with whatever ace version you need
+
+cd <YOUR_PROJECT_ROOT>/public
+mkdir vendor && cd vendor
+wget https://github.com/ajaxorg/ace-builds/archive/v${ACE_VERSION}.tar.gz
+tar -xvf v${ACE_VERSION}.tar.gz
+mv ace-${ACE_VERSION} ace
+rm v${ACE_VERSION}.tar.gz
 ```
