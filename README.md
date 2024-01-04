@@ -96,7 +96,9 @@ ace_editor:
 
 ## Ace editor assets
 
-Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`:
+Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`.
+You can download any ace editor build version from the upstream repository and drop its contents in
+the corresponding folder.
 
 ```sh
 cd <your_project_root>/public
