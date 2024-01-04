@@ -2,7 +2,7 @@
 
 ![Tests](https://github.com/norberttech/aceeditor-bundle/workflows/Tests/badge.svg)
 
-This bundle provides an [Ace editor](http://ace.ajax.org) integration for the Symfony Form component, by
+This bundle provides an [Ace editor](http://ace.ajax.org) integration for the Symfony Form component by
 automatically registering the `ace_editor` form type.
 
 ## Compatibility
@@ -13,12 +13,12 @@ Check the table below to check if your PHP and symfony versions are supported.
 | --------------- | ------------------- | ------------------------------------------------------------------ |
 | >= 8.1          | ^5.4 \| ^6.4        | [^5.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
 
-For older unsupported versions, check the [releases](https://github.com/norberttech/aceeditor-bundle/releases).
+For older unsupported versions check the [releases](https://github.com/norberttech/aceeditor-bundle/releases) page.
 
 
 ## Installation
 
-To use this bundle with the latest Symfony version, require it with [Composer](https://getcomposer.org/):
+To use this bundle with the latest Symfony version install it using [Composer](https://getcomposer.org/):
 
 ```sh
 composer require norberttech/aceeditor-bundle ^5.0
@@ -66,8 +66,8 @@ $builder->add('description', AceEditorType::class, [
 ]);
 ```
 
-Above code will create textarea element that will be replaced with ace editor instance.
-Textarea value is updated on every single change in ace editor.
+The above code will create a textarea element that will be replaced with an ace editor instance.
+The textarea value is updated on every change done in ace editor.
 
 
 ## Configuration
