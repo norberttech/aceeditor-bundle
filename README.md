@@ -15,7 +15,8 @@ Check the table below to check if your PHP and symfony versions are supported.
 
 For older unsupported versions, check the [releases](https://github.com/norberttech/aceeditor-bundle/releases).
 
-## Composer
+
+## Installation
 
 To use this bundle with the latest Symfony version, require it with [Composer](https://getcomposer.org/):
 
@@ -34,21 +35,9 @@ return [
     // ...
     AceEditorBundle\AceEditorBundle::class => ['all' => true],
     // ...
-}
+];
 ```
 
-### Ace editor
-
-Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`:
-
-```sh
-cd <your_project_root>/public
-mkdir vendor && cd vendor
-wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
-tar -xvf v1.2.6.tar.gz
-mv ace-builds-1.2.6 ace
-rm v1.2.6.tar.gz
-```
 
 ## Usage
 
@@ -56,8 +45,8 @@ rm v1.2.6.tar.gz
 use AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 
 /** @var $builder \Symfony\Component\Form\FormBuilderInterface */
-$builder->add('description', AceEditorType::class, array(
-    'wrapper_attr' => array(), // aceeditor wrapper html attributes.
+$builder->add('description', AceEditorType::class, [
+    'wrapper_attr' => [], // aceeditor wrapper html attributes.
     'width' => '100%',
     'height' => 250,
     'font_size' => 12,
@@ -74,15 +63,16 @@ $builder->add('description', AceEditorType::class, array(
     'options_enable_live_autocompletion' => true,
     'options_enable_snippets' => false
     'keyboard_handler' => null
-));
+]);
 ```
 
 Above code will create textarea element that will be replaced with ace editor instance.
 Textarea value is updated on every single change in ace editor.
 
+
 ## Configuration
 
-> This section is optional, you dont need to configure anything and the form type will still work perfectly fine
+> This section is optional, you dont need to configure anything and the form type will still work perfectly fine.
 
 Default configuration:
 
@@ -101,4 +91,18 @@ You can also include Ace editor directly from a location that follow the same di
 ```
 ace_editor:
     base_path: "http://rawgithub.com/ajaxorg/ace-builds/master"
+```
+
+
+## Ace editor assets
+
+Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`:
+
+```sh
+cd <your_project_root>/public
+mkdir vendor && cd vendor
+wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
+tar -xvf v1.2.6.tar.gz
+mv ace-builds-1.2.6 ace
+rm v1.2.6.tar.gz
 ```
