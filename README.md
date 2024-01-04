@@ -97,14 +97,16 @@ ace_editor:
 ## Ace editor assets
 
 Unless you do some configuration, this bundle expects Ace editor files to be in `public/vendor/ace`.
-You can download any ace editor build version from the upstream repository and drop its contents in
+You can download any ace editor build version from the [upstream repository](https://github.com/ajaxorg/ace/releases) and drop its contents in
 the corresponding folder.
 
 ```sh
-cd <your_project_root>/public
+export ACE_VERSION=1.32.3 # replace with whatever ace version you want
+
+cd <YOUR_PROJECT_ROOT>/public
 mkdir vendor && cd vendor
-wget https://github.com/ajaxorg/ace-builds/archive/v1.2.6.tar.gz
-tar -xvf v1.2.6.tar.gz
-mv ace-builds-1.2.6 ace
-rm v1.2.6.tar.gz
+wget https://github.com/ajaxorg/ace-builds/archive/v${ACE_VERSION}.tar.gz
+tar -xvf v${ACE_VERSION}.tar.gz
+mv ace-${ACE_VERSION} ace
+rm v${ACE_VERSION}.tar.gz
 ```
