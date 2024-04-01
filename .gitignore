@@ -2,3 +2,4 @@
 /vendor
 /var
 /tools/**/vendor/
+/.idea

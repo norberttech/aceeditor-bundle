@@ -1,77 +1,105 @@
 {% block ace_editor_widget %}
     {% apply spaceless %}
-    <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
-    <div id="{{ id }}_ace" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}></div>
-    {{ include_ace_editor() }}
-    <script type="text/javascript">
-    (function () {
-        var textarea = document.getElementById('{{ id }}'),
-            editorElm = document.getElementById('{{ id }}_ace'),
-            editor = ace.edit(editorElm),
-            width = {{ width.value }},
-            widthUnit = '{{ width.unit }}',
-            height = {{ height.value }},
-            heightUnit = '{{ height.unit }}';
+		{% if useStimulus %}
+			<div {{ stimulus_controller('ace',{
+				width: width.value,
+				widthUnit: width.unit,
+				height: height.value,
+				heightUnit: height.unit,
+				fontSize: font_size,
+				theme: theme,
+				mode: mode,
+				readOnly: read_only|default(false),
+				showPrintMargin: show_print_margin|default(false),
+				showInvisibles: show_invisibles|default(false),
+				highlightActiveLine: highlight_active_line|default(true),
+				tabSize: tab_size|default(2),
+				useSoftTabs: use_soft_tabs|default(false),
+				useWrapMode: use_wrap_mode|default(false),
+				optionsEnableBasicAutocompletion: options_enable_basic_autocompletion,
+				optionsEnableLiveAutocompletion: options_enable_live_autocompletion,
+				optionsEnableSnippets: options_enable_snippets,
+				keyboardHandler: keyboard_handler,
 
-        textarea.style.visibility = 'hidden';
-        textarea.style.width = width + widthUnit;
-        textarea.style.height = height + heightUnit;
+			}) }}>
+				<textarea {{ block('widget_attributes') }} data-ace-target="textarea">{{ value }}</textarea>
+				<div data-ace-target="editor" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}
+				></div>
+			</div>
+		{% else %}
+			<textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+			<div id="{{ id }}_ace" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}></div>
+			{{ include_ace_editor() }}
+			<script type="text/javascript">
+				(function () {
+					var textarea = document.getElementById('{{ id }}'),
+							editorElm = document.getElementById('{{ id }}_ace'),
+							editor = ace.edit(editorElm),
+							width = {{ width.value }},
+							widthUnit = '{{ width.unit }}',
+							height = {{ height.value }},
+							heightUnit = '{{ height.unit }}';
 
-        editorElm.style.fontSize='{{ font_size }}px';
-        editorElm.style.width = width + widthUnit;
-        editorElm.style.height = height + heightUnit;
-        editorElm.style.marginTop = -(height) + heightUnit;
+					textarea.style.visibility = 'hidden';
+					textarea.style.width = width + widthUnit;
+					textarea.style.height = height + heightUnit;
 
-        editor.setTheme("{{ theme }}");
-        {% if keyboard_handler is not null %}
-        editor.setKeyboardHandler("{{ keyboard_handler }}");
-        {% endif %}
-        editor.getSession().setMode("{{ mode }}");
-        editor.getSession().setValue(textarea.value);
+					editorElm.style.fontSize = '{{ font_size }}px';
+					editorElm.style.width = width + widthUnit;
+					editorElm.style.height = height + heightUnit;
+					editorElm.style.marginTop = -(height) + heightUnit;
 
-        {% if read_only is not null %}
-        editor.setReadOnly({{ read_only ? 'true' : 'false' }});
-        {% endif %}
-        {% if show_print_margin is not null %}
-        editor.setShowPrintMargin({{ show_print_margin ? 'true' : 'false' }});
-        {% endif %}
-        {% if show_invisibles is not null %}
-        editor.setShowInvisibles({{ show_invisibles ? 'true' : 'false' }});
-        {% endif %}
-        {% if highlight_active_line is not null %}
-        editor.setHighlightActiveLine({{ highlight_active_line ? 'true' : 'false' }});
-        {% endif %}
-        {% if tab_size is not null %}
-        editor.getSession().setTabSize({{ tab_size }});
-        {% endif %}
-        {% if use_soft_tabs is not null %}
-        editor.getSession().setUseSoftTabs({{ use_soft_tabs ? 'true' : 'false' }});
-        {% endif %}
-        {% if use_wrap_mode is not null %}
-        editor.getSession().setUseWrapMode({{ use_wrap_mode ? 'true' : 'false' }});
-        {% endif %}
-        editor.setOptions({
-            {% if options_enable_basic_autocompletion is not null %}
-                enableBasicAutocompletion: {{ options_enable_basic_autocompletion ? 'true' : 'false' }},
-            {% endif %}
-            {% if options_enable_live_autocompletion is not null %}
-                enableLiveAutocompletion: {{ options_enable_live_autocompletion ? 'true' : 'false' }},
-            {% endif %}
-            {% if options_enable_snippets is not null %}
-                enableSnippets: {{ options_enable_snippets ? 'true' : 'false' }},
-            {% endif %}
-        });
+					editor.setTheme("{{ theme }}");
+					{% if keyboard_handler is not null %}
+					editor.setKeyboardHandler("{{ keyboard_handler }}");
+					{% endif %}
+					editor.getSession().setMode("{{ mode }}");
+					editor.getSession().setValue(textarea.value);
 
-        editor.getSession().on('change', function(){
-            textarea.value = editor.getSession().getValue();
-        });
+					{% if read_only is not null %}
+					editor.setReadOnly({{ read_only ? 'true' : 'false' }});
+					{% endif %}
+					{% if show_print_margin is not null %}
+					editor.setShowPrintMargin({{ show_print_margin ? 'true' : 'false' }});
+					{% endif %}
+					{% if show_invisibles is not null %}
+					editor.setShowInvisibles({{ show_invisibles ? 'true' : 'false' }});
+					{% endif %}
+					{% if highlight_active_line is not null %}
+					editor.setHighlightActiveLine({{ highlight_active_line ? 'true' : 'false' }});
+					{% endif %}
+					{% if tab_size is not null %}
+					editor.getSession().setTabSize({{ tab_size }});
+					{% endif %}
+					{% if use_soft_tabs is not null %}
+					editor.getSession().setUseSoftTabs({{ use_soft_tabs ? 'true' : 'false' }});
+					{% endif %}
+					{% if use_wrap_mode is not null %}
+					editor.getSession().setUseWrapMode({{ use_wrap_mode ? 'true' : 'false' }});
+					{% endif %}
+					editor.setOptions({
+						{% if options_enable_basic_autocompletion is not null %}
+						enableBasicAutocompletion: {{ options_enable_basic_autocompletion ? 'true' : 'false' }},
+						{% endif %}
+						{% if options_enable_live_autocompletion is not null %}
+						enableLiveAutocompletion: {{ options_enable_live_autocompletion ? 'true' : 'false' }},
+						{% endif %}
+						{% if options_enable_snippets is not null %}
+						enableSnippets: {{ options_enable_snippets ? 'true' : 'false' }},
+						{% endif %}
+					});
 
-        if (typeof window.aceEditors === 'undefined') {
-            window.aceEditors = {};
-        }
+					editor.getSession().on('change', function () {
+						textarea.value = editor.getSession().getValue();
+					});
 
-        window.aceEditors['{{ id }}'] = editor;
-    }());
-    </script>
+					if (typeof window.aceEditors === 'undefined') {
+						window.aceEditors = {};
+					}
+
+					window.aceEditors['{{ id }}'] = editor;
+				}());
+			</script>
+		{% endif %}
     {% endapply %}
 {% endblock %}

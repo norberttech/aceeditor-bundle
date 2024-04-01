@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\UX\StimulusBundle\StimulusBundle;
 
 /**
  * @template T of mixed
@@ -18,11 +19,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class AceEditorType extends AbstractType
 {
-    private const DEFAULT_UNIT = 'px';
+
+
+	private const DEFAULT_UNIT = 'px';
 
     private const UNITS = ['%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px'];
+	private array $installedBundles;
 
-    public function configureOptions(OptionsResolver $resolver): void
+	public function __construct(array $installedBundles) {
+		$this->installedBundles = $installedBundles;
+	}
+
+	public function configureOptions(OptionsResolver $resolver): void
     {
         // Remove id from ace editor wrapper attributes. Id must be generated.
         $wrapperAttrNormalizer = function (Options $options, mixed $aceAttr): array {
@@ -55,6 +63,11 @@ final class AceEditorType extends AbstractType
             return ['value' => $value, 'unit' => $unit];
         };
 
+		$useStimulus = false;
+		if (class_exists(StimulusBundle::class) && in_array(StimulusBundle::class, $this->installedBundles)) {
+			$useStimulus = true;
+		}
+
         $resolver->setDefaults([
             'required' => false,
             'wrapper_attr' => [],
@@ -74,6 +87,7 @@ final class AceEditorType extends AbstractType
             'options_enable_live_autocompletion' => true,
             'options_enable_snippets' => false,
             'keyboard_handler' => null,
+			'use_stimulus' => $useStimulus,
         ]);
 
         $optionAllowedTypes = [
@@ -129,6 +143,7 @@ final class AceEditorType extends AbstractType
                 'options_enable_live_autocompletion' => $options['options_enable_live_autocompletion'],
                 'options_enable_snippets' => $options['options_enable_snippets'],
                 'keyboard_handler' => $options['keyboard_handler'],
+				'useStimulus' => $options['use_stimulus'],
             ]
         );
     }

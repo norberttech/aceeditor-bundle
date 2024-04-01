@@ -9,6 +9,7 @@
     <services>
         <service id="ace_editor.form.type.ace_editor" class="AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType">
             <tag name="form.type" alias="ace_editor" />
+            <argument>%kernel.bundles%</argument>
         </service>
     </services>
 </container>
