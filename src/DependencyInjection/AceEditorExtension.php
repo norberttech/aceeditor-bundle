@@ -45,29 +45,31 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
         $container->setParameter('ace_editor.options.mode', $mode);
     }
 
-	public function prepend(ContainerBuilder $container) {
-		if ($this->isAssetMapperAvailable($container)) {
-			$container->prependExtensionConfig('framework', [
-				'asset_mapper' => [
-					'paths' => [
-						__DIR__ . '/../../assets/controllers' => 'norberttech/aceeditor-bundle',
-					],
-				],
-			]);
-		}
-	}
+    public function prepend(ContainerBuilder $container)
+    {
+        if ($this->isAssetMapperAvailable($container)) {
+            $container->prependExtensionConfig('framework', [
+                'asset_mapper' => [
+                    'paths' => [
+                        __DIR__ . '/../../assets/controllers' => 'norberttech/aceeditor-bundle',
+                    ],
+                ],
+            ]);
+        }
+    }
 
-	private function isAssetMapperAvailable(ContainerBuilder $container): bool {
-		if (!interface_exists(AssetMapperInterface::class)) {
-			return false;
-		}
+    private function isAssetMapperAvailable(ContainerBuilder $container): bool
+    {
+        if (!interface_exists(AssetMapperInterface::class)) {
+            return false;
+        }
 
-		// check that FrameworkBundle 6.3 or higher is installed
-		$bundlesMetadata = $container->getParameter('kernel.bundles_metadata');
-		if (!isset($bundlesMetadata['FrameworkBundle'])) {
-			return false;
-		}
+        // check that FrameworkBundle 6.3 or higher is installed
+        $bundlesMetadata = $container->getParameter('kernel.bundles_metadata');
+        if (!isset($bundlesMetadata['FrameworkBundle'])) {
+            return false;
+        }
 
-		return is_file($bundlesMetadata['FrameworkBundle']['path'] . '/Resources/config/asset_mapper.php');
-	}
+        return is_file($bundlesMetadata['FrameworkBundle']['path'] . '/Resources/config/asset_mapper.php');
+    }
 }
