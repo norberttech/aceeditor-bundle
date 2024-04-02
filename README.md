@@ -121,9 +121,9 @@ Stimulus version is supported only with Asset mapper dependencies
 - ```bin/console importmap:require ace-builds/css/ace.css```
 - ```bin/console importmap:require ace-builds/src-noconflict/ace.js```
 - ```bin/console importmap:require ace-builds/src-noconflict/ext-language_tools.js```
-- ```bin/console importmap:require ace-builds/src-noconflict/worker-javascript.js```
 
 fell free to add more dependencies for your theme and mode
 
 - ```bin/console importmap:require ace-builds/src-noconflict/theme-monokai.js```
+- ```bin/console importmap:require ace-builds/src-noconflict/worker-javascript.js```
 - ```bin/console importmap:require ace-builds/src-noconflict/mode-javascript.js```
