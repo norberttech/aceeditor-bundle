@@ -18,11 +18,10 @@ use Symfony\UX\StimulusBundle\StimulusBundle;
  * @template-extends AbstractType<T>
  */
 final class AceEditorType extends AbstractType {
-
-
 	private const DEFAULT_UNIT = 'px';
 
 	private const UNITS = ['%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px'];
+
 	private array $installedBundles;
 
 	public function __construct(array $installedBundles) {
@@ -62,7 +61,7 @@ final class AceEditorType extends AbstractType {
 		};
 
 		$useStimulus = false;
-		if (class_exists(StimulusBundle::class) && in_array(StimulusBundle::class, $this->installedBundles)) {
+		if (class_exists(StimulusBundle::class) && in_array(StimulusBundle::class, $this->installedBundles, true)) {
 			$useStimulus = true;
 		}
 

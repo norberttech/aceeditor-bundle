@@ -57,7 +57,6 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
 		}
 	}
 
-
 	private function isAssetMapperAvailable(ContainerBuilder $container): bool {
 		if (!interface_exists(AssetMapperInterface::class)) {
 			return false;
