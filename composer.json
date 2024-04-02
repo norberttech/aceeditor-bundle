@@ -2,7 +2,16 @@
     "name": "norberttech/aceeditor-bundle",
     "type": "symfony-bundle",
     "description": "Bundle that integrate excellent JavaScript ace editor into Symfony Form.",
-    "keywords": ["ace", "code", "editor", "symfony", "form", "bundle", "javascript"],
+  "keywords": [
+    "ace",
+    "code",
+    "editor",
+    "symfony",
+    "form",
+    "bundle",
+    "javascript",
+    "symfony-ux"
+  ],
     "license": "MIT",
     "require": {
         "php": "~8.1.0 || ~8.2.0 || ~8.3.0",

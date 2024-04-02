@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace AceEditorBundle\DependencyInjection;
 
+use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class AceEditorExtension extends Extension
+class AceEditorExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -42,4 +44,31 @@ class AceEditorExtension extends Extension
         $container->setParameter('ace_editor.options.base_path', $config['base_path']);
         $container->setParameter('ace_editor.options.mode', $mode);
     }
+
+	public function prepend(ContainerBuilder $container) {
+		if ($this->isAssetMapperAvailable($container)) {
+			$container->prependExtensionConfig('framework', [
+				'asset_mapper' => [
+					'paths' => [
+						__DIR__ . '/../../assets/controllers' => 'norberttech/aceeditor-bundle',
+					],
+				],
+			]);
+		}
+	}
+
+
+	private function isAssetMapperAvailable(ContainerBuilder $container): bool {
+		if (!interface_exists(AssetMapperInterface::class)) {
+			return false;
+		}
+
+		// check that FrameworkBundle 6.3 or higher is installed
+		$bundlesMetadata = $container->getParameter('kernel.bundles_metadata');
+		if (!isset($bundlesMetadata['FrameworkBundle'])) {
+			return false;
+		}
+
+		return is_file($bundlesMetadata['FrameworkBundle']['path'] . '/Resources/config/asset_mapper.php');
+	}
 }

@@ -1,0 +1,33 @@
+{
+  "name": "@norberttech/aceeditor-bundle",
+  "description": "JavaScript-powered ace editor for Symfony",
+  "version": "1.0.0",
+  "license": "MIT",
+  "symfony": {
+    "controllers": {
+      "ace": {
+        "main": "controllers/ace_controller.js",
+        "webpackMode": "eager",
+        "fetch": "eager",
+        "enabled": true,
+        "autoimport": {
+          "ace-builds/src-noconflict/ace.js": true,
+          "ace-builds/src-noconflict/ext-language_tools.js": true,
+          "ace-builds/src-noconflict/mode-javascript.js": true,
+          "ace-builds/src-noconflict/worker-javascript.js": true,
+          "ace-builds/src-noconflict/theme-monokai.js": true,
+          "ace-builds/css/ace.css": true
+        }
+      }
+    },
+    "importmap": {
+      "@hotwired/stimulus": "^3.0.0"
+    }
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  },
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  }
+}

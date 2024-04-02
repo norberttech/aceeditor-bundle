@@ -1,7 +1,7 @@
 {% block ace_editor_widget %}
     {% apply spaceless %}
-		{% if useStimulus %}
-			<div {{ stimulus_controller('ace',{
+		{% if use_stimulus %}
+			<div {{ stimulus_controller('norberttech/aceeditor-bundle/ace',{
 				options:{
 					width: width.value,
 					widthUnit: width.unit,
@@ -21,10 +21,11 @@
 					optionsEnableLiveAutocompletion: options_enable_live_autocompletion,
 					optionsEnableSnippets: options_enable_snippets,
 					keyboardHandler: keyboard_handler,
+					autocompleteWorlds: autocomplete_worlds,
 				}
 			}) }}>
-				<textarea {{ block('widget_attributes') }} data-ace-target="textarea">{{ value }}</textarea>
-				<div data-ace-target="editor" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}
+				<textarea {{ block('widget_attributes') }} {{ stimulus_target('norberttech/aceeditor-bundle/ace','textarea') }}>{{ value }}</textarea>
+				<div {{ stimulus_target('norberttech/aceeditor-bundle/ace','editor') }} {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}
 				></div>
 			</div>
 		{% else %}
