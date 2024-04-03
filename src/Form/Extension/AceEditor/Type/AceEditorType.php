@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AceEditorBundle\Form\Extension\AceEditor\Type;
 
+use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Exception\InvalidArgumentException;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -64,7 +65,7 @@ final class AceEditorType extends AbstractType
         };
 
         $useStimulus = false;
-        if (class_exists(StimulusBundle::class) && in_array(StimulusBundle::class, $this->installedBundles, true)) {
+        if (in_array(StimulusBundle::class, $this->installedBundles, true) && interface_exists(AssetMapperInterface::class)) {
             $useStimulus = true;
         }
 
@@ -107,6 +108,7 @@ final class AceEditorType extends AbstractType
             'options_enable_live_autocompletion'  => ['bool', 'null'],
             'options_enable_snippets'             => ['bool', 'null'],
             'keyboard_handler'                    => ['null', 'string'],
+            'use_stimulus'                        => ['bool'],
             'autocomplete_worlds'                 => ['array'],
         ];
         foreach ($optionAllowedTypes as $option => $allowedTypes) {
