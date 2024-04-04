@@ -2,29 +2,39 @@ import {Controller} from '@hotwired/stimulus';
 import Ace from 'ace-builds/src-noconflict/ace.js';
 import 'ace-builds/src-noconflict/ext-language_tools.js';
 
-class MyWorker extends Worker {
-	constructor(moduleScriptUrl) {
-		const importMapScript = document.querySelector('script[type="importmap"]');
-		const importMap = JSON.parse(importMapScript.textContent);
-		let type = 'script';
-		for (const [key, url] of Object.entries(importMap.imports)) {
-			let parts = key.split('/');
-			if (parts.length > 1) {
-				let key = parts[parts.length - 1];
-				if (key === moduleScriptUrl) {
-					moduleScriptUrl = url;
-					type = 'module';
-					break;
+/**
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+ * @see https://symfony.com/doc/current/frontend/asset_mapper.html#how-does-the-importmap-work
+ * Worker is standard JS build in feature for running jobs on background that use ace editor for loading workers.
+ * We need override this class to support script from importmap generated from symfony/asset-mapper.
+ * So when worker is created with script url, we need to check if this script is in importmap and replace it with correct url.
+ * We now that file is in importmap because aceEditor load only filename and in immportmap we have full path to file.
+ */
+if (typeof Worker !== 'undefined') {
+	class MyWorker extends Worker {
+		constructor(moduleScriptUrl) {
+			const importMapScript = document.querySelector('script[type="importmap"]');
+			const importMap = JSON.parse(importMapScript.textContent);
+			let type = 'script';
+			for (const [key, url] of Object.entries(importMap.imports)) {
+				let parts = key.split('/');
+				if (parts.length > 1) {
+					let scriptName = parts[parts.length - 1];
+					if (scriptName === moduleScriptUrl) {
+						moduleScriptUrl = url;
+						type = 'module';
+						break;
+					}
 				}
 			}
+			super(moduleScriptUrl, {
+				type: type,
+			});
 		}
-		super(moduleScriptUrl, {
-			type: type,
-		});
 	}
-}
 
-Worker = MyWorker;
+	Worker = MyWorker;
+}
 
 export default class extends Controller {
 	static targets = ['editor', 'textarea'];
@@ -33,6 +43,12 @@ export default class extends Controller {
 	};
 
 	connect() {
+		/**
+		 * @see https://symfony.com/doc/current/frontend/asset_mapper.html#how-does-the-importmap-work
+		 * We need to load ace editor modules from importmap generated from symfony/asset-mapper.
+		 * So we need call Ace.config.setModuleLoader("ace/mode/javascript", () => import("<real path for javascript module file>")
+		 * We now that file is for aceEditor because it ends with "mode-<mode>.js" or "theme-<theme>.js" name.
+		 */
 		const importMapScript = document.querySelector('script[type="importmap"]');
 		const importMap = JSON.parse(importMapScript.textContent);
 		for (const [key, url] of Object.entries(importMap.imports)) {
@@ -53,7 +69,7 @@ export default class extends Controller {
 				});
 			}
 		}
-
+		// We need to set this to false because we want to load worker by MyWorker not from blob.
 		Ace.config.set("loadWorkerFromBlob", false);
 		this.editor = Ace.edit(this.editorTarget);
 
@@ -104,6 +120,7 @@ export default class extends Controller {
 		}
 		this.editor.setOptions(options);
 
+		// Enable autocompletion worlds sent from symfony AceEditorType
 		let wordList = this.optionsValue.autocompleteWorlds;
 		let staticWordCompleter = {
 			getCompletions: function (editor, session, pos, prefix, callback) {
