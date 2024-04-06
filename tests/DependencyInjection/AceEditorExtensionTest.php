@@ -14,6 +14,7 @@ class AceEditorExtensionTest extends TestCase
     /**
      * @param array<string, bool|float|int|string|null> $parameters
      * @param array<string, bool|float|int|string|null> $expected
+     * @param array<int, string> $bundles
      *
      * @dataProvider loadProvider
      */
