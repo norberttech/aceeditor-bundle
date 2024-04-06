@@ -8,7 +8,6 @@ use AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\UX\StimulusBundle\StimulusBundle;
 
 class AceEditorTypeTest extends TestCase
 {

@@ -41,10 +41,10 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
 
         $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
 
-		$useStimulus = false;
-		if (in_array(StimulusBundle::class, $container->getParameter('kernel.bundles'), true) && interface_exists(AssetMapperInterface::class)) {
-			$useStimulus = true;
-		}
+        $useStimulus = false;
+        if (in_array(StimulusBundle::class, $container->getParameter('kernel.bundles'), true) && interface_exists(AssetMapperInterface::class)) {
+            $useStimulus = true;
+        }
 
         $container->setParameter('ace_editor.options.autoinclude', $config['autoinclude']);
         $container->setParameter('ace_editor.options.base_path', $config['base_path']);
@@ -52,9 +52,9 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
         $container->setParameter('ace_editor.options.use_stimulus', $useStimulus);
     }
 
-	/**
-	 * @see https://symfony.com/doc/current/frontend/create_ux_bundle.html
-	 */
+    /**
+     * @see https://symfony.com/doc/current/frontend/create_ux_bundle.html
+     */
     public function prepend(ContainerBuilder $container)
     {
         if ($this->isAssetMapperAvailable($container)) {

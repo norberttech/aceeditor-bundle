@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace AceEditorBundle\Form\Extension\AceEditor\Type;
 
-use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Exception\InvalidArgumentException;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -12,7 +11,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\UX\StimulusBundle\StimulusBundle;
 
 /**
  * @template T of mixed
@@ -23,14 +21,15 @@ final class AceEditorType extends AbstractType
     private const DEFAULT_UNIT = 'px';
 
     private const UNITS = ['%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px'];
-	private bool $useStimulus;
 
-	public function __construct(bool $useStimulus) {
-		$this->useStimulus = $useStimulus;
-	}
+    private bool $useStimulus;
 
+    public function __construct(bool $useStimulus)
+    {
+        $this->useStimulus = $useStimulus;
+    }
 
-	public function configureOptions(OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver): void
     {
         // Remove id from ace editor wrapper attributes. Id must be generated.
         $wrapperAttrNormalizer = function (Options $options, mixed $aceAttr): array {

@@ -42,35 +42,35 @@ class AceEditorExtensionTest extends TestCase
         yield [
             ['debug' => true, 'noconflict' => false],
             true,
-			[],
+            [],
             ['autoinclude' => true, 'base_path' => 'vendor/ace', 'mode' => 'src', "use_stimulus"=>false],
         ];
 
         yield [
             ['debug' => true],
             false,
-			[],
+            [],
             ['autoinclude' => true, 'base_path' => 'vendor/ace', 'mode' => 'src-noconflict', "use_stimulus"=>false],
         ];
 
         yield [
             ['debug' => false, 'base_path' => 'foo'],
             true,
-			[],
+            [],
             ['autoinclude' => true, 'base_path' => 'foo', 'mode' => 'src-noconflict', "use_stimulus"=>false],
         ];
 
         yield [
             ['debug' => false, 'autoinclude' => false],
             false,
-			[],
+            [],
             ['autoinclude' => false, 'base_path' => 'vendor/ace', 'mode' => 'src-min-noconflict', "use_stimulus"=>false],
         ];
 
         yield [
             ['debug' => false, 'autoinclude' => false],
             false,
-			[StimulusBundle::class],
+            [StimulusBundle::class],
             ['autoinclude' => false, 'base_path' => 'vendor/ace', 'mode' => 'src-min-noconflict', "use_stimulus"=>true],
         ];
     }
