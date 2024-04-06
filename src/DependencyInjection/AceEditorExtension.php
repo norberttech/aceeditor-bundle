@@ -42,9 +42,9 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
         $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
 
         $useStimulus = false;
-		$haystack    = $container->getParameter('kernel.bundles');
-		assert(is_array($haystack));
-		if (in_array(StimulusBundle::class, $haystack, true) && interface_exists(AssetMapperInterface::class)) {
+        $haystack    = $container->getParameter('kernel.bundles');
+        assert(is_array($haystack));
+        if (in_array(StimulusBundle::class, $haystack, true) && interface_exists(AssetMapperInterface::class)) {
             $useStimulus = true;
         }
 
