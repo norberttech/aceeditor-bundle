@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('autoinclude')->defaultTrue()->end()
                 ->scalarNode('base_path')->defaultValue('vendor/ace')->end()
                 ->booleanNode('debug')->defaultFalse()->end()
+                ->booleanNode('use_stimulus')->defaultFalse()->end()
                 ->booleanNode('noconflict')->defaultTrue()->end()
             ->end()
         ->end();

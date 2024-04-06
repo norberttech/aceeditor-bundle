@@ -23,15 +23,14 @@ final class AceEditorType extends AbstractType
     private const DEFAULT_UNIT = 'px';
 
     private const UNITS = ['%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px'];
+	private bool $useStimulus;
 
-    private array $installedBundles;
+	public function __construct(bool $useStimulus) {
+		$this->useStimulus = $useStimulus;
+	}
 
-    public function __construct(array $installedBundles)
-    {
-        $this->installedBundles = $installedBundles;
-    }
 
-    public function configureOptions(OptionsResolver $resolver): void
+	public function configureOptions(OptionsResolver $resolver): void
     {
         // Remove id from ace editor wrapper attributes. Id must be generated.
         $wrapperAttrNormalizer = function (Options $options, mixed $aceAttr): array {
@@ -64,11 +63,6 @@ final class AceEditorType extends AbstractType
             return ['value' => $value, 'unit' => $unit];
         };
 
-        $useStimulus = false;
-        if (in_array(StimulusBundle::class, $this->installedBundles, true) && interface_exists(AssetMapperInterface::class)) {
-            $useStimulus = true;
-        }
-
         $resolver->setDefaults([
             'required'                            => false,
             'wrapper_attr'                        => [],
@@ -88,7 +82,6 @@ final class AceEditorType extends AbstractType
             'options_enable_live_autocompletion'  => true,
             'options_enable_snippets'             => false,
             'keyboard_handler'                    => null,
-            'use_stimulus'                        => $useStimulus,
             'autocomplete_worlds'                 => [],
         ]);
 
@@ -108,7 +101,6 @@ final class AceEditorType extends AbstractType
             'options_enable_live_autocompletion'  => ['bool', 'null'],
             'options_enable_snippets'             => ['bool', 'null'],
             'keyboard_handler'                    => ['null', 'string'],
-            'use_stimulus'                        => ['bool'],
             'autocomplete_worlds'                 => ['array'],
         ];
         foreach ($optionAllowedTypes as $option => $allowedTypes) {
@@ -147,7 +139,7 @@ final class AceEditorType extends AbstractType
                 'options_enable_live_autocompletion'  => $options['options_enable_live_autocompletion'],
                 'options_enable_snippets'             => $options['options_enable_snippets'],
                 'keyboard_handler'                    => $options['keyboard_handler'],
-                'use_stimulus'                        => $options['use_stimulus'],
+                'use_stimulus'                        => $this->useStimulus,
                 'autocomplete_worlds'                 => $options['autocomplete_worlds'],
             ]
         );

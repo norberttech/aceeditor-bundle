@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\UX\StimulusBundle\StimulusBundle;
 
 class AceEditorExtension extends Extension implements PrependExtensionInterface
 {
@@ -40,9 +41,15 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
 
         $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
 
+		$useStimulus = false;
+		if (in_array(StimulusBundle::class, $container->getParameter('kernel.bundles'), true) && interface_exists(AssetMapperInterface::class)) {
+			$useStimulus = true;
+		}
+
         $container->setParameter('ace_editor.options.autoinclude', $config['autoinclude']);
         $container->setParameter('ace_editor.options.base_path', $config['base_path']);
         $container->setParameter('ace_editor.options.mode', $mode);
+        $container->setParameter('ace_editor.options.use_stimulus', $useStimulus);
     }
 
 	/**

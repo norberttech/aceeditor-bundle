@@ -17,7 +17,7 @@ class AceEditorTypeTest extends TestCase
 
     public function setUp(): void
     {
-        $this->formType = new AceEditorType([]);
+        $this->formType = new AceEditorType(false);
     }
 
     public function testGetParent(): void
@@ -43,34 +43,6 @@ class AceEditorTypeTest extends TestCase
 
         $resolved = $opts->resolve(['width' => '101foo']);
         $this->assertSame(['value' => '101foo', 'unit' => 'px'], $resolved['width']);
-
-    }
-
-    public function testStimulusEnabledByDefault()
-    {
-        $formType = new AceEditorType([StimulusBundle::class]);
-        $stub = $this->createMock(OptionsResolver::class);
-        // optionResorvel should has method 'setDefaults' with array argument that contains key 'stimulus'
-        $stub->expects($this->once())
-            ->method('setDefaults')
-            ->with($this->callback(function ($arg) {
-                return array_key_exists('use_stimulus', $arg) && $arg['use_stimulus'] === true;
-            }));
-        $formType->configureOptions($stub);
-
-    }
-
-    public function testStimulusDisabledByDefault()
-    {
-        $formType = new AceEditorType([]);
-        $stub = $this->createMock(OptionsResolver::class);
-        // optionResorvel should has method 'setDefaults' with array argument that contains key 'stimulus'
-        $stub->expects($this->once())
-            ->method('setDefaults')
-            ->with($this->callback(function ($arg) {
-                return array_key_exists('use_stimulus', $arg) && $arg['use_stimulus'] === false;
-            }));
-        $formType->configureOptions($stub);
 
     }
 }
