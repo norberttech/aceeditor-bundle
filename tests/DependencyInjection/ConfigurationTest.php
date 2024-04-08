@@ -29,6 +29,6 @@ class ConfigurationTest extends TestCase
         $this->assertTrue($config['noconflict']);
 
         $this->assertArrayHasKey('use_stimulus', $config);
-        $this->assertFalse($config['use_stimulus']);
+        $this->assertNull($config['use_stimulus']);
     }
 }

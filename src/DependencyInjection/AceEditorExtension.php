@@ -17,7 +17,7 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        $config        = $this->processConfiguration($configuration, $configs);
 
         $this->registerAceEditorParameters($config, $container);
 
@@ -39,13 +39,13 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
             $debug = true;
         }
 
-        $mode = 'src'.($debug ? '' : '-min').($config['noconflict'] ? '-noconflict' : '');
+        $mode = 'src' . ($debug ? '' : '-min') . ($config['noconflict'] ? '-noconflict' : '');
 
-        $useStimulus = false;
-        $bundles    = $container->getParameter('kernel.bundles');
-        assert(is_array($bundles));
-        if (in_array(StimulusBundle::class, $bundles, true) && interface_exists(AssetMapperInterface::class)) {
-            $useStimulus = true;
+        $useStimulus = $config['use_stimulus'];
+        if ($useStimulus === null) {
+            $bundles = $container->getParameter('kernel.bundles');
+            assert(is_array($bundles));
+            $useStimulus = in_array(StimulusBundle::class, $bundles, true) && interface_exists(AssetMapperInterface::class);
         }
 
         $container->setParameter('ace_editor.options.autoinclude', $config['autoinclude']);
