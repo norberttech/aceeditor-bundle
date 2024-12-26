@@ -138,6 +138,7 @@ export default class extends Controller {
 
 		this.editor.getSession().on('change', () => {
 			this.textareaTarget.value = this.editor.getSession().getValue();
+			this.textareaTarget.dispatchEvent(new Event('change', { bubbles: true }));
 		});
 	}
 }
