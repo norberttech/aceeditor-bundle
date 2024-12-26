@@ -69,7 +69,7 @@ export default class extends Controller {
 				});
 			}
 		}
-		// We need to set this to false because we want to load worker by MyWorker not from blob.
+		// We need to set this to false because we want to load worker by AceWorker not from blob.
 		Ace.config.set("loadWorkerFromBlob", false);
 		this.editor = Ace.edit(this.editorTarget);
 
