@@ -9,9 +9,9 @@ automatically registering the `ace_editor` form type.
 
 Check the table below to check if your PHP and symfony versions are supported.
 
-| PHP version(s)  | Symfony version(s)  | AceEditorBundle version  |
-| --------------- | ------------------- | ------------------------------------------------------------------ |
-| >= 8.1          | ^5.4 \| ^6.4        | [^5.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
+| PHP version(s)  | Symfony version(s)   | AceEditorBundle version  |
+| --------------- |----------------------| ------------------------------------------------------------------ |
+| >= 8.1          | ^5.4 \| ^6.4 \| ^7.1 | [^5.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
 
 For older unsupported versions check the [releases](https://github.com/norberttech/aceeditor-bundle/releases) page.
 
@@ -114,7 +114,7 @@ rm v${ACE_VERSION}.tar.gz
 
 ## Use with Stimulus and Asset Mapper
 
-Stimulus version is supported only with Asset mapper dependencies
+Stimulus version is supported only with Asset mapper dependency
 
 - ```composer require symfony/stimulus-bundle```
 - ```composer require symfony/asset-mapper ```
