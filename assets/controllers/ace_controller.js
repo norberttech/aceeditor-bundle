@@ -12,24 +12,21 @@ import 'ace-builds/src-noconflict/ext-language_tools.js';
  */
 if (typeof AceWorker !== 'undefined') {
 	class AceWorker extends Worker {
-		constructor(moduleScriptUrl) {
+		constructor(moduleScriptUrl, options) {
 			const importMapScript = document.querySelector('script[type="importmap"]');
 			const importMap = JSON.parse(importMapScript.textContent);
-			let type = 'script';
 			for (const [key, url] of Object.entries(importMap.imports)) {
 				let parts = key.split('/');
 				if (parts.length > 1) {
 					let scriptName = parts[parts.length - 1];
 					if (scriptName === moduleScriptUrl) {
 						moduleScriptUrl = url;
-						type = 'module';
+						options.type = 'module';
 						break;
 					}
 				}
 			}
-			super(moduleScriptUrl, {
-				type: type,
-			});
+			super(moduleScriptUrl, options);
 		}
 	}
 
