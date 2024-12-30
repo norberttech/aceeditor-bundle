@@ -10,9 +10,12 @@ import 'ace-builds/src-noconflict/ext-language_tools.js';
  * So when worker is created with script url, we need to check if this script is in importmap and replace it with correct url.
  * We now that file is in importmap because aceEditor load only filename and in immportmap we have full path to file.
  */
-if (typeof AceWorker !== 'undefined') {
+if (typeof Worker !== 'undefined'){
 	class AceWorker extends Worker {
 		constructor(moduleScriptUrl, options) {
+			if (!options) {
+				options = {};
+			}
 			const importMapScript = document.querySelector('script[type="importmap"]');
 			const importMap = JSON.parse(importMapScript.textContent);
 			for (const [key, url] of Object.entries(importMap.imports)) {
@@ -32,7 +35,6 @@ if (typeof AceWorker !== 'undefined') {
 
 	Worker = AceWorker;
 }
-
 export default class extends Controller {
 	static targets = ['editor', 'textarea'];
 	static values = {
