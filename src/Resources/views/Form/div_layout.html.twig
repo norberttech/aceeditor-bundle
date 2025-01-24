@@ -1,31 +1,33 @@
 {% block ace_editor_widget %}
     {% apply spaceless %}
 		{% if use_stimulus %}
-			<div {{ stimulus_controller('norberttech/aceeditor-bundle/ace',{
-				options:{
-					width: width.value,
-					widthUnit: width.unit,
-					height: height.value,
-					heightUnit: height.unit,
-					fontSize: font_size,
-					theme: theme,
-					mode: mode,
-					readOnly: read_only,
-					showPrintMargin: show_print_margin,
-					showInvisibles: show_invisibles,
-					highlightActiveLine: highlight_active_line,
-					tabSize: tab_size,
-					useSoftTabs: use_soft_tabs,
-					useWrapMode: use_wrap_mode,
-					optionsEnableBasicAutocompletion: options_enable_basic_autocompletion,
-					optionsEnableLiveAutocompletion: options_enable_live_autocompletion,
-					optionsEnableSnippets: options_enable_snippets,
-					keyboardHandler: keyboard_handler,
-					autocompleteWorlds: autocomplete_worlds,
-				}
-			}) }}>
-				<textarea {{ block('widget_attributes') }} {{ stimulus_target('norberttech/aceeditor-bundle/ace','textarea') }}>{{ value }}</textarea>
-				<div {{ stimulus_target('norberttech/aceeditor-bundle/ace','editor') }} {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}
+			{% set options = {
+				width: width.value,
+				widthUnit: width.unit,
+				height: height.value,
+				heightUnit: height.unit,
+				fontSize: font_size,
+				theme: theme,
+				mode: mode,
+				readOnly: read_only,
+				showPrintMargin: show_print_margin,
+				showInvisibles: show_invisibles,
+				highlightActiveLine: highlight_active_line,
+				tabSize: tab_size,
+				useSoftTabs: use_soft_tabs,
+				useWrapMode: use_wrap_mode,
+				optionsEnableBasicAutocompletion: options_enable_basic_autocompletion,
+				optionsEnableLiveAutocompletion: options_enable_live_autocompletion,
+				optionsEnableSnippets: options_enable_snippets,
+				keyboardHandler: keyboard_handler,
+				autocompleteWorlds: autocomplete_worlds,
+			} %}
+			<div
+				data-controller="norberttech--aceeditor-bundle--ace"
+				data-norberttech--aceeditor-bundle--ace-options-value="{{ options|json_encode }}"
+			>
+				<textarea {{ block('widget_attributes') }} data-norberttech--aceeditor-bundle--ace-target="textarea">{{ value }}</textarea>
+				<div data-norberttech--aceeditor-bundle--ace-target="editor" {% for attrname, attrvalue in wrapper_attr %}{% if attrname == 'title' %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}
 				></div>
 			</div>
 		{% else %}
