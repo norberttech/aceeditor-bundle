@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace AceEditorBundle;
 
-class AutocompleteItem implements \JsonSerializable
+readonly class AutocompleteItem implements \JsonSerializable
 {
     public function __construct(
-        public readonly string $value,
-        public readonly ?string $meta = null,
-        public readonly int $score = 1
+        public string $value,
+        public ?string $meta = null,
+        public int $score = 1
     ) {}
 
-    public function jsonSerialize(): mixed
+    public function jsonSerialize(): array
     {
         return [
             'value' => $this->value,
