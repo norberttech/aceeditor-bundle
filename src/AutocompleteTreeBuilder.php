@@ -25,26 +25,26 @@ final class AutocompleteTreeBuilder implements AutocompleteBuilderInterface
      */
     private function populateAutocompleteTree(array $tree, string $path): array
     {
-        $autocompleteWorlds = [];
+        $autocompleteWords = [];
         if ($path) {
-            $autocompleteWorlds[] = new AutocompleteItem(value: $path);
+            $autocompleteWords[] = new AutocompleteItem(value: $path);
         }
         if ($path) {
             $path .= $this->separator;
         }
         foreach ($tree as $key => $value) {
             if (\is_array($value)) {
-                $autocompleteWorlds = array_merge(
-                    $autocompleteWorlds,
+                $autocompleteWords = array_merge(
+                    $autocompleteWords,
                     $this->populateAutocompleteTree($value, $path . $key)
                 );
             } elseif (\is_string($value)) {
-                $autocompleteWorlds[] = new AutocompleteItem(value: $path . $value);
+                $autocompleteWords[] = new AutocompleteItem(value: $path . $value);
             } else {
-                $autocompleteWorlds[] = new AutocompleteItem(value: $path . $key);
+                $autocompleteWords[] = new AutocompleteItem(value: $path . $key);
             }
         }
 
-        return $autocompleteWorlds;
+        return $autocompleteWords;
     }
 }
