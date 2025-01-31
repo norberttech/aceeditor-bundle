@@ -12,6 +12,6 @@ namespace AceEditorBundle;
 
 interface AutocompleteBuilderInterface
 {
-    /** @return iterable */
+    /** @return iterable<AutocompleteItem> */
     public function buildWords(): iterable;
 }

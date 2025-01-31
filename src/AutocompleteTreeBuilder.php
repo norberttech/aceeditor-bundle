@@ -19,7 +19,7 @@ final class AutocompleteTreeBuilder implements AutocompleteBuilderInterface
     ) {
     }
 
-    /** @return iterable */
+    /** @return iterable<AutocompleteItem> */
     public function buildWords(): iterable
     {
         return $this->populateAutocompleteTree($this->tree, "");
