@@ -16,15 +16,15 @@ return (new PhpCsFixer\Config())
     ->setCacheFile(__DIR__.'/var/.php_cs.cache')
     ->setRules([
         '@PSR2' => true,
-        'blank_line_after_opening_tag' => true,
-        'blank_line_before_statement' => true,
+        '@PhpCsFixer' => true,
+        '@PhpCsFixer:risky' => true,
         'class_attributes_separation' => ['elements' => ['const' => 'one', 'property' => 'one', 'method' => 'one']],
+        'concat_space' => ['spacing' => 'one'],
         'declare_strict_types' => true,
-        'no_unused_imports' => true,
-        'ordered_imports' => true,
-        'psr_autoloading' => true,
+        'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
+        'php_unit_strict' => false,
+        'php_unit_test_class_requires_covers' => false,
         'return_type_declaration' => ['space_before' => 'none'],
-        'strict_param' => true,
         'trailing_comma_in_multiline' => ['elements' => ['arrays']],
     ])
     ->setFinder($finder);

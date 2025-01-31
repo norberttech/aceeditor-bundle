@@ -12,19 +12,22 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AceEditorTypeTest extends TestCase
+/**
+ * @internal
+ */
+final class AceEditorTypeTest extends TestCase
 {
     /** @var AceEditorType<mixed> */
     private AceEditorType $formType;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->formType = new AceEditorType(false);
     }
 
     public function testGetParent(): void
     {
-        $this->assertSame(TextareaType::class, $this->formType->getParent());
+        self::assertSame(TextareaType::class, $this->formType->getParent());
     }
 
     public function testOptionsWidthHeightUnitNormalizer(): void
@@ -33,36 +36,36 @@ class AceEditorTypeTest extends TestCase
         $this->formType->configureOptions($opts);
 
         $resolved = $opts->resolve(['width' => null, 'height' => null]);
-        $this->assertSame(['value' => null, 'unit' => 'px'], $resolved['width']);
-        $this->assertSame(['value' => null, 'unit' => 'px'], $resolved['height']);
+        self::assertSame(['value' => null, 'unit' => 'px'], $resolved['width']);
+        self::assertSame(['value' => null, 'unit' => 'px'], $resolved['height']);
 
         $resolved = $opts->resolve(['width' => 20, 'height' => '20']);
-        $this->assertSame(['value' => 20, 'unit' => 'px'], $resolved['width']);
-        $this->assertSame(['value' => '20', 'unit' => 'px'], $resolved['height']);
+        self::assertSame(['value' => 20, 'unit' => 'px'], $resolved['width']);
+        self::assertSame(['value' => '20', 'unit' => 'px'], $resolved['height']);
 
         $resolved = $opts->resolve(['width' => '50%']);
-        $this->assertSame(['value' => '50', 'unit' => '%'], $resolved['width']);
+        self::assertSame(['value' => '50', 'unit' => '%'], $resolved['width']);
 
         $resolved = $opts->resolve(['width' => '101foo']);
-        $this->assertSame(['value' => '101foo', 'unit' => 'px'], $resolved['width']);
+        self::assertSame(['value' => '101foo', 'unit' => 'px'], $resolved['width']);
     }
 
     public function testPopulateAutocompleteWorlds(): void
     {
         $autocomplete = [
-            "foo" => [
-                "bar" => [
-                    "baz" => true,
+            'foo' => [
+                'bar' => [
+                    'baz' => true,
                 ],
-                "qux" => false,
-                "quux" => ["corge", "grault"],
+                'qux' => false,
+                'quux' => ['corge', 'grault'],
             ],
-            "garply" => ["waldo"],
+            'garply' => ['waldo'],
         ];
         $opts = new OptionsResolver();
         $this->formType->configureOptions($opts);
         $resolved = $opts->resolve([
-            'autocomplete_worlds' => ["foos"],
+            'autocomplete_worlds' => ['foos'],
             'autocomplete_builder' => new AutocompleteTreeBuilder($autocomplete),
         ]);
 
@@ -70,7 +73,6 @@ class AceEditorTypeTest extends TestCase
         $form = $this->createMock(FormInterface::class);
         $this->formType->buildView($view, $form, $resolved);
         $worlds = $view->vars['autocomplete_worlds'];
-
 
         $expected = [
             0 => 'foos',
@@ -121,7 +123,6 @@ class AceEditorTypeTest extends TestCase
             ],
         ];
 
-        $this->assertEquals($expected, $worlds);
-
+        self::assertSame($expected, $worlds);
     }
 }
