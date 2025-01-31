@@ -26,7 +26,7 @@ final class AutocompleteTreeBuilderTest extends TestCase
             'garply' => ['waldo'],
         ];
         $builder = new AutocompleteTreeBuilder($autocomplete);
-        self::assertSame([
+        self::assertEquals([
             new AutocompleteItem(value: 'foo'),
             new AutocompleteItem(value: 'foo.bar'),
             new AutocompleteItem(value: 'foo.bar.baz'),
@@ -49,7 +49,7 @@ final class AutocompleteTreeBuilderTest extends TestCase
             ],
         ];
         $builder = new AutocompleteTreeBuilder($autocomplete, '->');
-        self::assertSame([
+        self::assertEquals([
             new AutocompleteItem(value: 'foo'),
             new AutocompleteItem(value: 'foo->bar'),
             new AutocompleteItem(value: 'foo->bar->baz'),
