@@ -18,11 +18,6 @@ return (new PhpCsFixer\Config())
         '@PSR2' => true,
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
-        'binary_operator_spaces' => [
-            'operators' => [
-                '=>' => 'align_single_space_minimal',
-            ]
-        ],
         'class_attributes_separation' => ['elements' => ['const' => 'one', 'property' => 'one', 'method' => 'one']],
         'concat_space' => ['spacing' => 'one'],
         'declare_strict_types' => true,

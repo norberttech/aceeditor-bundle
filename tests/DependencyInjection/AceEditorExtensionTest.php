@@ -32,9 +32,9 @@ final class AceEditorExtensionTest extends TestCase
         $extension->load([$parameters], $container);
 
         $result = [
-            'autoinclude'  => $container->getParameter('ace_editor.options.autoinclude'),
-            'base_path'    => $container->getParameter('ace_editor.options.base_path'),
-            'mode'         => $container->getParameter('ace_editor.options.mode'),
+            'autoinclude' => $container->getParameter('ace_editor.options.autoinclude'),
+            'base_path' => $container->getParameter('ace_editor.options.base_path'),
+            'mode' => $container->getParameter('ace_editor.options.mode'),
             'use_stimulus' => $container->getParameter('ace_editor.options.use_stimulus'),
         ];
 

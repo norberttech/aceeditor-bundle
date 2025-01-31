@@ -57,7 +57,7 @@ final class AceEditorTypeTest extends TestCase
                 'bar' => [
                     'baz' => true,
                 ],
-                'qux'  => false,
+                'qux' => false,
                 'quux' => ['corge', 'grault'],
             ],
             'garply' => ['waldo'],
@@ -65,7 +65,7 @@ final class AceEditorTypeTest extends TestCase
         $opts = new OptionsResolver();
         $this->formType->configureOptions($opts);
         $resolved = $opts->resolve([
-            'autocomplete_worlds'  => ['foos'],
+            'autocomplete_worlds' => ['foos'],
             'autocomplete_builder' => new AutocompleteTreeBuilder($autocomplete),
         ]);
 
@@ -78,47 +78,47 @@ final class AceEditorTypeTest extends TestCase
             0 => 'foos',
             1 => [
                 'value' => 'foo',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
             2 => [
                 'value' => 'foo.bar',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
             3 => [
                 'value' => 'foo.bar.baz',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
             4 => [
                 'value' => 'foo.qux',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
             5 => [
                 'value' => 'foo.quux',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
             6 => [
                 'value' => 'foo.quux.corge',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
             7 => [
                 'value' => 'foo.quux.grault',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
             8 => [
                 'value' => 'garply',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
             9 => [
                 'value' => 'garply.waldo',
-                'meta'  => null,
+                'meta' => null,
                 'score' => 1,
             ],
         ];

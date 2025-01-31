@@ -16,7 +16,7 @@ readonly class AutocompleteItem implements \JsonSerializable
     {
         return [
             'value' => $this->value,
-            'meta'  => $this->meta,
+            'meta' => $this->meta,
             'score' => $this->score,
         ];
     }

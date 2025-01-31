@@ -20,7 +20,7 @@ final class AutocompleteTreeBuilderTest extends TestCase
                 'bar' => [
                     'baz' => true,
                 ],
-                'qux'  => false,
+                'qux' => false,
                 'quux' => ['corge', 'grault'],
             ],
             'garply' => ['waldo'],
