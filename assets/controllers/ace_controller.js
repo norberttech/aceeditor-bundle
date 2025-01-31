@@ -131,7 +131,7 @@ export default class extends Controller {
 							meta: word.meta,
 							score: word.score
 						};
-					}else {
+					} else {
 						return {
 							caption: word,
 							value: word,
