@@ -63,7 +63,7 @@ $builder->add('description', AceEditorType::class, [
     'options_enable_live_autocompletion' => true,
     'options_enable_snippets' => false
     'keyboard_handler' => null,
-    'autocomplete_worlds' => ['foo', 'bar', 'baz']
+    'autocomplete_words' => ['foo', 'bar', 'baz']
 ]);
 ```
 
