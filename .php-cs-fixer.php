@@ -27,6 +27,7 @@ return (new PhpCsFixer\Config())
         'concat_space' => ['spacing' => 'one'],
         'declare_strict_types' => true,
         'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
+        'php_unit_strict' => false,
         'php_unit_test_class_requires_covers' => false,
         'return_type_declaration' => ['space_before' => 'none'],
         'trailing_comma_in_multiline' => ['elements' => ['arrays']],
