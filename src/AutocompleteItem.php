@@ -12,6 +12,9 @@ readonly class AutocompleteItem implements \JsonSerializable
         public int $score = 1
     ) {}
 
+    /**
+     * @return array<string, mixed>
+     */
     public function jsonSerialize(): array
     {
         return [
