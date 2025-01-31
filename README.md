@@ -132,17 +132,17 @@ fell free to add more dependencies for your theme and mode
 
 ```php
 $autocomplete = [
-    "foo" => [
-        "bar" => [
-            "baz" => true,
-            "baz" => ["gaz","haz"],
+    'foo' => [
+        'bar' => [
+            'baz' => true,
+            'baz' => ['gaz','haz'],
         ],
     ],
 ];
 $builder = new AutocompleteTreeBuilder($autocomplete, "->");
 
 $builder
-    ->add("formula", AceEditorType::class, [
+    ->add('formula', AceEditorType::class, [
         'autocomplete_builder' => $keywords,
     ]);
 ```
