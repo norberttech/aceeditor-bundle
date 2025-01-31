@@ -21,6 +21,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class AceEditorType extends AbstractType
 {
+    private const DEFAULT_MODE = 'ace/mode/html';
+
+    private const DEFAULT_THEME = 'ace/theme/monokai';
+
     private const DEFAULT_UNIT = 'px';
 
     private const UNITS = ['%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px'];
@@ -34,14 +38,12 @@ final class AceEditorType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        // Remove id from ace editor wrapper attributes. Id must be generated.
+        // Remove id from ace editor wrapper attributes, it must be generated.
         $wrapperAttrNormalizer = static function (Options $options, mixed $aceAttr): array {
-            if (\is_array($aceAttr)) {
-                if (\array_key_exists('id', $aceAttr)) {
-                    unset($aceAttr['id']);
-                }
-            } else {
+            if (!\is_array($aceAttr)) {
                 $aceAttr = [];
+            } else {
+                unset($aceAttr['id']);
             }
 
             return $aceAttr;
@@ -71,8 +73,8 @@ final class AceEditorType extends AbstractType
             'width' => '100%',
             'height' => 250,
             'font_size' => 12,
-            'mode' => 'ace/mode/html',
-            'theme' => 'ace/theme/monokai',
+            'mode' => self::DEFAULT_MODE,
+            'theme' => self::DEFAULT_THEME,
             'tab_size' => null,
             'read_only' => null,
             'use_soft_tabs' => null,
@@ -84,7 +86,7 @@ final class AceEditorType extends AbstractType
             'options_enable_live_autocompletion' => true,
             'options_enable_snippets' => false,
             'keyboard_handler' => null,
-            'autocomplete_worlds' => [],
+            'autocomplete_words' => [],
             'autocomplete_builder' => null,
         ]);
 
@@ -104,8 +106,8 @@ final class AceEditorType extends AbstractType
             'options_enable_live_autocompletion' => ['bool', 'null'],
             'options_enable_snippets' => ['bool', 'null'],
             'keyboard_handler' => ['null', 'string'],
-            'autocomplete_worlds' => ['array'],
-            'autocomplete_builder' => ['AceEditorBundle\AutocompleteBuilderInterface', 'null'],
+            'autocomplete_words' => ['array'],
+            'autocomplete_builder' => [AutocompleteBuilderInterface::class, 'null'],
         ];
         foreach ($optionAllowedTypes as $option => $allowedTypes) {
             $resolver->setAllowedTypes($option, $allowedTypes);
@@ -125,11 +127,11 @@ final class AceEditorType extends AbstractType
     {
         /** @var null|AutocompleteBuilderInterface $autocompleteBuilder */
         $autocompleteBuilder = $options['autocomplete_builder'];
-        $worlds = [];
+        $words = [];
         if (null !== $autocompleteBuilder) {
-            $worlds = $autocompleteBuilder->buildWords();
-            if ($worlds instanceof \Traversable) {
-                $worlds = iterator_to_array($worlds);
+            $words = $autocompleteBuilder->buildWords();
+            if ($words instanceof \Traversable) {
+                $words = iterator_to_array($words);
             }
         }
         $view->vars = array_merge(
@@ -153,9 +155,9 @@ final class AceEditorType extends AbstractType
                 'options_enable_snippets' => $options['options_enable_snippets'],
                 'keyboard_handler' => $options['keyboard_handler'],
                 'use_stimulus' => $this->useStimulus,
-                'autocomplete_worlds' => array_merge(
-                    $options['autocomplete_worlds'],
-                    array_map(static fn (AutocompleteItem $item) => $item->jsonSerialize(), $worlds),
+                'autocomplete_words' => array_merge(
+                    $options['autocomplete_words'],
+                    array_map(static fn (AutocompleteItem $item) => $item->jsonSerialize(), $words),
                 ),
             ]
         );

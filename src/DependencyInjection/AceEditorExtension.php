@@ -29,7 +29,7 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
     /**
      * @see https://symfony.com/doc/current/frontend/create_ux_bundle.html
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         if ($this->isAssetMapperAvailable($container)) {
             $container->prependExtensionConfig('framework', [

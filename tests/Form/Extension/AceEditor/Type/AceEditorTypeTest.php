@@ -65,14 +65,14 @@ final class AceEditorTypeTest extends TestCase
         $opts = new OptionsResolver();
         $this->formType->configureOptions($opts);
         $resolved = $opts->resolve([
-            'autocomplete_worlds' => ['foos'],
+            'autocomplete_words' => ['foos'],
             'autocomplete_builder' => new AutocompleteTreeBuilder($autocomplete),
         ]);
 
         $view = new FormView();
         $form = $this->createMock(FormInterface::class);
         $this->formType->buildView($view, $form, $resolved);
-        $worlds = $view->vars['autocomplete_worlds'];
+        $words = $view->vars['autocomplete_words'];
 
         $expected = [
             0 => 'foos',
@@ -123,6 +123,6 @@ final class AceEditorTypeTest extends TestCase
             ],
         ];
 
-        self::assertSame($expected, $worlds);
+        self::assertSame($expected, $words);
     }
 }
