@@ -20,13 +20,13 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->booleanNode('autoinclude')->defaultTrue()->end()
-                ->scalarNode('base_path')->defaultValue('vendor/ace')->end()
-                ->booleanNode('debug')->defaultFalse()->end()
-                ->booleanNode('use_stimulus')->defaultNull()->end()
-                ->booleanNode('noconflict')->defaultTrue()->end()
+            ->booleanNode('autoinclude')->defaultTrue()->end()
+            ->scalarNode('base_path')->defaultValue('vendor/ace')->end()
+            ->booleanNode('debug')->defaultFalse()->end()
+            ->booleanNode('use_stimulus')->defaultNull()->end()
+            ->booleanNode('noconflict')->defaultTrue()->end()
             ->end()
-        ->end();
+            ->end();
 
         return $treeBuilder;
     }

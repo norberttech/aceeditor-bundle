@@ -10,15 +10,18 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-class TwigFormPassTest extends TestCase
+/**
+ * @internal
+ */
+final class TwigFormPassTest extends TestCase
 {
     public function testProcessHasNotTwigFormResources(): void
     {
         $container = $this->createMock(ContainerBuilder::class);
-        $container->expects($this->once())->method('hasParameter')
+        $container->expects(self::once())->method('hasParameter')
             ->with('twig.form.resources')->willReturn(false);
 
-        $container->expects($this->never())->method('setParameter');
+        $container->expects(self::never())->method('setParameter');
 
         $compiler = new TwigFormPass();
         $compiler->process($container);
@@ -35,7 +38,7 @@ class TwigFormPassTest extends TestCase
         $compiler = new TwigFormPass();
         $compiler->process($container);
 
-        $this->assertSame(
+        self::assertSame(
             ['@AceEditor/Form/div_layout.html.twig', 'foo'],
             $container->getParameter('twig.form.resources')
         );

@@ -16,6 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @template T of mixed
+ *
  * @template-extends AbstractType<T>
  */
 final class AceEditorType extends AbstractType
@@ -34,9 +35,9 @@ final class AceEditorType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         // Remove id from ace editor wrapper attributes. Id must be generated.
-        $wrapperAttrNormalizer = function (Options $options, mixed $aceAttr): array {
-            if (is_array($aceAttr)) {
-                if (array_key_exists('id', $aceAttr)) {
+        $wrapperAttrNormalizer = static function (Options $options, mixed $aceAttr): array {
+            if (\is_array($aceAttr)) {
+                if (\array_key_exists('id', $aceAttr)) {
                     unset($aceAttr['id']);
                 }
             } else {
@@ -46,17 +47,17 @@ final class AceEditorType extends AbstractType
             return $aceAttr;
         };
 
-        $unitNormalizer = function (Options $options, array|string|float|int|null $value): array {
-            if (is_array($value)) {
-                if (!array_key_exists('value', $value) || !array_key_exists('unit', $value)) {
+        $unitNormalizer = static function (Options $options, null|array|float|int|string $value): array {
+            if (\is_array($value)) {
+                if (!\array_key_exists('value', $value) || !\array_key_exists('unit', $value)) {
                     throw new InvalidArgumentException('Expected an array with the keys "value" and "unit"');
                 }
 
                 return $value;
             }
-            if (preg_match('/([0-9\.]+)\s*(' . implode('|', self::UNITS) . ')/', (string)$value, $matchedValue)) {
+            if (preg_match('/([0-9\.]+)\s*(' . implode('|', self::UNITS) . ')/', (string) $value, $matchedValue)) {
                 $value = $matchedValue[1];
-                $unit  = $matchedValue[2];
+                $unit = $matchedValue[2];
             } else {
                 $unit = self::DEFAULT_UNIT;
             }
@@ -84,7 +85,7 @@ final class AceEditorType extends AbstractType
             'options_enable_snippets'             => false,
             'keyboard_handler'                    => null,
             'autocomplete_worlds'                 => [],
-            'autocomplete_builder'                 => null,
+            'autocomplete_builder'                => null,
         ]);
 
         $optionAllowedTypes = [
@@ -122,10 +123,10 @@ final class AceEditorType extends AbstractType
 
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
-        /** @var AutocompleteBuilderInterface|null $autocompleteBuilder */
+        /** @var null|AutocompleteBuilderInterface $autocompleteBuilder */
         $autocompleteBuilder = $options['autocomplete_builder'];
-        $worlds=[];
-        if ($autocompleteBuilder !== null) {
+        $worlds = [];
+        if (null !== $autocompleteBuilder) {
             $worlds = $autocompleteBuilder->buildWords();
             if ($worlds instanceof \Traversable) {
                 $worlds = iterator_to_array($worlds);
@@ -154,17 +155,14 @@ final class AceEditorType extends AbstractType
                 'use_stimulus'                        => $this->useStimulus,
                 'autocomplete_worlds'                 => array_merge(
                     $options['autocomplete_worlds'],
-                    array_map(fn (AutocompleteItem $item) => $item->jsonSerialize(), $worlds),
+                    array_map(static fn (AutocompleteItem $item) => $item->jsonSerialize(), $worlds),
                 ),
             ]
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getParent(): string
     {
-        return TextAreaType::class;
+        return TextareaType::class;
     }
 }

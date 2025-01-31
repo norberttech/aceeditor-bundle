@@ -9,7 +9,10 @@ use AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class AceEditorBundleTest extends TestCase
+/**
+ * @internal
+ */
+final class AceEditorBundleTest extends TestCase
 {
     public function testBuild(): void
     {
@@ -17,9 +20,9 @@ class AceEditorBundleTest extends TestCase
         $bundle = new AceEditorBundle();
         $bundle->build($container);
 
-        $this->assertNotEmpty(array_filter(
+        self::assertNotEmpty(array_filter(
             $container->getCompilerPassConfig()->getPasses(),
-            function ($value) {
+            static function ($value) {
                 return $value instanceof TwigFormPass;
             }
         ));

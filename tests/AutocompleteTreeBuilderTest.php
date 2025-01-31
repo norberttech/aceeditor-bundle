@@ -8,7 +8,10 @@ use AceEditorBundle\AutocompleteItem;
 use AceEditorBundle\AutocompleteTreeBuilder;
 use PHPUnit\Framework\TestCase;
 
-class AutocompleteTreeBuilderTest extends TestCase
+/**
+ * @internal
+ */
+final class AutocompleteTreeBuilderTest extends TestCase
 {
     public function testBuildWords(): void
     {
@@ -17,13 +20,13 @@ class AutocompleteTreeBuilderTest extends TestCase
                 'bar' => [
                     'baz' => true,
                 ],
-                'qux' => false,
+                'qux'  => false,
                 'quux' => ['corge', 'grault'],
             ],
             'garply' => ['waldo'],
         ];
         $builder = new AutocompleteTreeBuilder($autocomplete);
-        $this->assertEquals([
+        self::assertSame([
             new AutocompleteItem(value: 'foo'),
             new AutocompleteItem(value: 'foo.bar'),
             new AutocompleteItem(value: 'foo.bar.baz'),
@@ -46,7 +49,7 @@ class AutocompleteTreeBuilderTest extends TestCase
             ],
         ];
         $builder = new AutocompleteTreeBuilder($autocomplete, '->');
-        $this->assertEquals([
+        self::assertSame([
             new AutocompleteItem(value: 'foo'),
             new AutocompleteItem(value: 'foo->bar'),
             new AutocompleteItem(value: 'foo->bar->baz'),

@@ -33,9 +33,6 @@ class AceEditorExtension extends AbstractExtension
         return 'ace_editor';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions(): array
     {
         return [
@@ -43,7 +40,7 @@ class AceEditorExtension extends AbstractExtension
                 'include_ace_editor',
                 [$this, 'includeAceEditor'],
                 [
-                    'is_safe' => ['html'],
+                    'is_safe'           => ['html'],
                     'needs_environment' => true,
                 ]
             ),
@@ -67,7 +64,7 @@ class AceEditorExtension extends AbstractExtension
 
         foreach (['ace', 'ext-language_tools'] as $file) {
             $extension = $environment->getExtension(AssetExtension::class);
-            $jsPath = $extension->getAssetUrl($this->basePath.'/'.$this->mode.'/'.$file.'.js');
+            $jsPath = $extension->getAssetUrl($this->basePath . '/' . $this->mode . '/' . $file . '.js');
 
             printf('<script src="%s" charset="utf-8" type="text/javascript"></script>', $jsPath);
         }

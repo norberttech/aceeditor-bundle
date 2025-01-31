@@ -10,12 +10,15 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\UX\StimulusBundle\StimulusBundle;
 
-class AceEditorExtensionTest extends TestCase
+/**
+ * @internal
+ */
+final class AceEditorExtensionTest extends TestCase
 {
     /**
-     * @param array<string, bool|float|int|string|null> $parameters
-     * @param array<string, bool|float|int|string|null> $expected
-     * @param array<int, string> $bundles
+     * @param array<string, null|bool|float|int|string> $parameters
+     * @param array<string, null|bool|float|int|string> $expected
+     * @param array<int, string>                        $bundles
      */
     #[DataProvider('loadProvider')]
     public function testLoad(array $parameters, bool $kernelDebug, array $bundles, array $expected): void
@@ -29,13 +32,13 @@ class AceEditorExtensionTest extends TestCase
         $extension->load([$parameters], $container);
 
         $result = [
-            'autoinclude' => $container->getParameter('ace_editor.options.autoinclude'),
-            'base_path' => $container->getParameter('ace_editor.options.base_path'),
-            'mode' => $container->getParameter('ace_editor.options.mode'),
+            'autoinclude'  => $container->getParameter('ace_editor.options.autoinclude'),
+            'base_path'    => $container->getParameter('ace_editor.options.base_path'),
+            'mode'         => $container->getParameter('ace_editor.options.mode'),
             'use_stimulus' => $container->getParameter('ace_editor.options.use_stimulus'),
         ];
 
-        $this->assertSame($expected, $result);
+        self::assertSame($expected, $result);
     }
 
     public static function loadProvider(): \Generator
