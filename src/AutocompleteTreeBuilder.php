@@ -19,8 +19,8 @@ final class AutocompleteTreeBuilder implements AutocompleteBuilderInterface
     ) {
     }
 
-    /** @return AutocompleteItem[] */
-    public function buildWords(): array
+    /** @return iterable */
+    public function buildWords(): iterable
     {
         return $this->populateAutocompleteTree($this->tree, "");
     }
@@ -34,7 +34,7 @@ final class AutocompleteTreeBuilder implements AutocompleteBuilderInterface
     {
         $autocompleteWorlds = [ ];
         if ($path) {
-            $autocompleteWorlds[] = $path;
+            $autocompleteWorlds[] = new AutocompleteItem(value:$path);
         }
         if ($path) {
             $path .= $this->separator;
