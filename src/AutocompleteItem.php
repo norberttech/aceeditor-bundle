@@ -13,7 +13,7 @@ readonly class AutocompleteItem implements \JsonSerializable
     ) {}
 
     /**
-     * @return array<string, mixed>
+     * @return array{value: string, meta: ?string, score: int}
      */
     public function jsonSerialize(): array
     {
