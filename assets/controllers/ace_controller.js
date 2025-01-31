@@ -124,11 +124,20 @@ export default class extends Controller {
 		let staticWordCompleter = {
 			getCompletions: function (editor, session, pos, prefix, callback) {
 				callback(null, wordList.map(function (word) {
-					return {
-						caption: word,
-						value: word,
-						meta: "static"
-					};
+					if (typeof word === 'object') {
+						return {
+							caption: word.value,
+							value: word.value,
+							meta: word.meta,
+							score: word.score
+						};
+					}else {
+						return {
+							caption: word,
+							value: word,
+							meta: "static"
+						};
+					}
 				}));
 
 			}

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace AceEditorBundle\Tests;
 
+use AceEditorBundle\AutocompleteItem;
 use AceEditorBundle\AutocompleteTreeBuilder;
 use PHPUnit\Framework\TestCase;
 
@@ -29,15 +30,15 @@ class AutocompleteTreeBuilderTest extends TestCase
         ];
         $builder = new AutocompleteTreeBuilder($autocomplete);
         $this->assertEquals([
-            0 => 'foo',
-            1 => 'foo.bar',
-            2 => 'foo.bar.baz',
-            3 => 'foo.qux',
-            4 => 'foo.quux',
-            5 => 'foo.quux.corge',
-            6 => 'foo.quux.grault',
-            7 => 'garply',
-            8 => 'garply.waldo',
+            0 => new AutocompleteItem(value: 'foo'),
+            1 => new AutocompleteItem(value: 'foo.bar'),
+            2 => new AutocompleteItem(value: 'foo.bar.baz'),
+            3 => new AutocompleteItem(value: 'foo.qux'),
+            4 => new AutocompleteItem(value: 'foo.quux'),
+            5 => new AutocompleteItem(value: 'foo.quux.corge'),
+            6 => new AutocompleteItem(value: 'foo.quux.grault'),
+            7 =>new AutocompleteItem(value:  'garply'),
+            8 =>new AutocompleteItem(value:  'garply.waldo'),
         ], $builder->buildWords());
     }
 
@@ -52,9 +53,9 @@ class AutocompleteTreeBuilderTest extends TestCase
         ];
         $builder = new AutocompleteTreeBuilder($autocomplete, "->");
         $this->assertEquals([
-            "foo",
-            "foo->bar",
-            "foo->bar->baz",
+            new AutocompleteItem(value:  "foo"),
+            new AutocompleteItem(value: "foo->bar"),
+            new AutocompleteItem(value: "foo->bar->baz"),
         ], $builder->buildWords());
     }
 }

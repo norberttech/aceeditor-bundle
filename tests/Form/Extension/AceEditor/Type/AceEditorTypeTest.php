@@ -50,19 +50,19 @@ class AceEditorTypeTest extends TestCase
     public function testPopulateAutocompleteWorlds(): void
     {
         $autocomplete = [
-            "foo"=>[
-                "bar"=>[
-                    "baz"=>true,
+            "foo" => [
+                "bar" => [
+                    "baz" => true,
                 ],
-                "qux"=>false,
-                "quux"=>["corge","grault"],
+                "qux" => false,
+                "quux" => ["corge", "grault"],
             ],
-            "garply"=>["waldo"],
+            "garply" => ["waldo"],
         ];
         $opts = new OptionsResolver();
         $this->formType->configureOptions($opts);
         $resolved = $opts->resolve([
-            'autocomplete_worlds'=>["foos"],
+            'autocomplete_worlds' => ["foos"],
             'autocomplete_builder' => new AutocompleteTreeBuilder($autocomplete),
         ]);
 
@@ -74,18 +74,54 @@ class AceEditorTypeTest extends TestCase
 
         $expected = [
             0 => 'foos',
-            1 => 'foo',
-            2 => 'foo.bar',
-            3 => 'foo.bar.baz',
-            4 => 'foo.qux',
-            5 => 'foo.quux',
-            6 => 'foo.quux.corge',
-            7 => 'foo.quux.grault',
-            8 => 'garply',
-            9 => 'garply.waldo',
+            1 => [
+                'value' => 'foo',
+                'meta' => null,
+                'score' => 1,
+            ],
+            2 => [
+                'value' => 'foo.bar',
+                'meta' => null,
+                'score' => 1,
+            ],
+            3 => [
+                'value' => 'foo.bar.baz',
+                'meta' => null,
+                'score' => 1,
+            ],
+            4 => [
+                'value' => 'foo.qux',
+                'meta' => null,
+                'score' => 1,
+            ],
+            5 => [
+                'value' => 'foo.quux',
+                'meta' => null,
+                'score' => 1,
+            ],
+            6 => [
+                'value' => 'foo.quux.corge',
+                'meta' => null,
+                'score' => 1,
+            ],
+            7 => [
+                'value' => 'foo.quux.grault',
+                'meta' => null,
+                'score' => 1,
+            ],
+            8 => [
+                'value' => 'garply',
+                'meta' => null,
+                'score' => 1,
+            ],
+            9 => [
+                'value' => 'garply.waldo',
+                'meta' => null,
+                'score' => 1,
+            ],
         ];
 
-        $this->assertSame($expected, $worlds);
+        $this->assertEquals($expected, $worlds);
 
     }
 }

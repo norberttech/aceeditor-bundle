@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AceEditorBundle\Form\Extension\AceEditor\Type;
 
 use AceEditorBundle\AutocompleteBuilderInterface;
+use AceEditorBundle\AutocompleteItem;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Exception\InvalidArgumentException;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -123,6 +124,13 @@ final class AceEditorType extends AbstractType
     {
         /** @var AutocompleteBuilderInterface|null $autocompleteBuilder */
         $autocompleteBuilder = $options['autocomplete_builder'];
+        $worlds=[];
+        if ($autocompleteBuilder !== null) {
+            $worlds = $autocompleteBuilder->buildWords();
+            if ($worlds instanceof \Traversable) {
+                $worlds = iterator_to_array($worlds);
+            }
+        }
         $view->vars = array_merge(
             $view->vars,
             [
@@ -146,7 +154,7 @@ final class AceEditorType extends AbstractType
                 'use_stimulus'                        => $this->useStimulus,
                 'autocomplete_worlds'                 => array_merge(
                     $options['autocomplete_worlds'],
-                    $autocompleteBuilder?->buildWords() ?? []
+                    array_map(fn (AutocompleteItem $item) => $item->jsonSerialize(), $worlds),
                 ),
             ]
         );

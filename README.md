@@ -127,3 +127,22 @@ fell free to add more dependencies for your theme and mode
 - ```bin/console importmap:require ace-builds/src-noconflict/theme-monokai.js```
 - ```bin/console importmap:require ace-builds/src-noconflict/worker-javascript.js```
 - ```bin/console importmap:require ace-builds/src-noconflict/mode-javascript.js```
+
+## Autocomplete
+
+```php
+$autocomplete = [
+    "foo" => [
+        "bar" => [
+            "baz" => true,
+            "baz" => ["gaz","haz"],
+        ],
+    ],
+];
+$builder = new AutocompleteTreeBuilder($autocomplete, "->");
+
+$builder
+    ->add("formula", AceEditorType::class, [
+        'autocomplete_builder' => $keywords,
+    ]);
+```

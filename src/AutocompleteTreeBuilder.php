@@ -19,8 +19,8 @@ final class AutocompleteTreeBuilder implements AutocompleteBuilderInterface
     ) {
     }
 
-    /** @return string[] */
-    public function buildWords(): array
+    /** @return iterable<AutocompleteItem> */
+    public function buildWords(): iterable
     {
         return $this->populateAutocompleteTree($this->tree, "");
     }
@@ -28,13 +28,13 @@ final class AutocompleteTreeBuilder implements AutocompleteBuilderInterface
     /**
      * @param array<mixed> $tree
      * @param string $path
-     * @return string[]
+     * @return AutocompleteItem[]
      */
     private function populateAutocompleteTree(array $tree, string $path): array
     {
         $autocompleteWorlds = [ ];
         if ($path) {
-            $autocompleteWorlds[] = $path;
+            $autocompleteWorlds[] = new AutocompleteItem(value:$path);
         }
         if ($path) {
             $path .= $this->separator;
@@ -46,9 +46,9 @@ final class AutocompleteTreeBuilder implements AutocompleteBuilderInterface
                     $this->populateAutocompleteTree($value, $path . $key)
                 );
             } elseif (is_string($value)) {
-                $autocompleteWorlds[] = $path  . $value;
+                $autocompleteWorlds[] = new AutocompleteItem(value:$path  . $value);
             } else {
-                $autocompleteWorlds[] = $path. $key;
+                $autocompleteWorlds[] = new AutocompleteItem(value:$path. $key);
             }
         }
 
