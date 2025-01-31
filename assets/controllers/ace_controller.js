@@ -125,7 +125,6 @@ export default class extends Controller {
 			getCompletions: function (editor, session, pos, prefix, callback) {
 				callback(null, wordList.map(function (word) {
 					if (typeof word === 'object') {
-						console.log(word);
 						return {
 							caption: word.value,
 							value: word.value,
