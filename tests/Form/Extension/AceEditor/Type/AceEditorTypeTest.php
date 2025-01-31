@@ -50,7 +50,7 @@ final class AceEditorTypeTest extends TestCase
         self::assertSame(['value' => '101foo', 'unit' => 'px'], $resolved['width']);
     }
 
-    public function testPopulateAutocompleteWorlds(): void
+    public function testPopulateAutocompleteWords(): void
     {
         $autocomplete = [
             'foo' => [

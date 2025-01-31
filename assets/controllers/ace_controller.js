@@ -120,7 +120,7 @@ export default class extends Controller {
 		this.editor.setOptions(options);
 
 		// Enable autocompletion words sent from symfony AceEditorType
-		let wordList = this.optionsValue.autocompleteWorlds;
+		let wordList = this.optionsValue.autocompleteWords;
 		let staticWordCompleter = {
 			getCompletions: function (editor, session, pos, prefix, callback) {
 				callback(null, wordList.map(function (word) {
@@ -131,7 +131,7 @@ export default class extends Controller {
 							meta: word.meta,
 							score: word.score
 						};
-					}else {
+					} else {
 						return {
 							caption: word,
 							value: word,
