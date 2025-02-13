@@ -42,7 +42,7 @@ final class AceEditorExtensionTest extends TestCase
     }
 
     /**
-     * Data provider attributes are not handled yet: https://github.com/psalm/psalm-plugin-phpunit/issues/131
+     * Data provider attributes are not handled yet: https://github.com/psalm/psalm-plugin-phpunit/issues/131.
      *
      * @psalm-api
      */
