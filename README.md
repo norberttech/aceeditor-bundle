@@ -11,7 +11,7 @@ Check the table below to check if your PHP and symfony versions are supported.
 
 | PHP version(s)  | Symfony version(s)   | AceEditorBundle version  |
 | --------------- |----------------------| ------------------------------------------------------------------ |
-| >= 8.1          | ^5.4 \| ^6.4 \| ^7.1 | [^5.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
+| >= 8.2          | ^5.4 \| ^6.4 \| ^7.0 | [^5.0](https://github.com/norberttech/aceeditor-bundle/tree/5.x)   |
 
 For older unsupported versions check the [releases](https://github.com/norberttech/aceeditor-bundle/releases) page.
 
