@@ -67,7 +67,7 @@
         ],
         "check:static": [
             "@phpstan --memory-limit=128M",
-            "@psalm --threads 4 --memory-limit=384M"
+            "@psalm --threads=4 --memory-limit=384M"
         ],
         "cs:check": "@php-cs-fixer fix --dry-run",
         "cs:fix": "@php-cs-fixer fix",
