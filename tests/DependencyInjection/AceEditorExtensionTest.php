@@ -41,6 +41,11 @@ final class AceEditorExtensionTest extends TestCase
         self::assertSame($expected, $result);
     }
 
+    /**
+     * Data provider attributes are not handled yet: https://github.com/psalm/psalm-plugin-phpunit/issues/131
+     *
+     * @psalm-api
+     */
     public static function loadProvider(): \Generator
     {
         yield [
