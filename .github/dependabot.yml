@@ -18,9 +18,3 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
-
-  - package-ecosystem: "composer"
-    directory: "/tools/psalm"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
