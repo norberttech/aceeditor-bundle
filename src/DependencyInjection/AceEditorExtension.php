@@ -7,9 +7,9 @@ namespace AceEditorBundle\DependencyInjection;
 use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\UX\StimulusBundle\StimulusBundle;
 
 class AceEditorExtension extends Extension implements PrependExtensionInterface
@@ -21,9 +21,9 @@ class AceEditorExtension extends Extension implements PrependExtensionInterface
 
         $this->registerAceEditorParameters($config, $container);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('form.xml');
-        $loader->load('twig.xml');
+        $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('form.php');
+        $loader->load('twig.php');
     }
 
     /**
