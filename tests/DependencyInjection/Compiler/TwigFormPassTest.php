@@ -8,7 +8,7 @@ use AceEditorBundle\DependencyInjection\Compiler\TwigFormPass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
 /**
  * @internal
@@ -32,8 +32,8 @@ final class TwigFormPassTest extends TestCase
         $container = new ContainerBuilder();
         $container->setParameter('twig.form.resources', ['foo']);
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../../../src/Resources/config'));
-        $loader->load('form.xml');
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../../src/Resources/config'));
+        $loader->load('form.php');
 
         $compiler = new TwigFormPass();
         $compiler->process($container);
